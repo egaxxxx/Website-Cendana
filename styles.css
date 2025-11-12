@@ -2854,162 +2854,195 @@ footer::before {
 
 /**
  * ============================================
- * HALAMAN PEMESANAN
+ * HALAMAN PEMESANAN - DESAIN FUNGSIONAL
  * ============================================
+ * Halaman pemesanan dibuat dengan layout yang jelas,
+ * card yang rapi, dan spacing yang nyaman
  */
+
+/* Section filter dengan background subtle */
 .booking-filter-section {
-    padding: 40px 0;
-    background: var(--bg-ketiga);
+    padding: 48px 0; /* Padding yang cukup untuk breathing room */
+    background: #f8fafc; /* Background abu sangat terang */
 }
 
+/* Container tabs filter dengan gap yang nyaman */
 .filter-tabs {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 16px; /* Jarak antar tab yang proporsional */
     flex-wrap: wrap;
 }
 
+/* Tab filter dengan desain pill yang modern */
 .filter-tab {
-    padding: 12px 24px;
-    background: var(--bg-kedua);
-    border: 2px solid var(--warna-border);
-    border-radius: 25px;
+    padding: 13px 28px; /* Padding yang nyaman untuk klik */
+    background: #ffffff; /* Background putih bersih */
+    border: 2px solid #e2e8f0; /* Border abu lembut */
+    border-radius: 12px; /* Sudut membulat sedang */
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    color: var(--teks-utama);
+    transition: all 0.3s ease; /* Transisi smooth 0.3 detik */
+    font-weight: 600; /* Semi-bold untuk ketegasan */
+    color: #475569; /* Abu gelap untuk readability */
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px; /* Jarak antara icon dan teks */
     font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* Shadow sangat halus */
 }
 
+/* Efek hover tab - berubah jadi biru dengan transisi smooth */
 .filter-tab:hover {
-    background: var(--warna-kedua);
+    background: #2563eb; /* Biru utama */
     color: white;
-    border-color: var(--warna-kedua);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    border-color: #2563eb;
+    transform: translateY(-2px); /* Naik sedikit */
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25); /* Shadow biru lembut */
 }
 
+/* Tab yang aktif dengan warna biru penuh */
 .filter-tab.active {
-    background: var(--warna-kedua);
+    background: #2563eb;
     color: white;
-    border-color: var(--warna-kedua);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    border-color: #2563eb;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
 }
 
+/* Section daftar transportasi dengan padding yang lega */
 .booking-list-section {
-    padding: 60px 0;
-    background: var(--bg-utama);
+    padding: 80px 0; /* Padding besar untuk section yang luas */
+    background: #ffffff; /* Background putih bersih */
 }
 
+/* Grid card transportasi dengan gap yang proporsional */
 .transport-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Min 320px per card */
+    gap: 36px; /* Gap yang lega antar card */
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Card transportasi dengan background putih dan shadow halus */
 .transport-booking-card {
-    background: var(--bg-kedua);
-    border-radius: 20px;
+    background: #ffffff; /* Putih bersih */
+    border-radius: 16px; /* Sudut membulat yang ramah */
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid transparent;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* Shadow halus untuk depth */
+    transition: all 0.3s ease; /* Transisi smooth */
+    border: 1px solid #e2e8f0; /* Border subtle */
 }
 
+/* Efek hover card - naik dan shadow lebih besar */
 .transport-booking-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.2);
-    border-color: var(--warna-kedua);
+    transform: translateY(-8px); /* Naik lebih tinggi untuk efek dramatis */
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.15); /* Shadow biru lembut */
+    border-color: #2563eb; /* Border biru saat hover */
 }
 
+/* Container gambar transportasi */
 .transport-booking-image {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 220px; /* Tinggi yang proporsional */
     overflow: hidden;
+    background: #f1f5f9; /* Background abu jika gambar belum load */
 }
 
+/* Gambar dengan efek zoom saat hover */
 .transport-booking-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease; /* Transisi zoom smooth */
 }
 
 .transport-booking-card:hover .transport-booking-image img {
-    transform: scale(1.1);
+    transform: scale(1.08); /* Zoom in sedikit saat hover */
 }
 
+/* Badge jenis transportasi di pojok kanan atas gambar */
 .transport-booking-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(52, 152, 219, 0.9);
+    top: 16px;
+    right: 16px;
+    background: rgba(37, 99, 235, 0.95); /* Biru semi-transparan */
     color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
+    padding: 6px 16px;
+    border-radius: 8px; /* Sudut membulat sedang */
     font-size: 0.85rem;
     font-weight: 600;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* Blur background untuk efek modern */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Content card dengan padding yang nyaman */
 .transport-booking-content {
-    padding: 25px;
+    padding: 28px; /* Padding yang lega agar tidak sesak */
 }
 
+/* Nama layanan transportasi */
 .transport-booking-content h3 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    color: var(--teks-utama);
-    margin-bottom: 10px;
+    color: #1e293b; /* Gelap untuk readability */
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
 }
 
+/* Rute perjalanan dengan icon */
 .transport-booking-route {
-    color: var(--teks-kedua);
-    margin-bottom: 8px;
+    color: #64748b; /* Abu sedang */
+    margin-bottom: 10px;
     font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
+/* Harga dengan warna biru yang menonjol */
 .transport-booking-price {
-    color: var(--warna-kedua);
+    color: #2563eb; /* Biru utama */
     font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
+    font-size: 1.25rem;
+    margin-bottom: 24px; /* Jarak dari tombol */
+    letter-spacing: -0.01em;
 }
 
+/* Tombol pesan dengan warna biru utama */
 .btn-pesan-sekarang {
     width: 100%;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, var(--warna-kedua), #2980b9);
+    padding: 14px 24px; /* Padding yang nyaman untuk klik */
+    background: #2563eb; /* Biru utama yang konsisten */
     color: white;
     border: none;
     border-radius: 10px;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease; /* Transisi lembut 0.3 detik */
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); /* Shadow biru lembut */
 }
 
+/* Efek hover tombol - warna lebih gelap dan naik sedikit */
 .btn-pesan-sekarang:hover {
-    background: linear-gradient(135deg, #2980b9, var(--warna-kedua));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: #1d4ed8; /* Biru lebih gelap */
+    transform: translateY(-2px); /* Naik sedikit untuk kesan interaktif */
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35); /* Shadow lebih besar */
 }
 
+/* Efek saat tombol ditekan */
 .btn-pesan-sekarang:active {
-    transform: translateY(0);
+    transform: translateY(0); /* Kembali ke posisi normal */
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
 /**
  * ============================================
- * MODAL PEMESANAN
+ * MODAL PEMESANAN - DESAIN LEBIH FUNGSIONAL
  * ============================================
+ * Modal ini dibuat dengan card putih bersih, bayangan halus,
+ * dan spacing yang nyaman agar mudah dipahami pengguna
  */
 .booking-modal-overlay {
     position: fixed;
@@ -3017,53 +3050,60 @@ footer::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.65); /* Overlay gelap tapi tidak terlalu pekat */
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 10000;
     opacity: 0;
     transition: opacity 0.3s ease;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px); /* Blur background untuk fokus ke modal */
 }
 
 .booking-modal {
-    background: var(--bg-kedua);
-    border-radius: 20px;
-    max-width: 600px;
+    background: #ffffff; /* Putih bersih untuk kesan profesional */
+    border-radius: 16px; /* Sudut membulat yang ramah */
+    max-width: 580px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15); /* Bayangan halus untuk depth */
     transform: scale(0.9);
     transition: transform 0.3s ease;
 }
 
+/* Dark mode: background card tetap terang agar form mudah dibaca */
+[data-theme="dark"] .booking-modal {
+    background: #f8fafc;
+}
+
 .booking-modal-header {
-    padding: 25px;
-    border-bottom: 2px solid var(--warna-border);
+    padding: 28px 32px; /* Padding yang cukup untuk breathing room */
+    border-bottom: 1px solid #e2e8f0; /* Border subtle untuk pemisah */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(135deg, var(--warna-kedua), #2980b9);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8); /* Gradasi biru modern */
     color: white;
-    border-radius: 20px 20px 0 0;
+    border-radius: 16px 16px 0 0;
 }
 
 .booking-modal-header h3 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .close-modal-btn {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     border: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     cursor: pointer;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px; /* Sudut membulat untuk konsistensi */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3071,248 +3111,321 @@ footer::before {
 }
 
 .close-modal-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: rotate(90deg);
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05); /* Sedikit membesar saat hover */
 }
 
 .booking-modal-body {
-    padding: 30px;
+    padding: 36px 32px; /* Padding yang lega agar form tidak sesak */
 }
 
+/* Setiap form group diberi jarak agar tidak berdesakan */
 .booking-modal-body .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 24px; /* Jarak antar field yang nyaman */
 }
 
+/* Label dibuat semi-bold dan ukuran lebih kecil tapi jelas */
 .booking-modal-body label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--teks-utama);
+    margin-bottom: 10px; /* Jarak antara label dan input */
+    font-weight: 600; /* Semi-bold agar mudah dibedakan dari input */
+    color: #1e293b; /* Warna gelap untuk readability */
+    font-size: 0.9rem; /* Ukuran lebih kecil dari input */
+    letter-spacing: 0.01em;
 }
 
+/* Tanda bintang merah untuk field wajib */
 .booking-modal-body .required {
-    color: var(--warna-bahaya);
+    color: #ef4444;
+    font-weight: 700;
 }
 
+/* Input field dengan padding yang nyaman dan border yang jelas */
 .booking-modal-body input,
 .booking-modal-body textarea {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid var(--warna-border);
-    border-radius: 10px;
+    padding: 14px 16px; /* Padding yang cukup untuk kenyamanan mengetik */
+    border: 2px solid #e2e8f0; /* Border abu-abu lembut */
+    border-radius: 10px; /* Sudut membulat untuk kesan modern */
     font-size: 1rem;
-    transition: all 0.3s ease;
-    background: var(--bg-kedua);
-    color: var(--teks-utama);
+    transition: all 0.3s ease; /* Transisi smooth untuk interaksi */
+    background: #ffffff;
+    color: #1e293b;
     font-family: inherit;
 }
 
+/* Efek saat input difokuskan - border biru dan shadow lembut */
 .booking-modal-body input:focus,
 .booking-modal-body textarea:focus {
     outline: none;
-    border-color: var(--warna-kedua);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    border-color: #2563eb; /* Border biru saat fokus */
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); /* Shadow biru lembut */
+    background: #ffffff;
 }
 
+/* Input readonly dengan background abu untuk menandakan tidak bisa diedit */
 .booking-modal-body input[readonly] {
-    background: var(--bg-ketiga);
+    background: #f1f5f9;
     cursor: not-allowed;
+    color: #64748b;
 }
 
+/* Container untuk tombol aksi dengan gap yang nyaman */
 .form-actions {
     display: flex;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 16px; /* Jarak antar tombol */
+    margin-top: 32px; /* Jarak dari form terakhir */
 }
 
+/* Tombol batal dengan warna netral */
 .btn-cancel {
     flex: 1;
-    padding: 12px 24px;
-    background: var(--bg-ketiga);
-    color: var(--teks-utama);
-    border: 2px solid var(--warna-border);
+    padding: 14px 24px;
+    background: #f1f5f9; /* Abu terang */
+    color: #475569;
+    border: 2px solid #e2e8f0;
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Transisi smooth 0.3 detik */
+    font-size: 0.95rem;
 }
 
 .btn-cancel:hover {
-    background: var(--warna-border);
-    transform: translateY(-2px);
+    background: #e2e8f0; /* Sedikit lebih gelap saat hover */
+    transform: translateY(-2px); /* Naik sedikit untuk efek depth */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* Tombol submit dengan warna biru utama dan icon WhatsApp */
 .btn-submit {
-    flex: 2;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #25D366, #128C7E);
+    flex: 2; /* Lebih lebar dari tombol batal */
+    padding: 14px 24px;
+    background: #2563eb; /* Biru utama yang konsisten dengan brand */
     color: white;
     border: none;
     border-radius: 10px;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Transisi lembut 0.3 detik */
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    gap: 10px; /* Jarak antara icon dan teks */
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); /* Shadow biru lembut */
 }
 
+/* Efek hover tombol submit - warna lebih gelap dan naik sedikit */
 .btn-submit:hover {
-    background: linear-gradient(135deg, #128C7E, #25D366);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    background: #1d4ed8; /* Biru lebih gelap saat hover */
+    transform: translateY(-2px); /* Naik sedikit untuk kesan interaktif */
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35); /* Shadow lebih besar */
+}
+
+/* Efek saat tombol ditekan */
+.btn-submit:active {
+    transform: translateY(0); /* Kembali ke posisi normal */
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
 /**
  * ============================================
- * HALAMAN GALERI
+ * HALAMAN GALERI - DESAIN RAPI DAN SEIMBANG
  * ============================================
+ * Grid tiga kolom di desktop, satu kolom di mobile
+ * dengan jarak yang nyaman dan efek hover yang halus
  */
+
+/* Section galeri dengan background netral */
 .gallery-section {
-    padding: 60px 0;
-    background: var(--bg-utama);
+    padding: 80px 0; /* Padding yang cukup untuk breathing room */
+    background: #f8fafc; /* Abu muda netral agar foto menonjol */
 }
 
+/* Grid tiga kolom dengan jarak 1rem antar gambar */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr); /* Tiga kolom seimbang di desktop */
+    gap: 1rem; /* Jarak 1rem agar tidak menempel */
+    max-width: 1200px; /* Lebar maksimal agar tetap di tengah */
+    margin: 0 auto; /* Center alignment */
 }
 
+/* Item galeri dengan sudut membulat dan bayangan halus */
 .gallery-item {
-    background: var(--bg-kedua);
-    border-radius: 15px;
+    background: #ffffff; /* Background putih bersih */
+    border-radius: 12px; /* Sudut sedikit membulat untuk kesan ramah */
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border: 2px solid transparent;
+    transition: all 0.3s ease; /* Transisi smooth untuk interaksi */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Bayangan halus untuk depth */
+    border: 1px solid #e2e8f0; /* Border subtle */
 }
 
+/* Efek hover - gambar naik sedikit dengan shadow lebih besar */
 .gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-    border-color: var(--warna-kedua);
+    transform: translateY(-4px); /* Naik sedikit, tidak terlalu dramatis */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Shadow lebih besar saat hover */
+    border-color: #cbd5e1; /* Border sedikit lebih gelap */
 }
 
+/* Container gambar dengan ukuran proporsional */
 .gallery-image {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 280px; /* Tinggi yang proporsional, tidak terlalu besar */
     overflow: hidden;
+    background: #f1f5f9; /* Background abu jika gambar belum load */
 }
 
+/* Gambar dengan object-fit cover agar tetap proporsional */
 .gallery-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    object-fit: cover; /* Gambar tidak melebar, tetap proporsional */
+    transition: transform 0.3s ease; /* Transisi zoom smooth */
 }
 
+/* Efek hover gambar - zoom ringan scale 1.05 */
 .gallery-item:hover .gallery-image img {
-    transform: scale(1.1);
+    transform: scale(1.05); /* Zoom ringan, tidak berlebihan */
 }
 
+/* Overlay gelap yang muncul saat hover */
 .gallery-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5); /* Overlay gelap semi-transparan */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    opacity: 0; /* Tersembunyi secara default */
+    transition: opacity 0.3s ease; /* Transisi smooth */
     color: white;
 }
 
+/* Overlay muncul saat hover */
 .gallery-item:hover .gallery-overlay {
     opacity: 1;
 }
 
+/* Icon di overlay */
 .gallery-overlay i {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
 }
 
+/* Teks di overlay */
 .gallery-overlay p {
     font-size: 0.9rem;
     text-align: center;
+    padding: 0 16px;
 }
 
+/* Info di bawah gambar dengan padding yang nyaman */
 .gallery-info {
-    padding: 20px;
+    padding: 18px 20px; /* Padding yang cukup tapi tidak berlebihan */
 }
 
+/* Judul foto dengan font yang jelas */
 .gallery-info h4 {
     margin: 0;
-    color: var(--teks-utama);
-    font-size: 1.1rem;
+    color: #1e293b; /* Gelap untuk readability */
+    font-size: 1.05rem;
     font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
+/* Pesan jika galeri kosong */
 .empty-gallery {
     text-align: center;
-    color: var(--teks-kedua);
+    color: #64748b; /* Abu sedang */
     font-size: 1.1rem;
-    padding: 60px 20px;
-    grid-column: 1 / -1;
+    padding: 80px 20px; /* Padding yang cukup */
+    grid-column: 1 / -1; /* Span semua kolom */
+}
+
+/* Responsive: satu kolom di mobile */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Satu kolom di mobile */
+        gap: 1.25rem; /* Gap sedikit lebih besar di mobile */
+    }
+    
+    .gallery-image {
+        height: 240px; /* Tinggi lebih kecil di mobile */
+    }
+}
+
+/* Responsive: dua kolom di tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dua kolom di tablet */
+    }
 }
 
 /**
  * ============================================
- * MODAL GALERI
+ * MODAL GALERI - POPUP GAMBAR YANG RAPI
  * ============================================
+ * Modal untuk menampilkan gambar dalam ukuran besar
+ * dengan deskripsi yang jelas
  */
+
+/* Overlay gelap untuk fokus ke modal */
 .gallery-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.92); /* Gelap tapi tidak terlalu pekat */
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 10000;
     opacity: 0;
     transition: opacity 0.3s ease;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px); /* Blur background untuk fokus */
 }
 
+/* Modal dengan background putih bersih */
 .gallery-modal {
-    background: var(--bg-kedua);
-    border-radius: 20px;
+    background: #ffffff; /* Putih bersih */
+    border-radius: 16px; /* Sudut membulat yang konsisten */
     max-width: 900px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); /* Shadow dramatis */
     transform: scale(0.9);
     transition: transform 0.3s ease;
     position: relative;
 }
 
+/* Dark mode: background modal tetap terang */
+[data-theme="dark"] .gallery-modal {
+    background: #f8fafc;
+}
+
+/* Tombol close di pojok kanan atas */
 .gallery-modal-close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.6);
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.7); /* Gelap semi-transparan */
     border: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     cursor: pointer;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 8px; /* Sudut membulat untuk konsistensi */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3321,39 +3434,73 @@ footer::before {
     backdrop-filter: blur(10px);
 }
 
+/* Efek hover tombol close */
 .gallery-modal-close:hover {
-    background: rgba(0, 0, 0, 0.8);
-    transform: rotate(90deg);
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05); /* Sedikit membesar */
 }
 
+/* Container gambar dengan tinggi proporsional */
 .gallery-modal-image {
     width: 100%;
-    height: 500px;
+    height: 500px; /* Tinggi yang cukup untuk melihat detail */
     overflow: hidden;
-    border-radius: 20px 20px 0 0;
+    border-radius: 16px 16px 0 0;
+    background: #f1f5f9; /* Background abu jika gambar belum load */
 }
 
+/* Gambar dengan object-fit contain agar tidak terpotong */
 .gallery-modal-image img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: var(--bg-ketiga);
+    object-fit: contain; /* Gambar tidak terpotong, tetap proporsional */
+    background: #f1f5f9;
 }
 
+/* Info di bawah gambar dengan padding yang nyaman */
 .gallery-modal-info {
-    padding: 30px;
+    padding: 32px; /* Padding yang lega */
 }
 
+/* Judul gambar dengan font yang jelas */
 .gallery-modal-info h3 {
-    margin: 0 0 15px 0;
-    color: var(--teks-utama);
-    font-size: 1.5rem;
+    margin: 0 0 16px 0;
+    color: #1e293b; /* Gelap untuk readability */
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
+/* Deskripsi gambar dengan line-height yang nyaman */
 .gallery-modal-info p {
-    color: var(--teks-kedua);
-    line-height: 1.6;
+    color: #475569; /* Abu sedang */
+    line-height: 1.75; /* Line-height yang nyaman untuk dibaca */
     margin: 0;
+    font-size: 1.05rem;
+}
+
+/* Responsive modal di mobile */
+@media (max-width: 768px) {
+    .gallery-modal {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .gallery-modal-image {
+        height: 300px; /* Tinggi lebih kecil di mobile */
+    }
+    
+    .gallery-modal-info {
+        padding: 24px; /* Padding lebih kecil di mobile */
+    }
+    
+    .gallery-modal-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .gallery-modal-info p {
+        font-size: 0.95rem;
+    }
 }
 
 /**
@@ -3365,123 +3512,131 @@ footer::before {
 /* Bagian Kontak Utama */
 .contact-main-section {
     padding: 70px 0;
-    background: #ffffff;
+    background: #f7f9fc; /* background abu terang biar card keliatan */
 }
 
-/* Grid Layout Dua Kolom */
+/* Grid Layout Dua Kolom - kiri info, kanan form */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 50px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 /* ===== KOLOM KIRI: INFORMASI KONTAK ===== */
 .contact-info-box {
-    background: #f8f9fa;
-    padding: 40px;
-    border-radius: 12px;
-    border: 1px solid #e9ecef;
+    background: #ffffff;
+    padding: 38px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07); /* nambah shadow dikit biar form gak nempel di background */
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-info-box:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contact-info-header h2 {
-    font-size: 1.8rem;
+    font-size: 1.85rem;
     font-weight: 700;
-    color: #1a365d;
-    margin-bottom: 12px;
-    line-height: 1.2;
+    color: #1a202c;
+    margin-bottom: 10px;
+    line-height: 1.3;
 }
 
 .contact-info-header p {
-    font-size: 0.95rem;
-    color: #4a5568;
-    margin-bottom: 32px;
-    line-height: 1.5;
+    font-size: 0.96rem;
+    color: #64748b;
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
 
 .contact-items {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px; /* jarak antar item biar gak sesak */
 }
 
 .contact-item {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
-    padding: 20px;
-    background: #ffffff;
+    gap: 15px;
+    padding: 18px;
+    background: #f8fafc;
     border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.25s ease;
 }
 
 .contact-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border-color: #cbd5e1;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    border-color: rgba(52, 152, 219, 0.2);
+    background: #ffffff;
 }
 
 .contact-item-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
+    width: 46px;
+    height: 46px;
+    border-radius: 11px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     color: white;
     flex-shrink: 0;
 }
 
 .whatsapp-bg {
-    background: #25D366;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
 }
 
 .email-bg {
-    background: #2b6cb0;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
 }
 
 .address-bg {
-    background: #e67e22;
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
 }
 
 .hours-bg {
-    background: #9b59b6;
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
 }
 
 .contact-item-text h4 {
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 600;
-    color: #1a365d;
-    margin-bottom: 6px;
+    color: #1a202c;
+    margin-bottom: 5px;
 }
 
 .contact-item-text p {
-    font-size: 0.9rem;
-    color: #4a5568;
-    line-height: 1.5;
+    font-size: 0.92rem;
+    color: #64748b;
+    line-height: 1.6;
     margin-bottom: 10px;
 }
 
 .contact-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
+    gap: 7px;
+    padding: 9px 16px;
     background: #25D366;
     color: white;
     text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    border-radius: 7px;
+    font-size: 0.87rem;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .contact-link:hover {
     background: #128C7E;
     transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
 }
 
 /* ===== KOLOM KANAN: FORM PERMINTAAN ===== */
@@ -3492,30 +3647,35 @@ footer::before {
 
 .form-card {
     background: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e9ecef;
+    padding: 38px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07); /* shadow lembut biar keliatan mengapung */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.form-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .form-header h2 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #1a365d;
-    margin-bottom: 10px;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 8px;
 }
 
 .form-header p {
-    font-size: 0.9rem;
-    color: #4a5568;
-    margin-bottom: 28px;
-    line-height: 1.5;
+    font-size: 0.92rem;
+    color: #64748b;
+    margin-bottom: 26px;
+    line-height: 1.6;
 }
 
 .request-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 22px; /* jarak antar field yang seimbang */
 }
 
 .input-group {
@@ -3524,10 +3684,10 @@ footer::before {
 }
 
 .input-group label {
-    margin-bottom: 8px;
+    margin-bottom: 9px;
     font-weight: 500;
     color: #2d3748;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
 }
 
 .req {
@@ -3536,11 +3696,11 @@ footer::before {
 
 .input-group input,
 .input-group textarea {
-    padding: 12px 16px;
+    padding: 13px 17px; /* padding lega biar teks gak nempel */
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
+    border-radius: 9px;
+    font-size: 0.96rem;
+    transition: all 0.25s ease;
     background: #ffffff;
     color: #2d3748;
     font-family: inherit;
@@ -3549,135 +3709,138 @@ footer::before {
 .input-group input:focus,
 .input-group textarea:focus {
     outline: none;
-    border-color: #2b6cb0;
-    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12); /* efek focus halus */
 }
 
 .input-group textarea {
     resize: vertical;
-    min-height: 110px;
+    min-height: 120px;
+    line-height: 1.6;
 }
 
 .submit-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 14px 24px;
-    background: #1a365d;
+    gap: 9px;
+    padding: 15px 26px;
+    background: #3498db; /* biru konsisten kayak tombol pemesanan */
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 9px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.97rem;
     cursor: pointer;
-    transition: all 0.2s ease;
-    margin-top: 8px;
+    transition: all 0.25s ease; /* transisi halus */
+    margin-top: 6px;
 }
 
 .submit-btn:hover {
-    background: #2c5282;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(26, 54, 93, 0.25);
+    background: #2980b9; /* hover gelap */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
 
 /* ===== BAGIAN PETA ===== */
 .map-section {
     padding: 70px 0;
-    background: #f8f9fa;
+    background: #ffffff;
 }
 
 .map-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 42px;
 }
 
 .map-header h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #1a365d;
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #1a202c;
     margin-bottom: 10px;
 }
 
 .map-header p {
-    font-size: 0.95rem;
-    color: #4a5568;
+    font-size: 0.96rem;
+    color: #64748b;
 }
 
 .map-wrapper {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    border-radius: 14px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* shadow lembut */
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .map-info-box {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 22px;
+    left: 22px;
     z-index: 10;
 }
 
 .map-info-content {
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    max-width: 280px;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
+    max-width: 290px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .map-info-content h4 {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 600;
-    color: #1a365d;
-    margin-bottom: 8px;
+    color: #1a202c;
+    margin-bottom: 9px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
 }
 
 .map-info-content p {
-    font-size: 0.85rem;
-    color: #4a5568;
-    line-height: 1.4;
-    margin-bottom: 14px;
+    font-size: 0.87rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 15px;
 }
 
 .map-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 9px 14px;
-    background: #2b6cb0;
+    gap: 7px;
+    padding: 10px 16px;
+    background: #3498db;
     color: white;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 500;
-    font-size: 0.85rem;
-    transition: all 0.2s ease;
+    font-size: 0.87rem;
+    transition: all 0.25s ease;
     width: 100%;
     justify-content: center;
 }
 
 .map-btn:hover {
-    background: #2c5282;
-    transform: translateY(-1px);
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 35px;
     }
     
     .contact-info-box,
     .form-card {
-        padding: 28px 24px;
+        padding: 28px 22px;
     }
     
     .contact-form-box {
@@ -3685,22 +3848,28 @@ footer::before {
     }
     
     .contact-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-    }
-    
-    .contact-item-icon {
-        align-self: center;
+        padding: 16px;
     }
     
     .map-info-box {
         position: static;
-        margin-top: 16px;
-        padding: 0 16px;
+        margin-top: 18px;
+        padding: 0 18px;
     }
     
     .map-info-content {
+        max-width: 100%;
+    }
+    
+    .contact-info-header h2,
+    .form-header h2,
+    .map-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .request-form {
+        gap: 18px;
+    }
         max-width: none;
     }
 }
@@ -7508,22 +7677,23 @@ select:focus {
 
 .faq-item {
     background: var(--bg-kedua);
-    border-radius: 15px;
-    margin-bottom: 20px;
+    border-radius: 12px;
+    margin-bottom: 18px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .faq-item:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    border-color: var(--warna-kedua);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(52, 152, 219, 0.3);
 }
 
 .faq-question {
     width: 100%;
-    padding: 25px;
+    padding: 22px 24px;
     background: transparent;
     border: none;
     text-align: left;
@@ -7532,21 +7702,20 @@ select:focus {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    transition: all 0.3s ease;
+    transition: background 0.25s ease;
 }
 
 .faq-question:hover {
-    background: rgba(52, 152, 219, 0.05);
+    background: rgba(52, 152, 219, 0.04);
 }
 
 .faq-item.active .faq-question {
-    background: rgba(52, 152, 219, 0.1);
-    color: var(--warna-kedua);
+    background: rgba(52, 152, 219, 0.08);
 }
 
 .faq-question-text {
     flex: 1;
-    font-size: 1.1rem;
+    font-size: 1.08rem;
     font-weight: 600;
     color: var(--teks-utama);
     display: flex;
@@ -7556,7 +7725,7 @@ select:focus {
 }
 
 .faq-question-text i {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--warna-kedua);
     flex-shrink: 0;
 }
@@ -7564,7 +7733,7 @@ select:focus {
 .faq-chevron {
     font-size: 0.9rem;
     color: var(--teks-kedua);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
 }
 
@@ -7575,28 +7744,33 @@ select:focus {
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+    opacity: 1;
 }
 
 .faq-answer-content {
-    padding: 0 25px 25px 25px;
+    padding: 0 24px 22px 24px;
     display: flex;
-    gap: 15px;
+    gap: 12px;
     align-items: flex-start;
 }
 
 .faq-answer-content i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--warna-kedua);
-    margin-top: 3px;
+    margin-top: 4px;
     flex-shrink: 0;
 }
 
 .faq-answer-content p {
     flex: 1;
-    color: var(--teks-kedua);
-    line-height: 1.8;
-    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.75;
+    font-size: 0.98rem;
     margin: 0;
 }
 

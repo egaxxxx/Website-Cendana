@@ -80,24 +80,26 @@ function inisialisasiFAQ() {
         question.addEventListener('click', function() {
             const isActive = item.classList.contains('active');
 
-            // Tutup semua FAQ item lainnya (opsional - bisa dihapus jika ingin multiple open)
-            // faqItems.forEach(otherItem => {
-            //     if (otherItem !== item) {
-            //         otherItem.classList.remove('active');
-            //         otherItem.querySelector('.faq-answer').style.maxHeight = null;
-            //         otherItem.querySelector('.faq-chevron').classList.remove('rotated');
-            //     }
-            // });
-
-            // Toggle FAQ item yang diklik
+            // Toggle FAQ item yang diklik dengan animasi smooth
             if (isActive) {
+                // Tutup item
                 item.classList.remove('active');
-                answer.style.maxHeight = null;
+                answer.style.maxHeight = '0px';
                 chevron.classList.remove('rotated');
             } else {
+                // Buka item
                 item.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
+                // Hitung tinggi konten dan tambahkan sedikit padding untuk smooth transition
+                const contentHeight = answer.scrollHeight;
+                answer.style.maxHeight = contentHeight + 'px';
                 chevron.classList.add('rotated');
+                
+                // Reset maxHeight setelah transisi selesai agar responsif terhadap perubahan ukuran
+                setTimeout(() => {
+                    if (item.classList.contains('active')) {
+                        answer.style.maxHeight = 'none';
+                    }
+                }, 400);
             }
         });
     });
