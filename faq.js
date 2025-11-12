@@ -18,12 +18,14 @@ function inisialisasiFAQ() {
     // Fungsi untuk menampilkan/menyembunyikan FAQ berdasarkan pencarian dan kategori
     function filterFAQ() {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        const activeCategory = document.querySelector('.faq-category-btn.active')?.dataset.category || 'all';
+        const activeCategoryBtn = document.querySelector('.faq-category-btn.active');
+        const activeCategory = activeCategoryBtn ? activeCategoryBtn.dataset.category : null;
         let visibleCount = 0;
 
         categoryGroups.forEach(group => {
             const category = group.dataset.category;
-            const matchesCategory = activeCategory === 'all' || category === activeCategory;
+            // Hanya tampilkan kategori yang aktif (tidak ada opsi "semua")
+            const matchesCategory = !activeCategory || category === activeCategory;
             
             let categoryVisible = false;
             const items = group.querySelectorAll('.faq-item');

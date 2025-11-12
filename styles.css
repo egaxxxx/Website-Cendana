@@ -189,26 +189,26 @@ header.scrolled {
     gap: 12px;
 }
 
-/* WhatsApp button yang lebih profesional */
+/* WhatsApp button yang lebih profesional dengan hijau tua */
 .wa-header-btn {
-    background: #25D366;
+    background: #128C7E;
     color: white;
     padding: 10px 16px;
     border-radius: 8px;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 2px 8px rgba(18, 140, 126, 0.3);
 }
 
 .wa-header-btn:hover {
-    background: #128C7E;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    background: #0D7A6F;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(18, 140, 126, 0.5);
 }
 
 .wa-header-btn i {
@@ -2283,7 +2283,7 @@ footer::before {
     transform: scale(1.1);
 }
 
-/* WhatsApp Float Button - Lebih Subtle */
+/* WhatsApp Float Button - Hijau Tua Profesional */
 .wa-float {
     position: fixed;
     bottom: 24px;
@@ -2297,18 +2297,19 @@ footer::before {
     justify-content: center;
     width: 56px;
     height: 56px;
-    background: #25D366;
+    background: #128C7E;
     color: white;
     border-radius: 50%;
     font-size: 1.4rem;
-    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
-    transition: all 0.2s ease;
+    box-shadow: 0 3px 12px rgba(18, 140, 126, 0.4);
+    transition: all 0.3s ease;
     text-decoration: none;
 }
 
 .wa-float a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    transform: scale(1.1);
+    background: #0D7A6F;
+    box-shadow: 0 6px 20px rgba(18, 140, 126, 0.6);
 }
 
 /* Admin Login Modal Styles */
@@ -3939,13 +3940,14 @@ footer::before {
 
 /**
  * ============================================
- * ADMIN ACCESS ICON (FOOTER)
+ * ADMIN ACCESS ICON (FOOTER) - KIRI BAWAH
  * ============================================
+ * Dipindahkan ke kiri bawah biar gak bentrok sama WhatsApp float
  */
 .admin-access {
     position: fixed;
-    bottom: 80px;
-    right: 20px;
+    bottom: 24px;
+    left: 24px;
     width: 45px;
     height: 45px;
     background: rgba(0, 0, 0, 0.3);
