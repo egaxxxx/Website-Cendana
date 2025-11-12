@@ -679,7 +679,34 @@ function closeAdminLogin() {
         const passwordInput = document.getElementById('adminPassword');
         if (passwordInput) {
             passwordInput.value = '';
+            passwordInput.type = 'password';
         }
+        // Reset icon ke mata
+        const icon = document.getElementById('passwordToggleIcon');
+        if (icon) {
+            icon.className = 'icon icon-eye';
+        }
+    }
+}
+
+/**
+ * Toggle show/hide password
+ * Ganti ikon mata jadi mata coret pas password keliatan
+ */
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('adminPassword');
+    const icon = document.getElementById('passwordToggleIcon');
+    
+    if (!passwordInput || !icon) return;
+    
+    if (passwordInput.type === 'password') {
+        // Tampilkan password
+        passwordInput.type = 'text';
+        icon.className = 'icon icon-eye-slash';
+    } else {
+        // Sembunyikan password
+        passwordInput.type = 'password';
+        icon.className = 'icon icon-eye';
     }
 }
 
