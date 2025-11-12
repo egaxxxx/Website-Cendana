@@ -742,11 +742,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 2. Atur tema berdasarkan preferensi user
     aturModeGelapSaatDimuat();
 
-    // 3. Handle form pemesanan WhatsApp
-    const whatsappBookingForm = document.getElementById('whatsapp-booking-form');
-    if (whatsappBookingForm) {
-        whatsappBookingForm.addEventListener('submit', handleWhatsAppBooking);
-    }
+    // Form WhatsApp booking sudah dihapus, tidak perlu event listener
     
     // Set minimum date untuk input date (hari ini)
     const today = new Date().toISOString().split('T')[0];

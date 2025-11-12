@@ -958,155 +958,7 @@ header {
     margin: 0;
 }
 
-/**
- * ============================================
- * WHATSAPP BOOKING SECTION - PROFESIONAL
- * ============================================
- * Bagian form pemesanan via WhatsApp dengan background foto blur
- * dan overlay gradasi untuk tampilan yang elegan
- */
-.whatsapp-booking {
-    padding: 80px 0;
-    background: linear-gradient(135deg, var(--warna-utama) 0%, #2c5282 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Overlay dengan foto transportasi blur sebagai background */
-.whatsapp-booking::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center center;
-    background-size: cover;
-    filter: blur(3px);
-    opacity: 0.1;
-    z-index: 1;
-}
-
-.booking-overlay {
-    position: relative;
-    z-index: 2;
-}
-
-.booking-content {
-    text-align: center;
-    color: white;
-}
-
-.booking-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: white;
-}
-
-.booking-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.booking-form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.booking-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.form-row-simple {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.booking-form .form-group {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.booking-form label {
-    font-weight: 600;
-    color: var(--teks-utama);
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-}
-
-.booking-form input {
-    padding: 14px 16px;
-    border: 2px solid var(--warna-border);
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.2s ease;
-    background: white;
-    color: var(--teks-utama);
-}
-
-.booking-form input:focus {
-    outline: none;
-    border-color: var(--warna-kedua);
-    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
-}
-
-.booking-form input::placeholder {
-    color: var(--teks-kedua);
-    opacity: 0.7;
-}
-
-.btn-whatsapp-order {
-    padding: 16px 32px;
-    background: #25D366;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 8px;
-}
-
-.btn-whatsapp-order:hover {
-    background: #128C7E;
-    transform: translateY(-1px);
-}
-
-/* Responsive untuk form booking */
-@media (max-width: 768px) {
-    .form-row-simple {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    
-    .booking-form-container {
-        padding: 24px;
-        margin: 0 16px;
-    }
-    
-    .booking-title {
-        font-size: 1.8rem;
-    }
-}
+/* CSS untuk WhatsApp booking section telah dihapus karena bagian tersebut sudah dihapus */
 
 /* CSS lama untuk search form sudah dihapus karena diganti dengan WhatsApp booking */
 
@@ -1244,11 +1096,33 @@ header {
  * SERVICE SHOWCASE - LAYOUT DUA KOLOM MODERN
  * ============================================
  * Bagian showcase dengan foto di kiri dan narasi keunggulan di kanan
- * Menggunakan grid layout untuk tampilan yang seimbang dan modern
+ * Menggunakan background foto transportasi dengan overlay
  */
 .service-showcase {
     padding: 80px 0;
-    background: var(--bg-kedua);
+    background: linear-gradient(135deg, var(--warna-utama) 0%, #2c5282 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background foto transportasi dengan blur effect */
+.service-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center center;
+    background-size: cover;
+    filter: blur(3px);
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.showcase-overlay {
+    position: relative;
+    z-index: 2;
 }
 
 .showcase-content {
@@ -1316,9 +1190,10 @@ header {
 .showcase-title {
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--teks-utama);
+    color: white;
     margin-bottom: 32px;
     line-height: 1.3;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .showcase-features {
@@ -1331,13 +1206,13 @@ header {
 .feature-item h3 {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--teks-utama);
+    color: white;
     margin-bottom: 8px;
     line-height: 1.4;
 }
 
 .feature-item p {
-    color: var(--teks-kedua);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
@@ -1345,21 +1220,48 @@ header {
 
 .showcase-cta {
     margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .btn-showcase {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 12px 24px;
     background: var(--warna-kedua);
     color: white;
     text-decoration: none;
     border-radius: 6px;
     font-weight: 500;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
 }
 
 .btn-showcase:hover {
     background: #2c5282;
+    transform: translateY(-1px);
+}
+
+.btn-showcase-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.btn-showcase-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-1px);
 }
 
 /* Responsive untuk showcase */
@@ -1390,19 +1292,120 @@ header {
  * ============================================
  * ABOUT & CONTACT - BAGIAN GABUNGAN MODERN
  * ============================================
- * Menggabungkan informasi perusahaan dan kontak dalam satu bagian
- * dengan peta Google Maps yang terintegrasi secara natural
+ * Menggabungkan informasi perusahaan dan kontak dengan efek visual menarik
+ * Background gradasi dengan floating shapes dan animasi
  */
 .about-contact {
     padding: 80px 0;
-    background: var(--bg-utama);
+    background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #2b6cb0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background dengan efek floating shapes */
+.contact-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 120px;
+    height: 120px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    width: 60px;
+    height: 60px;
+    top: 80%;
+    left: 20%;
+    animation-delay: 4s;
+}
+
+.shape-4 {
+    width: 100px;
+    height: 100px;
+    top: 30%;
+    right: 30%;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+/* Container dengan z-index lebih tinggi */
+.about-contact .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Section title untuk background gelap */
+.section-title-white {
+    text-align: center;
+    margin-bottom: 48px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.3;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .about-contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 50px;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Card styling untuk info dan kontak */
+.info-card, .contact-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover, .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Kolom kiri: Tentang perusahaan */
@@ -1423,21 +1426,42 @@ header {
 .about-highlights {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 }
 
 .highlight-item {
-    padding: 12px 0;
-    border-left: 3px solid var(--warna-kedua);
-    padding-left: 16px;
-    color: var(--teks-kedua);
-    font-size: 0.95rem;
-    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(43, 108, 176, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.highlight-item strong {
+.highlight-item:hover {
+    background: rgba(43, 108, 176, 0.15);
+    transform: translateX(5px);
+}
+
+.highlight-icon {
+    font-size: 1.5rem;
+    min-width: 32px;
+    text-align: center;
+}
+
+.highlight-content strong {
+    display: block;
     color: var(--teks-utama);
     font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.highlight-content span {
+    color: var(--teks-kedua);
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
 
 /* Kolom kanan: Informasi kontak */
@@ -1451,10 +1475,31 @@ header {
 .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
-.contact-detail strong {
+.contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(37, 211, 102, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.contact-detail:hover {
+    background: rgba(37, 211, 102, 0.15);
+    transform: translateX(5px);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    min-width: 32px;
+    text-align: center;
+}
+
+.contact-content strong {
     display: block;
     color: var(--teks-utama);
     font-weight: 600;
@@ -1462,7 +1507,7 @@ header {
     font-size: 1rem;
 }
 
-.contact-detail p {
+.contact-content p {
     color: var(--teks-kedua);
     font-size: 0.95rem;
     line-height: 1.5;
@@ -1470,74 +1515,113 @@ header {
 }
 
 .btn-contact-wa {
-    display: inline-block;
-    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
     background: #25D366;
     color: white;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    margin-top: 8px;
 }
 
 .btn-contact-wa:hover {
     background: #128C7E;
+    transform: translateY(-1px);
 }
 
-/* Peta terintegrasi */
-.integrated-map {
-    margin-top: 40px;
-    border-top: 1px solid var(--warna-border);
-    padding-top: 40px;
+/* Google Maps Section - Lebih Lebar dan Menarik */
+.google-maps-section {
+    margin-top: 60px;
 }
 
-.map-wrapper {
+.maps-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.maps-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--teks-utama);
+    margin-bottom: 24px;
+}
+
+.maps-wrapper {
     position: relative;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--bayangan-sedang);
-    height: 300px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    height: 450px;
 }
 
-.map-image-integrated {
+.maps-wrapper iframe {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border: none;
+    filter: grayscale(20%) contrast(1.1);
+    transition: filter 0.3s ease;
 }
 
-.map-info {
+.maps-wrapper:hover iframe {
+    filter: grayscale(0%) contrast(1.2);
+}
+
+.maps-overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-    color: white;
-    padding: 24px 20px 16px;
-    display: flex;
-    justify-content: space-between;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 280px;
+}
+
+.maps-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--teks-utama);
+    margin-bottom: 8px;
+}
+
+.maps-info p {
+    font-size: 0.9rem;
+    color: var(--teks-kedua);
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.btn-maps-direction {
+    display: inline-flex;
     align-items: center;
-}
-
-.map-info span {
-    font-weight: 500;
-    font-size: 1rem;
-}
-
-.btn-maps-simple {
+    gap: 6px;
     padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--warna-kedua);
     color: white;
     text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
     font-weight: 500;
-    transition: background-color 0.2s ease;
-    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+    width: 100%;
+    justify-content: center;
 }
 
-.btn-maps-simple:hover {
-    background: rgba(255, 255, 255, 0.3);
+.btn-maps-direction:hover {
+    background: #2c5282;
+    transform: translateY(-1px);
 }
 
 /* Responsive untuk about-contact */
@@ -2336,13 +2420,33 @@ footer::before {
     /* Responsive untuk about-contact */
     .about-contact-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
     }
     
-    .map-info {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
+    .info-card, .contact-card {
+        padding: 24px;
+    }
+    
+    .highlight-item, .contact-detail {
+        padding: 12px;
+    }
+    
+    .maps-container {
+        padding: 20px;
+    }
+    
+    .maps-wrapper {
+        height: 300px;
+    }
+    
+    .maps-overlay {
+        position: static;
+        margin-top: 16px;
+        max-width: none;
+    }
+    
+    .floating-shapes {
+        display: none; /* Hide floating shapes on mobile */
     }
     
     /* Responsive untuk showcase */
@@ -2365,6 +2469,17 @@ footer::before {
     
     .showcase-image-small {
         height: 120px;
+    }
+    
+    .showcase-cta {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .btn-showcase,
+    .btn-showcase-whatsapp {
+        width: 100%;
+        text-align: center;
     }
 
     /* Responsive untuk section title large */
