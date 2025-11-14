@@ -655,20 +655,24 @@ header.scrolled {
 }
 
 .transport-card {
-    background: var(--bg-kedua);
-    border-radius: 8px;
+    background: var(--bg-card);
+    border-radius: 16px;
     text-align: center;
-    box-shadow: var(--bayangan-ringan);
-    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
     border: 1px solid var(--warna-border);
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
+    height: 100%;
+    min-height: 380px;
 }
 
 .transport-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--bayangan-sedang);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--warna-kedua);
 }
 
 .transport-icon {
@@ -971,46 +975,114 @@ header.scrolled {
 }
 
 .transport-card-content {
-    padding: 16px;
+    padding: 24px;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
+}
+
+.transport-card .company-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    display: block;
+    border-radius: 12px;
+    padding: 8px;
+    background: var(--bg-kedua);
 }
 
 .transport-card h3 {
     color: var(--teks-utama);
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
 }
 
-.transport-card p {
+.transport-card .description {
     color: var(--teks-kedua);
-    margin-bottom: 12px;
-    font-size: 0.9rem;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.transport-card .price-range {
+    color: var(--warna-kedua);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
 }
 
 /**
  * ============================================
- * TOMBOL TRANSPORTASI - LEBIH CLEAN
+ * TOMBOL "PESAN SEKARANG" - SESUAI VISUAL
  * ============================================
  */
-.btn-transport {
-    background: var(--warna-kedua);
+.btn-book-now {
+    background: #2563eb;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 500;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+    text-decoration: none;
+}
+
+.btn-book-now:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+}
+
+.btn-book-now .whatsapp-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Fallback untuk ikon jika tidak tersedia */
+.btn-book-now .icon-whatsapp {
+    font-size: 1.1rem;
+}
+
+/* Compatibility untuk tombol lama */
+.btn-transport {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
 }
 
 .btn-transport:hover {
-    background: #2b6cb0;
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
 }
 
 /**
@@ -3012,17 +3084,18 @@ footer::before {
 
 /* Section daftar transportasi dengan padding yang lega */
 .booking-list-section {
-    padding: 80px 0; /* Padding besar untuk section yang luas */
-    background: #ffffff; /* Background putih bersih */
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
 }
 
-/* Grid card transportasi dengan gap yang proporsional */
+/* Grid card transportasi dengan gap yang proporsional - 3 kolom seperti contoh visual */
 .transport-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Min 320px per card */
-    gap: 36px; /* Gap yang lega antar card */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Card transportasi dengan background putih dan shadow halus */
@@ -3112,8 +3185,7 @@ footer::before {
 }
 
 /* Tombol pesan dengan warna biru utama */
-.btn-pesan-sekarang,
-.transport-booking-btn {
+.btn-pesan-sekarang {
     width: 100%;
     padding: 14px 24px; /* Padding yang nyaman untuk klik */
     background: #2563eb; /* Biru utama yang konsisten */
@@ -3125,185 +3197,19 @@ footer::before {
     cursor: pointer;
     transition: all 0.3s ease; /* Transisi lembut 0.3 detik */
     box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); /* Shadow biru lembut */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
 }
 
 /* Efek hover tombol - warna lebih gelap dan naik sedikit */
-.btn-pesan-sekarang:hover,
-.transport-booking-btn:hover {
+.btn-pesan-sekarang:hover {
     background: #1d4ed8; /* Biru lebih gelap */
     transform: translateY(-2px); /* Naik sedikit untuk kesan interaktif */
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35); /* Shadow lebih besar */
 }
 
 /* Efek saat tombol ditekan */
-.btn-pesan-sekarang:active,
-.transport-booking-btn:active {
+.btn-pesan-sekarang:active {
     transform: translateY(0); /* Kembali ke posisi normal */
     box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
-}
-
-/**
- * ============================================
- * SERVICES SECTION - DAFTAR LAYANAN
- * ============================================
- * Section untuk menampilkan card layanan dengan desain yang rapi
- */
-.services-section {
-    padding: 80px 0;
-    background: var(--bg-kedua);
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.service-card {
-    background: var(--bg-card);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--bayangan-sedang);
-    transition: all 0.3s ease;
-    border: 1px solid var(--warna-border);
-    cursor: pointer;
-}
-
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--bayangan-besar);
-    border-color: var(--warna-kedua);
-}
-
-.service-image {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: var(--bg-ketiga);
-}
-
-.service-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.service-card:hover .service-image img {
-    transform: scale(1.05);
-}
-
-.service-content {
-    padding: 24px;
-}
-
-.service-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--teks-utama);
-    margin-bottom: 12px;
-    letter-spacing: -0.01em;
-}
-
-.service-description {
-    color: var(--teks-kedua);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
-}
-
-.service-price {
-    color: var(--warna-kedua);
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    letter-spacing: -0.01em;
-}
-
-.service-btn {
-    width: 100%;
-    padding: 12px 24px;
-    background: var(--warna-kedua);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.service-btn:hover {
-    background: var(--warna-utama);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
-}
-
-.service-btn:active {
-    transform: translateY(0);
-}
-
-/* Responsive design untuk services */
-@media (max-width: 768px) {
-    .services-section {
-        padding: 60px 0;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 15px;
-    }
-    
-    .service-card {
-        border-radius: 12px;
-    }
-    
-    .service-image {
-        height: 180px;
-    }
-    
-    .service-content {
-        padding: 20px;
-    }
-    
-    .service-title {
-        font-size: 1.1rem;
-    }
-    
-    .service-description {
-        font-size: 0.9rem;
-    }
-    
-    .service-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    
-    .booking-modal {
-        width: 95%;
-        margin: 10px;
-        max-height: 95vh;
-    }
-    
-    .booking-modal-body {
-        padding: 20px;
-    }
-    
-    .form-group {
-        margin-bottom: 16px;
-    }
 }
 
 /**
@@ -3325,12 +3231,8 @@ footer::before {
     justify-content: center;
     z-index: 10000;
     opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.3s ease;
     backdrop-filter: blur(8px); /* Blur background untuk fokus ke modal */
-}
-
-.booking-modal-overlay.show {
-    opacity: 1;
 }
 
 .booking-modal {
@@ -3342,11 +3244,7 @@ footer::before {
     overflow-y: auto;
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15); /* Bayangan halus untuk depth */
     transform: scale(0.9);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.booking-modal-overlay.show .booking-modal {
-    transform: scale(1);
+    transition: transform 0.3s ease;
 }
 
 /* Dark mode: background card tetap terang agar form mudah dibaca */
@@ -3474,6 +3372,14 @@ footer::before {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* Styling khusus untuk textarea */
+.booking-modal-body textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
 /* Tombol submit dengan warna biru utama dan icon WhatsApp */
 .btn-submit {
     flex: 2; /* Lebih lebar dari tombol batal */
@@ -3490,6 +3396,463 @@ footer::before {
     align-items: center;
     justify-content: center;
     gap: 10px; /* Jarak antara icon dan teks */
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+}
+
+.btn-submit:hover {
+    background: #1d4ed8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+}
+
+/**
+ * ============================================
+ * PESAN TIDAK ADA LAYANAN
+ * ============================================
+ */
+.no-services-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 2px dashed var(--warna-border);
+    color: var(--teks-kedua);
+}
+
+.no-services-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--warna-abu-terang);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.no-services-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.no-services-message h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--teks-utama);
+}
+
+.no-services-message p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/**
+ * ============================================
+ * RESPONSIVE DESIGN - MOBILE & TABLET
+ * ============================================
+ */
+/* Tablet landscape (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .transport-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+        padding: 0 16px;
+    }
+    
+    .transport-card {
+        min-height: 360px;
+    }
+    
+    .transport-card-content {
+        padding: 20px;
+    }
+}
+
+/* Tablet portrait (768px) */
+@media screen and (max-width: 768px) {
+    .booking-list-section {
+        padding: 40px 0;
+    }
+    
+    .transport-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        padding: 0 16px;
+    }
+    
+    .transport-card {
+        min-height: 340px;
+    }
+    
+    .transport-card .company-logo {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 16px;
+    }
+    
+    .transport-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .transport-card .description {
+        font-size: 0.9rem;
+        margin-bottom: 14px;
+    }
+    
+    .transport-card .price-range {
+        font-size: 1rem;
+        margin-bottom: 18px;
+    }
+    
+    /* Modal responsif untuk tablet */
+    .booking-modal {
+        max-width: 90%;
+        width: 500px;
+    }
+    
+    .booking-modal-header {
+        padding: 24px;
+    }
+    
+    .booking-modal-body {
+        padding: 28px 24px;
+    }
+}
+
+/* Mobile landscape (576px - 768px) */
+@media screen and (max-width: 576px) {
+    .booking-list-section {
+        padding: 32px 0;
+    }
+    
+    .transport-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 16px;
+    }
+    
+    .transport-card {
+        min-height: 320px;
+        border-radius: 12px;
+    }
+    
+    .transport-card-content {
+        padding: 18px;
+    }
+    
+    .transport-card .company-logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 14px;
+    }
+    
+    .transport-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .transport-card .description {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+    }
+    
+    .transport-card .price-range {
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+    }
+    
+    .btn-book-now {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+    
+    /* Modal mobile */
+    .booking-modal {
+        max-width: 95%;
+        width: auto;
+        margin: 10px;
+        border-radius: 12px;
+    }
+    
+    .booking-modal-header {
+        padding: 20px;
+    }
+    
+    .booking-modal-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .booking-modal-body {
+        padding: 24px 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .btn-cancel,
+    .btn-submit {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* Mobile portrait (320px - 576px) */
+@media screen and (max-width: 480px) {
+    .transport-cards-grid {
+        padding: 0 12px;
+        gap: 16px;
+    }
+    
+    .transport-card {
+        min-height: 300px;
+        border-radius: 10px;
+    }
+    
+    .transport-card-content {
+        padding: 16px;
+    }
+    
+    .transport-card .company-logo {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 12px;
+    }
+    
+    .transport-card h3 {
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+    
+    .transport-card .description {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+    
+    .transport-card .price-range {
+        font-size: 0.9rem;
+    }
+    
+    .btn-book-now {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        gap: 6px;
+    }
+    
+    /* Modal extra small mobile */
+    .booking-modal {
+        margin: 5px;
+        max-height: 95vh;
+    }
+    
+    .booking-modal-header {
+        padding: 16px;
+    }
+    
+    .booking-modal-body {
+        padding: 20px 16px;
+    }
+    
+    .booking-modal-body .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .booking-modal-body input,
+    .booking-modal-body textarea {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+    
+    .form-actions {
+        margin-top: 24px;
+        gap: 10px;
+    }
+}
+
+/* Filter tabs responsif untuk tablet */
+@media screen and (max-width: 768px) {
+    .booking-filter-section {
+        padding: 32px 0;
+    }
+    
+    .filter-tabs {
+        gap: 12px;
+        padding: 0 16px;
+    }
+    
+    .filter-tab {
+        padding: 11px 20px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+}
+
+/* Filter tabs responsif untuk mobile */
+@media screen and (max-width: 576px) {
+    .booking-filter-section {
+        padding: 24px 0;
+    }
+    
+    .filter-tabs {
+        gap: 8px;
+        padding: 0 16px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .filter-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .filter-tab {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    .filter-tab i {
+        font-size: 0.9rem;
+    }
+}
+
+/* Very small screens (320px and below) */
+@media screen and (max-width: 320px) {
+    .transport-cards-grid {
+        padding: 0 8px;
+        gap: 12px;
+    }
+    
+    .transport-card-content {
+        padding: 12px;
+    }
+    
+    .booking-modal {
+        margin: 2px;
+    }
+    
+    .booking-modal-body {
+        padding: 16px 12px;
+    }
+    
+    .filter-tab {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+}
+
+/**
+ * ============================================
+ * UTILITY CLASSES DAN PERBAIKAN KECIL
+ * ============================================
+ */
+/* Smooth scroll untuk halaman */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Overlay showing state */
+.booking-modal-overlay.show {
+    display: flex !important;
+    opacity: 1;
+}
+
+.booking-modal-overlay.show .booking-modal {
+    transform: scale(1);
+}
+
+/* Loading state untuk cards */
+.transport-card.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Hover effect untuk seluruh card */
+.transport-card:hover .company-logo {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Focus states untuk accessibility */
+.filter-tab:focus,
+.btn-book-now:focus,
+.btn-submit:focus,
+.btn-cancel:focus {
+    outline: 2px solid var(--warna-kedua);
+    outline-offset: 2px;
+}
+
+/* Animasi untuk render cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.transport-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Staggered animation delay untuk multiple cards */
+.transport-card:nth-child(1) { animation-delay: 0.1s; }
+.transport-card:nth-child(2) { animation-delay: 0.2s; }
+.transport-card:nth-child(3) { animation-delay: 0.3s; }
+.transport-card:nth-child(4) { animation-delay: 0.4s; }
+.transport-card:nth-child(5) { animation-delay: 0.5s; }
+.transport-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Dark mode compatibility untuk elements baru */
+body.dark-mode .transport-card,
+[data-theme="dark"] .transport-card {
+    background: var(--bg-card);
+    border-color: var(--warna-border);
+}
+
+body.dark-mode .company-logo,
+[data-theme="dark"] .company-logo {
+    background: var(--bg-kedua);
+}
+
+body.dark-mode .no-services-message,
+[data-theme="dark"] .no-services-message {
+    background: var(--bg-card);
+    border-color: var(--warna-border);
+    color: var(--teks-kedua);
+}
+
+/* Print styles */
+@media print {
+    .booking-modal-overlay,
+    .wa-float,
+    .filter-tabs,
+    .btn-book-now {
+        display: none !important;
+    }
+    
+    .transport-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc;
+    }
+}
     box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); /* Shadow biru lembut */
 }
 

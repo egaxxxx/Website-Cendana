@@ -399,7 +399,7 @@ function setelTabAktif(tabAktif) {
  */
 function muatDanTampilkanSemuaLayanan() {
     console.log('✈️ Memuat semua layanan...');
-    const kontainerLayanan = document.getElementById('airline-partners');
+    const kontainerLayanan = document.getElementById('transport-cards-grid');
     
     if (!kontainerLayanan) {
         console.warn('⚠️ Kontainer layanan tidak ditemukan');
@@ -455,7 +455,7 @@ function filterKontenBerdasarkanJenisTransportasi(jenisTransportasi) {
 
     // Ambil layanan untuk jenis transportasi ini
     const layanan = dataTransportasi[jenisTransportasi] || [];
-    const kontainerLayanan = document.getElementById('airline-partners');
+    const kontainerLayanan = document.getElementById('transport-cards-grid');
 
     // Cek apakah kontainer ditemukan
     if (!kontainerLayanan) {
