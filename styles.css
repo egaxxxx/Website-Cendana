@@ -5,28 +5,36 @@
  * Palet warna yang lebih profesional dan natural
  */
 :root {
-    /* Warna utama - lebih natural dan profesional */
-    --warna-utama: #0f2942;        /* Navy blue yang lebih dalam dan elegan */
-    --warna-kedua: #2563eb;        /* Blue yang lebih modern */
-    --warna-aksen: #3b82f6;        /* Blue accent yang lebih cerah */
-    --warna-terang: #f8fafc;       /* Off-white yang lebih hangat */
-    --warna-gelap: #1e293b;        /* Dark gray yang lebih lembut */
-    --warna-sukses: #10b981;       /* Green yang lebih natural */
-    --warna-peringatan: #f59e0b;   /* Orange yang lebih warm */
-    --warna-bahaya: #ef4444;       /* Red yang tidak terlalu mencolok */
-    --warna-abu: #64748b;          /* Gray yang lebih balanced */
-    --warna-abu-terang: #94a3b8;   /* Light gray yang lebih soft */
+    /* Warna utama - professional dan modern */
+    --warna-utama: #0f2942;
+    --warna-kedua: #2563eb;
+    --warna-aksen: #3b82f6;
+    --warna-terang: #f8fafc;
+    --warna-gelap: #1e293b;
+    --warna-sukses: #10b981;
+    --warna-peringatan: #f59e0b;
+    --warna-bahaya: #ef4444;
+    --warna-abu: #64748b;
+    --warna-abu-terang: #94a3b8;
 
-    /* Warna untuk mode terang - lebih natural */
-    --bg-utama: #ffffff;           /* Pure white untuk kesederhanaan */
-    --bg-kedua: #f8fafc;           /* Very light gray */
-    --bg-ketiga: #f1f5f9;          /* Light gray untuk kontras subtle */
-    --teks-utama: #1e293b;         /* Dark gray untuk readability */
-    --teks-kedua: #475569;         /* Medium gray */
-    --warna-border: #e2e8f0;       /* Subtle border */
-    --bayangan-ringan: 0 1px 3px rgba(0, 0, 0, 0.08);     /* Bayangan lebih subtle */
-    --bayangan-sedang: 0 4px 12px rgba(0, 0, 0, 0.08);    /* Bayangan lebih natural */
-    --bayangan-besar: 0 10px 40px rgba(0, 0, 0, 0.1);     /* Bayangan untuk elemen besar */
+    /* Mode Terang - Light Theme */
+    --bg-utama: #ffffff;
+    --bg-kedua: #f8fafc;
+    --bg-ketiga: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-sidebar: #f8fafc;
+    --bg-header: #ffffff;
+    --teks-utama: #1e293b;
+    --teks-kedua: #475569;
+    --teks-muted: #64748b;
+    --warna-border: #e2e8f0;
+    --bayangan-ringan: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --bayangan-sedang: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --bayangan-besar: 0 10px 40px rgba(0, 0, 0, 0.1);
+    
+    /* Hover states untuk mode terang */
+    --hover-bg: #f1f5f9;
+    --hover-border: #cbd5e1;
 }
 
 /**
@@ -36,18 +44,23 @@
  * Ganti warna background pas dark mode aktif
  * Pakai warna biru tua keabu-abuan biar gak terlalu kontras
  */
+/* Mode Gelap - Dark Theme */
 body.dark-mode,
 [data-theme="dark"] {
-    /* Background gelap yang nyaman di mata */
-    --bg-utama: #1a202c;           /* Dark blue-gray utama */
-    --bg-kedua: #2d3748;           /* Sedikit lebih terang */
-    --bg-ketiga: #374151;          /* Medium gray untuk card */
+    /* Background gelap yang nyaman */
+    --bg-utama: #1a1f2e;
+    --bg-kedua: #242b3d;
+    --bg-ketiga: #2d3748;
+    --bg-card: #242b3d;
+    --bg-sidebar: #1a1f2e;
+    --bg-header: #1a1f2e;
     
-    /* Teks yang jelas terbaca di background gelap */
-    --teks-utama: #f1f5f9;         /* Off-white biar gak terlalu terang */
-    --teks-kedua: #cbd5e1;         /* Light gray untuk teks sekunder */
+    /* Teks yang mudah dibaca */
+    --teks-utama: #f1f5f9;
+    --teks-kedua: #cbd5e1;
+    --teks-muted: #94a3b8;
     
-    /* Warna aksen tetap cerah biar keliatan */
+    /* Warna aksen yang tetap cerah */
     --warna-utama: #1e3a5f;
     --warna-kedua: #3b82f6;
     --warna-aksen: #60a5fa;
@@ -55,11 +68,15 @@ body.dark-mode,
     --warna-peringatan: #fbbf24;
     --warna-bahaya: #f87171;
     
-    /* Border dan shadow yang subtle */
+    /* Border dan shadow untuk dark mode */
     --warna-border: #374151;
-    --bayangan-ringan: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --bayangan-sedang: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --bayangan-besar: 0 10px 40px rgba(0, 0, 0, 0.5);
+    --bayangan-ringan: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --bayangan-sedang: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --bayangan-besar: 0 10px 40px rgba(0, 0, 0, 0.6);
+    
+    /* Hover states untuk mode gelap */
+    --hover-bg: #374151;
+    --hover-border: #4b5563;
 }
 
 /* Transisi smooth sudah diatur di global, gak perlu duplikat */
@@ -101,18 +118,29 @@ html {
 body {
     background-color: var(--bg-utama);
     color: var(--teks-utama);
-    transition: background-color 0.4s ease, color 0.4s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     padding-top: 70px;
+    min-height: 100vh;
 }
 
-/* Transisi smooth untuk semua elemen pas ganti mode */
-* {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+/* Transisi smooth untuk semua elemen dengan cubic-bezier yang halus */
+*,
+*::before,
+*::after {
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Kecuali untuk animasi dan transform biar gak bentrok */
-*:not(.hero-title):not(.hero-description):not(.gallery-item):not(.service-card) {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+/* Animasi yang perlu dikecualikan dari transisi global */
+.hero-title, .hero-description, .gallery-item, .service-card,
+.stat-card, .transport-card, .faq-item {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /**
@@ -3084,7 +3112,8 @@ footer::before {
 }
 
 /* Tombol pesan dengan warna biru utama */
-.btn-pesan-sekarang {
+.btn-pesan-sekarang,
+.transport-booking-btn {
     width: 100%;
     padding: 14px 24px; /* Padding yang nyaman untuk klik */
     background: #2563eb; /* Biru utama yang konsisten */
@@ -3096,19 +3125,185 @@ footer::before {
     cursor: pointer;
     transition: all 0.3s ease; /* Transisi lembut 0.3 detik */
     box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25); /* Shadow biru lembut */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 /* Efek hover tombol - warna lebih gelap dan naik sedikit */
-.btn-pesan-sekarang:hover {
+.btn-pesan-sekarang:hover,
+.transport-booking-btn:hover {
     background: #1d4ed8; /* Biru lebih gelap */
     transform: translateY(-2px); /* Naik sedikit untuk kesan interaktif */
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35); /* Shadow lebih besar */
 }
 
 /* Efek saat tombol ditekan */
-.btn-pesan-sekarang:active {
+.btn-pesan-sekarang:active,
+.transport-booking-btn:active {
     transform: translateY(0); /* Kembali ke posisi normal */
     box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+/**
+ * ============================================
+ * SERVICES SECTION - DAFTAR LAYANAN
+ * ============================================
+ * Section untuk menampilkan card layanan dengan desain yang rapi
+ */
+.services-section {
+    padding: 80px 0;
+    background: var(--bg-kedua);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--bayangan-sedang);
+    transition: all 0.3s ease;
+    border: 1px solid var(--warna-border);
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--bayangan-besar);
+    border-color: var(--warna-kedua);
+}
+
+.service-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: var(--bg-ketiga);
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.service-content {
+    padding: 24px;
+}
+
+.service-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--teks-utama);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+}
+
+.service-description {
+    color: var(--teks-kedua);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.service-price {
+    color: var(--warna-kedua);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+}
+
+.service-btn {
+    width: 100%;
+    padding: 12px 24px;
+    background: var(--warna-kedua);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.service-btn:hover {
+    background: var(--warna-utama);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+.service-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive design untuk services */
+@media (max-width: 768px) {
+    .services-section {
+        padding: 60px 0;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .service-card {
+        border-radius: 12px;
+    }
+    
+    .service-image {
+        height: 180px;
+    }
+    
+    .service-content {
+        padding: 20px;
+    }
+    
+    .service-title {
+        font-size: 1.1rem;
+    }
+    
+    .service-description {
+        font-size: 0.9rem;
+    }
+    
+    .service-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .booking-modal {
+        width: 95%;
+        margin: 10px;
+        max-height: 95vh;
+    }
+    
+    .booking-modal-body {
+        padding: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 16px;
+    }
 }
 
 /**
@@ -3130,8 +3325,12 @@ footer::before {
     justify-content: center;
     z-index: 10000;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(8px); /* Blur background untuk fokus ke modal */
+}
+
+.booking-modal-overlay.show {
+    opacity: 1;
 }
 
 .booking-modal {
@@ -3143,7 +3342,11 @@ footer::before {
     overflow-y: auto;
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15); /* Bayangan halus untuk depth */
     transform: scale(0.9);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.booking-modal-overlay.show .booking-modal {
+    transform: scale(1);
 }
 
 /* Dark mode: background card tetap terang agar form mudah dibaca */
@@ -3949,8 +4152,6 @@ footer::before {
     .request-form {
         gap: 18px;
     }
-        max-width: none;
-    }
 }
 
 .map-overlay-link .btn-maps:hover {
@@ -4018,16 +4219,18 @@ footer::before {
     background-color: var(--bg-utama);
     padding-top: 70px;
     color: var(--teks-utama);
+    min-height: 100vh;
 }
 
 .admin-container {
     display: flex;
     min-height: calc(100vh - 70px);
+    background-color: var(--bg-utama);
 }
 
 .admin-sidebar {
     width: 280px;
-    background: var(--bg-kedua);
+    background-color: var(--bg-sidebar);
     border-right: 1px solid var(--warna-border);
     padding: 30px 0;
     box-shadow: var(--bayangan-ringan);
@@ -7074,40 +7277,85 @@ ial styling for Add Service button */
     padding: 30px;
 }
 
-/* Dark Mode Support for Admin */
-[data-theme="dark"] .admin-sidebar {
-    background: var(--warna-kartu);
-    border-right-color: #333;
+/* Dark Mode Support for Admin - Comprehensive */
+body.dark-mode .admin-body,
+[data-theme="dark"] .admin-body {
+    background-color: var(--bg-utama);
+    color: var(--teks-utama);
 }
 
+body.dark-mode .admin-container,
+[data-theme="dark"] .admin-container {
+    background-color: var(--bg-utama);
+}
+
+body.dark-mode .admin-sidebar,
+[data-theme="dark"] .admin-sidebar {
+    background-color: var(--bg-sidebar);
+    border-right-color: var(--warna-border);
+    color: var(--teks-utama);
+}
+
+body.dark-mode .admin-content,
+[data-theme="dark"] .admin-content {
+    background-color: var(--bg-utama);
+    color: var(--teks-utama);
+}
+
+body.dark-mode .admin-section,
+body.dark-mode .admin-form,
+body.dark-mode .admin-table,
 [data-theme="dark"] .admin-section,
 [data-theme="dark"] .admin-form,
 [data-theme="dark"] .admin-table {
-    background: var(--warna-kartu);
-    border-color: #333;
+    background-color: var(--bg-card);
+    border-color: var(--warna-border);
+    color: var(--teks-utama);
 }
 
+body.dark-mode .quick-action-card,
 [data-theme="dark"] .quick-action-card {
-    background: #2d3748;
-    border-color: #4a5568;
+    background-color: var(--bg-card);
+    border-color: var(--warna-border);
+    color: var(--teks-utama);
 }
 
+body.dark-mode .file-upload-info,
+body.dark-mode .file-upload-preview,
 [data-theme="dark"] .file-upload-info,
 [data-theme="dark"] .file-upload-preview {
-    background: #2d3748;
-    border-color: #4a5568;
+    background-color: var(--bg-card);
+    border-color: var(--warna-border);
+    color: var(--teks-utama);
 }
 
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea,
 [data-theme="dark"] .form-group input,
 [data-theme="dark"] .form-group select,
 [data-theme="dark"] .form-group textarea {
-    background: #2d3748;
-    border-color: #4a5568;
-    color: var(--warna-teks);
+    background-color: var(--bg-card);
+    border-color: var(--warna-border);
+    color: var(--teks-utama);
 }
 
+body.dark-mode .admin-table tbody tr:hover,
 [data-theme="dark"] .admin-table tbody tr:hover {
-    background: #2d3748;
+    background-color: var(--hover-bg);
+}
+
+body.dark-mode .sidebar-menu li a,
+[data-theme="dark"] .sidebar-menu li a {
+    color: var(--teks-utama);
+}
+
+body.dark-mode .sidebar-menu li a:hover,
+body.dark-mode .sidebar-menu li a.active,
+[data-theme="dark"] .sidebar-menu li a:hover,
+[data-theme="dark"] .sidebar-menu li a.active {
+    background-color: var(--hover-bg);
+    color: var(--warna-aksen);
 }
 
 /* Responsive Design for Admin */
@@ -8286,7 +8534,7 @@ body.dark-mode .page-header {
 /* ===== HERO SECTION ===== */
 /* Hero tetap dengan background image, gak perlu diubah */
 body.dark-mode .hero {
-    /* Background tetap sama, cuma pastikan teks tetap jelas */
+    background-attachment: fixed;
 }
 
 /* ===== GALLERY OVERLAY ===== */
@@ -8933,10 +9181,7 @@ body.dark-mode .page-header {
     background: linear-gradient(135deg, #0f2942, #2563eb) !important;
 }
 
-/* Hero tetap dengan background image */
-body.dark-mode .hero {
-    /* Background tetap, cuma pastiin teks keliatan */
-}
+/* Hero duplikat dihapus - sudah ada di atas */
 
 /* Footer tetap gelap */
 body.dark-mode footer {
@@ -8983,4 +9228,160 @@ body.dark-mode .btn-transport:hover {
 body.dark-mode,
 body.dark-mode *:not(.hero-title):not(.gallery-item):not(img) {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
+}
+
+/**
+ * ============================================
+ * ADMIN PANEL DARK MODE - COMPREHENSIVE
+ * ============================================
+ * Implementasi dark mode untuk seluruh admin panel
+ */
+
+/* === ADMIN BODY & LAYOUT === */
+body.dark-mode .admin-body {
+    background-color: var(--bg-utama) !important;
+    color: var(--teks-utama) !important;
+}
+
+body.dark-mode .admin-sidebar {
+    background-color: var(--bg-sidebar) !important;
+    border-right-color: var(--warna-border) !important;
+}
+
+body.dark-mode .admin-sidebar .nav-link {
+    color: var(--teks-kedua) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .admin-sidebar .nav-link:hover,
+body.dark-mode .admin-sidebar .nav-link.active {
+    background-color: var(--warna-utama) !important;
+    color: #ffffff !important;
+}
+
+/* === ADMIN CARDS & SECTIONS === */
+body.dark-mode .admin-section {
+    background-color: var(--bg-card) !important;
+    border-color: var(--warna-border) !important;
+}
+
+body.dark-mode .section-header h3 {
+    color: var(--teks-utama) !important;
+}
+
+/* === ADMIN FORMS === */
+body.dark-mode .admin-form .form-group label {
+    color: var(--teks-utama) !important;
+}
+
+body.dark-mode .admin-form .form-control {
+    background-color: var(--bg-kedua) !important;
+    border-color: var(--warna-border) !important;
+    color: var(--teks-utama) !important;
+}
+
+body.dark-mode .admin-form .form-control:focus {
+    background-color: var(--bg-kedua) !important;
+    border-color: var(--warna-utama) !important;
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25) !important;
+}
+
+body.dark-mode .admin-form .form-control::placeholder {
+    color: var(--teks-kedua) !important;
+}
+
+/* === ADMIN TABLES === */
+body.dark-mode .admin-table {
+    background-color: var(--bg-card) !important;
+    border-color: var(--warna-border) !important;
+}
+
+body.dark-mode .admin-table thead {
+    background-color: var(--bg-kedua) !important;
+}
+
+body.dark-mode .admin-table th {
+    color: var(--teks-utama) !important;
+    border-color: var(--warna-border) !important;
+}
+
+body.dark-mode .admin-table td {
+    color: var(--teks-kedua) !important;
+    border-color: var(--warna-border) !important;
+}
+
+body.dark-mode .admin-table tbody tr:hover {
+    background-color: var(--bg-kedua) !important;
+}
+
+/* === ADMIN ACTION BUTTONS === */
+body.dark-mode .btn-action {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode .btn-edit {
+    background-color: #f59e0b !important;
+    border-color: #f59e0b !important;
+}
+
+body.dark-mode .btn-edit:hover {
+    background-color: #d97706 !important;
+    border-color: #d97706 !important;
+}
+
+body.dark-mode .btn-delete {
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+}
+
+body.dark-mode .btn-delete:hover {
+    background-color: #dc2626 !important;
+    border-color: #dc2626 !important;
+}
+
+/* === ADMIN STATISTICS CARDS === */
+body.dark-mode .stat-card {
+    background-color: var(--bg-card) !important;
+    border-color: var(--warna-border) !important;
+}
+
+body.dark-mode .stat-card .stat-number {
+    color: var(--warna-utama) !important;
+}
+
+body.dark-mode .stat-card .stat-label {
+    color: var(--teks-kedua) !important;
+}
+
+/* === ADMIN MODAL === */
+body.dark-mode .modal-content {
+    background-color: var(--bg-card) !important;
+    border-color: var(--warna-border) !important;
+}
+
+body.dark-mode .modal-header {
+    background-color: var(--bg-kedua) !important;
+    border-bottom-color: var(--warna-border) !important;
+}
+
+body.dark-mode .modal-title {
+    color: var(--teks-utama) !important;
+}
+
+body.dark-mode .modal-body {
+    color: var(--teks-kedua) !important;
+}
+
+body.dark-mode .modal-footer {
+    background-color: var(--bg-kedua) !important;
+    border-top-color: var(--warna-border) !important;
+}
+
+/* === DARK MODE TOGGLE === */
+body.dark-mode .dark-mode-toggle {
+    background-color: var(--warna-utama) !important;
+}
+
+body.dark-mode .dark-mode-toggle::before {
+    background-color: #ffffff !important;
 }

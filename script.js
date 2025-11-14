@@ -579,6 +579,7 @@ window.smoothScrollTo = gulungHalusKePosisi;
  */
 function ubahModeGelap() {
     const body = document.body;
+    const html = document.documentElement;
     const tombolMode = document.querySelector('.dark-mode-toggle');
     const ikonMode = document.querySelector('.dark-mode-toggle i');
     
@@ -588,34 +589,36 @@ function ubahModeGelap() {
     if (isDarkMode) {
         // Ubah ke mode terang
         body.classList.remove('dark-mode');
+        html.classList.remove('dark-mode');
         body.removeAttribute('data-theme');
+        html.removeAttribute('data-theme');
         if (ikonMode) ikonMode.className = 'icon icon-moon';
         localStorage.setItem('theme', 'light');
+        console.log('☀️ Mode terang aktif');
         
-        // Animasi tombol biar gak kaku
+        // Animasi tombol yang halus
         if (tombolMode) {
-            tombolMode.style.transform = 'rotate(360deg) scale(1.1)';
+            tombolMode.style.transform = 'rotate(180deg) scale(1.05)';
             setTimeout(() => {
-                tombolMode.style.transform = '';
-            }, 300);
+                tombolMode.style.transform = 'scale(1)';
+            }, 200);
         }
     } else {
         // Ubah ke mode gelap
         body.classList.add('dark-mode');
+        html.classList.add('dark-mode');
         body.setAttribute('data-theme', 'dark');
+        html.setAttribute('data-theme', 'dark');
         if (ikonMode) ikonMode.className = 'icon icon-sun';
         localStorage.setItem('theme', 'dark');
+        console.log('🌙 Mode gelap aktif');
         
-        // Debug: pastikan class sudah ditambahkan
-        console.log('🌙 Dark mode aktif, class:', body.className);
-        console.log('Background color:', window.getComputedStyle(body).backgroundColor);
-        
-        // Animasi tombol biar gak kaku
+        // Animasi tombol yang halus
         if (tombolMode) {
-            tombolMode.style.transform = 'rotate(-360deg) scale(1.1)';
+            tombolMode.style.transform = 'rotate(-180deg) scale(1.05)';
             setTimeout(() => {
-                tombolMode.style.transform = '';
-            }, 300);
+                tombolMode.style.transform = 'scale(1)';
+            }, 200);
         }
     }
     
@@ -640,17 +643,24 @@ function ubahModeGelap() {
 function aturModeGelapSaatDimuat() {
     const savedTheme = localStorage.getItem('theme');
     const body = document.body;
+    const html = document.documentElement;
     const ikonMode = document.querySelector('.dark-mode-toggle i');
     
-    // Terapkan tema yang tersimpan
+    // Terapkan tema yang tersimpan atau default ke light mode
     if (savedTheme === 'dark') {
         body.classList.add('dark-mode');
+        html.classList.add('dark-mode');
         body.setAttribute('data-theme', 'dark');
+        html.setAttribute('data-theme', 'dark');
         if (ikonMode) ikonMode.className = 'icon icon-sun';
+        console.log('🌙 Mode gelap dimuat dari preferensi');
     } else {
         body.classList.remove('dark-mode');
+        html.classList.remove('dark-mode');
         body.removeAttribute('data-theme');
+        html.removeAttribute('data-theme');
         if (ikonMode) ikonMode.className = 'icon icon-moon';
+        console.log('☀️ Mode terang dimuat');
     }
 }
 
