@@ -130,43 +130,43 @@ const DATA_FASILITAS_DEFAULT = [
     {
         id: 1,
         name: 'Ruang Tunggu VIP',
-        image: 'cendana/Screenshot 2025-10-28 014436.png',
+        image: 'gallery/Screenshot 2025-10-28 014436.png',
         description: 'Ruang tunggu yang nyaman dengan AC, WiFi gratis, dan refreshment untuk kenyamanan Anda sebelum keberangkatan.'
     },
     {
         id: 2,
         name: 'Layanan Antar Jemput',
-        image: 'cendana/Screenshot 2025-10-28 014729.png',
+        image: 'gallery/Screenshot 2025-10-28 014729.png',
         description: 'Layanan antar jemput dari rumah ke terminal/bandara dengan kendaraan yang nyaman dan sopir berpengalaman.'
     },
     {
         id: 3,
         name: 'Customer Service 24/7',
-        image: 'cendana/Screenshot 2025-10-28 014745.png',
+        image: 'gallery/Screenshot 2025-10-28 014745.png',
         description: 'Tim customer service yang siap membantu Anda 24 jam sehari, 7 hari seminggu melalui WhatsApp dan telepon.'
     },
     {
         id: 4,
         name: 'Fasilitas Premium',
-        image: 'cendana/Screenshot 2025-10-28 014806.png',
+        image: 'gallery/Screenshot 2025-10-28 014806.png',
         description: 'Fasilitas premium dengan berbagai kemudahan untuk memberikan pengalaman perjalanan yang tak terlupakan.'
     },
     {
         id: 5,
         name: 'Layanan Konsultasi',
-        image: 'cendana/Screenshot 2025-10-28 014817.png',
+        image: 'gallery/Screenshot 2025-10-28 014817.png',
         description: 'Konsultasi perjalanan dengan tim ahli kami untuk merencanakan perjalanan impian Anda.'
     },
     {
         id: 6,
         name: 'Booking Online',
-        image: 'cendana/Screenshot 2025-10-28 014829.png',
+        image: 'gallery/Screenshot 2025-10-28 014829.png',
         description: 'Sistem booking online yang mudah dan cepat untuk kemudahan pemesanan tiket perjalanan Anda.'
     },
     {
         id: 7,
         name: 'Travel Insurance',
-        image: 'cendana/Screenshot 2025-10-28 014853.png',
+        image: 'gallery/Screenshot 2025-10-28 014853.png',
         description: 'Asuransi perjalanan komprehensif untuk melindungi Anda selama bepergian dengan tenang.'
     }
 ];

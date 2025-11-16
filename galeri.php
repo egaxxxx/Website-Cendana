@@ -158,14 +158,100 @@ $dataFasilitas = [];
         </div>
     </div>
 
-    <!-- JavaScript Data -->
-    <script>
-        // Data akan dimuat dari config.js dan galeri.js
-    </script>
-
+    <!-- Load Config First -->
     <script src="config.js"></script>
     <script src="script.js"></script>
-    <script src="galeri.js"></script>
+    
+    <!-- Inline Galeri Script for Immediate Execution -->
+    <script>
+        console.log('=== INLINE GALERI SCRIPT START ===');
+        
+        // Check if config data exists
+        if (typeof DATA_FASILITAS_DEFAULT === 'undefined') {
+            console.error('ERROR: DATA_FASILITAS_DEFAULT not found!');
+        } else {
+            console.log('✓ DATA_FASILITAS_DEFAULT found:', DATA_FASILITAS_DEFAULT.length, 'items');
+            
+            // Wait for DOM to be ready
+            function initGallery() {
+                console.log('Initializing gallery...');
+                const galleryGrid = document.getElementById('gallery-grid');
+                
+                if (!galleryGrid) {
+                    console.error('ERROR: gallery-grid element not found!');
+                    return;
+                }
+                
+                console.log('✓ gallery-grid element found');
+                
+                if (DATA_FASILITAS_DEFAULT.length === 0) {
+                    galleryGrid.innerHTML = '<div class="gallery-empty"><i class="icon icon-image"></i><p>Belum ada foto di galeri</p></div>';
+                    return;
+                }
+                
+                galleryGrid.innerHTML = '';
+                
+                DATA_FASILITAS_DEFAULT.forEach((item, index) => {
+                    const imgPath = 'uploads/' + item.image;
+                    console.log('Adding item ' + (index + 1) + ':', item.name, '|', imgPath);
+                    
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    
+                    galleryItem.innerHTML = `
+                        <div class="gallery-image">
+                            <img src="${imgPath}" alt="${item.name}" onload="console.log('✓ Image loaded: ${item.name}')" onerror="console.error('✗ Image failed: ${imgPath}')">
+                            <div class="gallery-overlay">
+                                <div class="gallery-overlay-content">
+                                    <h3>${item.name}</h3>
+                                    <button class="gallery-view-btn" onclick="openGalleryModal(${item.id})">
+                                        <i class="icon icon-eye"></i>
+                                        Lihat Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    galleryGrid.appendChild(galleryItem);
+                });
+                
+                console.log('✓ Gallery items added:', DATA_FASILITAS_DEFAULT.length);
+            }
+            
+            // Gallery modal functions
+            window.openGalleryModal = function(itemId) {
+                const modal = document.getElementById('galleryModal');
+                const item = DATA_FASILITAS_DEFAULT.find(f => f.id === itemId);
+                
+                if (!modal || !item) return;
+                
+                document.getElementById('gallery-modal-img').src = 'uploads/' + item.image;
+                document.getElementById('gallery-modal-title').textContent = item.name;
+                document.getElementById('gallery-modal-description').textContent = item.description;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+            
+            window.tutupModalGaleri = function() {
+                const modal = document.getElementById('galleryModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            };
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initGallery);
+            } else {
+                initGallery();
+            }
+        }
+        
+        console.log('=== INLINE GALERI SCRIPT END ===');
+    </script>
 </body>
 </html>
 

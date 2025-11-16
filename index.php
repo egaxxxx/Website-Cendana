@@ -565,7 +565,7 @@ $companyInfoData = [
                     </div>
                     <h3>WhatsApp</h3>
                     <p><?php echo htmlspecialchars($companyInfoData['whatsapp']); ?></p>
-                    <a href="https://wa.me/<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>" class="contact-card-link" target="_blank">Chat Sekarang →</a>
+                    <a href="kontak.php" class="contact-card-link">Chat Sekarang →</a>
                 </div>
 
                 <div class="contact-info-card">
@@ -583,7 +583,7 @@ $companyInfoData = [
                     </div>
                     <h3>Jam Operasional</h3>
                     <p><?php echo htmlspecialchars($companyInfoData['hours']); ?></p>
-                    <a href="tel:<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>" class="contact-card-link">Hubungi Sekarang →</a>
+                    <a href="galeri.php" class="contact-card-link">Lihat Galeri →</a>
                 </div>
             </div>
         </div>
