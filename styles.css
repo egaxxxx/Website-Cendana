@@ -4573,9 +4573,10 @@ footer::before {
  * ============================================
  */
 .trust-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 100px 0;
+    background: #ffffff;
     position: relative;
+    overflow: hidden;
 }
 
 .trust-section::before {
@@ -4584,57 +4585,123 @@ footer::before {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.03) 0%, transparent 70%),
-                radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
-    pointer-events: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+}
+
+.section-header-trust {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header-trust h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--teks-utama);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.section-header-trust p {
+    font-size: 1.1rem;
+    color: var(--teks-kedua);
+    font-weight: 400;
 }
 
 .trust-content {
-    position: relative;
-    z-index: 2;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 32px;
-    max-width: 1100px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .trust-item {
     text-align: center;
-    padding: 40px 24px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    padding: 48px 32px;
+    background: #ffffff;
+    border-radius: 16px;
     transition: all 0.3s ease;
-    border: 1px solid rgba(226, 232, 240, 0.8);
+    border: 2px solid #f1f5f9;
+    position: relative;
+}
+
+.trust-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.trust-item:hover::before {
+    opacity: 1;
 }
 
 .trust-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.12);
-    border-color: rgba(37, 99, 235, 0.2);
+    transform: translateY(-5px);
+    border-color: transparent;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
 }
 
-.trust-item i {
-    font-size: 3rem;
-    color: #2563eb;
-    margin-bottom: 20px;
-    display: block;
+.trust-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.trust-item:hover .trust-icon {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+}
+
+.trust-icon i {
+    font-size: 2.2rem;
+    color: #ffffff !important;
+}
+
+.trust-icon .fa-solid,
+.trust-icon .fa-brands {
+    color: #ffffff !important;
+}
+
+.trust-icon .icon {
+    color: #ffffff !important;
+}
+
+.trust-icon .icon::before {
+    color: #ffffff !important;
+}
+
+.trust-icon .icon-whatsapp::before {
+    color: #ffffff !important;
 }
 
 .trust-item h3 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--teks-utama);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     letter-spacing: -0.01em;
 }
 
 .trust-item p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--teks-kedua);
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 0;
 }
 
@@ -4690,7 +4757,19 @@ footer::before {
 }
 
 [data-theme="dark"] .trust-section {
-    background: linear-gradient(135deg, #1a1f2e 0%, #242b3d 100%);
+    background: var(--bg-kedua);
+}
+
+[data-theme="dark"] .trust-section::before {
+    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.1), transparent);
+}
+
+[data-theme="dark"] .section-header-trust h2 {
+    color: var(--teks-utama);
+}
+
+[data-theme="dark"] .section-header-trust p {
+    color: var(--teks-kedua);
 }
 
 [data-theme="dark"] .trust-item {
@@ -4698,8 +4777,17 @@ footer::before {
     border-color: var(--warna-border);
 }
 
+[data-theme="dark"] .trust-item::before {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
 [data-theme="dark"] .trust-item:hover {
-    border-color: var(--warna-kedua);
+    border-color: transparent;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .trust-icon {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
 }
 
 [data-theme="dark"] .company-logo-wrapper {
@@ -4864,12 +4952,46 @@ footer::before {
     
     /* Trust Section Responsive */
     .trust-section {
-        padding: 60px 0;
+        padding: 70px 0;
+    }
+
+    .section-header-trust {
+        margin-bottom: 40px;
+    }
+
+    .section-header-trust h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-header-trust p {
+        font-size: 1rem;
     }
     
     .trust-content {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 24px;
+    }
+
+    .trust-item {
+        padding: 36px 24px;
+    }
+
+    .trust-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+
+    .trust-icon i {
+        font-size: 2rem;
+    }
+
+    .trust-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .trust-item p {
+        font-size: 0.95rem;
     }
     
     .trust-item {
@@ -11353,4 +11475,20 @@ body.dark-mode .btn-contact-wa:hover {
         0 10px 24px rgba(37, 211, 102, 0.6),
         inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
     transform: translateY(-2px) scale(1.02) !important;
+}
+
+/* Responsive Design for Tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .trust-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .trust-item {
+        padding: 40px 28px;
+    }
+
+    .section-header-trust h2 {
+        font-size: 2.2rem;
+    }
 }

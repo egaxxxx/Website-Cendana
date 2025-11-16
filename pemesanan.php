@@ -126,29 +126,41 @@ $companyInfoData = [
         </div>
     </section>
 
-    <!-- Trust Section -->
+    <!-- Why Choose Us Section -->
     <section class="trust-section">
         <div class="container">
+            <div class="section-header-trust">
+                <h2>Mengapa Pilih Kami?</h2>
+                <p>Kemudahan dan kenyamanan dalam setiap perjalanan Anda</p>
+            </div>
             <div class="trust-content">
                 <div class="trust-item">
-                    <i class="icon icon-shield"></i>
-                    <h3>Pembayaran Aman</h3>
-                    <p>Transaksi dilindungi dengan enkripsi tingkat bank</p>
+                    <div class="trust-icon">
+                        <i class="icon icon-whatsapp"></i>
+                    </div>
+                    <h3>Booking via WhatsApp</h3>
+                    <p>Pesan tiket dengan mudah melalui WhatsApp, cepat dan responsif</p>
                 </div>
                 <div class="trust-item">
-                    <i class="icon icon-clock"></i>
-                    <h3>Booking Instan</h3>
-                    <p>Konfirmasi langsung setelah pembayaran</p>
+                    <div class="trust-icon">
+                        <i class="icon icon-clock"></i>
+                    </div>
+                    <h3>Respon Cepat</h3>
+                    <p>Konfirmasi pesanan dalam hitungan menit</p>
                 </div>
                 <div class="trust-item">
-                    <i class="icon icon-support"></i>
-                    <h3>Support 24/7</h3>
-                    <p>Tim kami siap membantu kapan saja</p>
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3>Layanan 24/7</h3>
+                    <p>Customer service siap membantu kapan saja</p>
                 </div>
                 <div class="trust-item">
-                    <i class="icon icon-price-tag"></i>
-                    <h3>Harga Terbaik</h3>
-                    <p>Jaminan harga kompetitif untuk semua rute</p>
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                    <h3>Harga Kompetitif</h3>
+                    <p>Dapatkan harga terbaik untuk semua rute perjalanan</p>
                 </div>
             </div>
         </div>

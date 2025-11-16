@@ -231,6 +231,27 @@
 }
 
 /* ============================================
+ * IKON TRUST SECTION
+ * ============================================ */
+.icon-shield::before {
+    content: "\f3ed";
+}
+
+.icon-support::before,
+.icon-headset::before {
+    content: "\f095";
+}
+
+.icon-price-tag::before,
+.icon-tag::before {
+    content: "\f02b";
+}
+
+.icon-check-circle::before {
+    content: "\f058";
+}
+
+/* ============================================
  * VARIAN UKURAN & WARNA
  * ============================================ */
 .icon-sm {
