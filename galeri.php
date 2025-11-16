@@ -57,17 +57,62 @@ $dataFasilitas = [];
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Hero Section with Gradient Background -->
+    <section class="gallery-hero">
         <div class="container">
-            <h1>Galeri Perjalanan</h1>
-            <p>Koleksi momen indah dari perjalanan pelanggan kami ke berbagai destinasi menakjubkan</p>
+            <div class="gallery-hero-content">
+                <h1 class="gallery-hero-title">Galeri Perjalanan</h1>
+                <p class="gallery-hero-subtitle">Koleksi momen indah dari perjalanan pelanggan kami ke berbagai destinasi menakjubkan. Lihat pengalaman nyata dan fasilitas yang kami tawarkan.</p>
+            </div>
+        </div>
+        
+        <!-- Decorative Background Elements -->
+        <div class="hero-decoration">
+            <div class="decoration-circle circle-1"></div>
+            <div class="decoration-circle circle-2"></div>
+            <div class="decoration-circle circle-3"></div>
         </div>
     </section>
 
     <!-- Galeri Grid -->
     <section class="gallery-section">
         <div class="container">
+            <!-- Filter Tabs -->
+            <div class="gallery-filter-tabs">
+                <button class="filter-tab active" data-category="all" onclick="filterGallery('all')">
+                    <i class="icon icon-th"></i>
+                    Semua Foto
+                </button>
+                <button class="filter-tab" data-category="kantor" onclick="filterGallery('kantor')">
+                    <i class="icon icon-building"></i>
+                    Kantor & Fasilitas
+                </button>
+                <button class="filter-tab" data-category="layanan" onclick="filterGallery('layanan')">
+                    <i class="icon icon-star"></i>
+                    Layanan
+                </button>
+                <button class="filter-tab" data-category="sistem" onclick="filterGallery('sistem')">
+                    <i class="icon icon-cog"></i>
+                    Sistem & Teknologi
+                </button>
+            </div>
+
+            <!-- Gallery Stats -->
+            <div class="gallery-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="gallery-count">7</span>
+                    <span class="stat-label">Total Foto</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Perjalanan Sukses</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">⭐ 4.8</span>
+                    <span class="stat-label">Rating Pelanggan</span>
+                </div>
+            </div>
+
             <div class="gallery-grid" id="gallery-grid">
                 <!-- Foto galeri akan dimuat di sini menggunakan JavaScript -->
             </div>
@@ -80,12 +125,52 @@ $dataFasilitas = [];
             <button class="gallery-modal-close" onclick="tutupModalGaleri()">
                 <i class="icon icon-times"></i>
             </button>
+            
+            <!-- Navigation Arrows -->
+            <button class="gallery-modal-nav gallery-modal-prev" onclick="navigateGallery(-1)">
+                <i class="icon icon-chevron-left"></i>
+            </button>
+            <button class="gallery-modal-nav gallery-modal-next" onclick="navigateGallery(1)">
+                <i class="icon icon-chevron-right"></i>
+            </button>
+            
             <div class="gallery-modal-image">
                 <img id="gallery-modal-img" src="" alt="Galeri">
             </div>
             <div class="gallery-modal-info">
-                <h3 id="gallery-modal-title"></h3>
-                <p id="gallery-modal-description"></p>
+                <div class="gallery-modal-header">
+                    <div class="modal-title-group">
+                        <h3 id="gallery-modal-title"></h3>
+                        <span class="gallery-modal-counter" id="gallery-modal-counter">1 / 7</span>
+                    </div>
+                </div>
+                
+                <!-- Metadata Info -->
+                <div class="gallery-modal-metadata">
+                    <div class="metadata-item">
+                        <i class="icon icon-calendar"></i>
+                        <div class="metadata-content">
+                            <span class="metadata-label">Tanggal Upload</span>
+                            <span class="metadata-value" id="gallery-modal-date">28 Oktober 2024</span>
+                        </div>
+                    </div>
+                    <div class="metadata-item">
+                        <i class="icon icon-map-marker"></i>
+                        <div class="metadata-content">
+                            <span class="metadata-label">Lokasi</span>
+                            <span class="metadata-value" id="gallery-modal-location">Kantor Pusat</span>
+                        </div>
+                    </div>
+                    <div class="metadata-item">
+                        <i class="icon icon-tag"></i>
+                        <div class="metadata-content">
+                            <span class="metadata-label">Kategori</span>
+                            <span class="metadata-value" id="gallery-modal-category">Fasilitas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="gallery-modal-description" id="gallery-modal-description"></p>
             </div>
         </div>
     </div>
@@ -197,6 +282,9 @@ $dataFasilitas = [];
                     
                     const galleryItem = document.createElement('div');
                     galleryItem.className = 'gallery-item';
+                    galleryItem.setAttribute('data-category', item.category || 'all');
+                    galleryItem.setAttribute('data-index', index);
+                    galleryItem.style.animationDelay = (index * 0.1) + 's';
                     
                     galleryItem.innerHTML = `
                         <div class="gallery-image">
@@ -204,7 +292,7 @@ $dataFasilitas = [];
                             <div class="gallery-overlay">
                                 <div class="gallery-overlay-content">
                                     <h3>${item.name}</h3>
-                                    <button class="gallery-view-btn" onclick="openGalleryModal(${item.id})">
+                                    <button class="gallery-view-btn" onclick="openGalleryModal(${index})">
                                         <i class="icon icon-eye"></i>
                                         Lihat Detail
                                     </button>
@@ -217,21 +305,59 @@ $dataFasilitas = [];
                 });
                 
                 console.log('✓ Gallery items added:', DATA_FASILITAS_DEFAULT.length);
+                updateGalleryCount();
+            }
+            
+            // Current modal index
+            let currentModalIndex = 0;
+            
+            // Format tanggal Indonesia
+            function formatTanggalIndonesia(dateString) {
+                const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
+                              'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                const date = new Date(dateString);
+                return date.getDate() + ' ' + bulan[date.getMonth()] + ' ' + date.getFullYear();
+            }
+            
+            // Get category name
+            function getCategoryName(category) {
+                const categories = {
+                    'kantor': 'Kantor & Fasilitas',
+                    'layanan': 'Layanan',
+                    'sistem': 'Sistem & Teknologi'
+                };
+                return categories[category] || 'Umum';
             }
             
             // Gallery modal functions
-            window.openGalleryModal = function(itemId) {
+            window.openGalleryModal = function(index) {
+                currentModalIndex = index;
                 const modal = document.getElementById('galleryModal');
-                const item = DATA_FASILITAS_DEFAULT.find(f => f.id === itemId);
+                const item = DATA_FASILITAS_DEFAULT[index];
                 
                 if (!modal || !item) return;
                 
                 document.getElementById('gallery-modal-img').src = 'uploads/' + item.image;
                 document.getElementById('gallery-modal-title').textContent = item.name;
                 document.getElementById('gallery-modal-description').textContent = item.description;
+                document.getElementById('gallery-modal-counter').textContent = (index + 1) + ' / ' + DATA_FASILITAS_DEFAULT.length;
+                
+                // Set metadata
+                document.getElementById('gallery-modal-date').textContent = formatTanggalIndonesia(item.uploadDate || new Date().toISOString().split('T')[0]);
+                document.getElementById('gallery-modal-location').textContent = item.location || 'Tidak disebutkan';
+                document.getElementById('gallery-modal-category').textContent = getCategoryName(item.category);
                 
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+            };
+            
+            window.navigateGallery = function(direction) {
+                currentModalIndex += direction;
+                
+                if (currentModalIndex < 0) currentModalIndex = DATA_FASILITAS_DEFAULT.length - 1;
+                if (currentModalIndex >= DATA_FASILITAS_DEFAULT.length) currentModalIndex = 0;
+                
+                openGalleryModal(currentModalIndex);
             };
             
             window.tutupModalGaleri = function() {
@@ -241,6 +367,44 @@ $dataFasilitas = [];
                     document.body.style.overflow = '';
                 }
             };
+            
+            // Filter gallery function
+            window.filterGallery = function(category) {
+                const items = document.querySelectorAll('.gallery-item');
+                const tabs = document.querySelectorAll('.filter-tab');
+                
+                // Update active tab
+                tabs.forEach(tab => {
+                    if (tab.getAttribute('data-category') === category) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+                
+                // Filter items
+                items.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    if (category === 'all' || itemCategory === category) {
+                        item.style.display = 'block';
+                        item.classList.add('fade-in');
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('fade-in');
+                    }
+                });
+                
+                updateGalleryCount();
+            };
+            
+            // Update gallery count
+            function updateGalleryCount() {
+                const visibleItems = document.querySelectorAll('.gallery-item[style*="display: block"], .gallery-item:not([style*="display: none"])');
+                const countElement = document.getElementById('gallery-count');
+                if (countElement) {
+                    countElement.textContent = visibleItems.length;
+                }
+            }
             
             // Initialize when DOM is ready
             if (document.readyState === 'loading') {

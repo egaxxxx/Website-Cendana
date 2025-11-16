@@ -7159,12 +7159,149 @@ body.dark-mode .service-card p,
  * GALLERY SECTION - LEBIH SEDERHANA
  * ============================================
  */
+/* ============================================
+   GALLERY HERO SECTION
+   ============================================ */
+.gallery-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #2563eb 100%);
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.gallery-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.gallery-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.7;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+/* Responsive Gallery Hero */
+@media (max-width: 768px) {
+    .gallery-hero {
+        padding: 70px 0 50px;
+    }
+    
+    .gallery-hero-title {
+        margin-bottom: 20px;
+    }
+}
+
+/* ============================================
+   GALLERY SECTION
+   ============================================ */
 .gallery-section {
     padding: 80px 0;
     background: #f8fafc;
 }
 
-/* Grid tiga kolom dengan gap yang seimbang */
+/* Filter Tabs */
+.gallery-filter-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-tab {
+    padding: 12px 24px;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-tab:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.filter-tab.active {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    border-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.filter-tab i {
+    font-size: 1.1rem;
+}
+
+/* Gallery Stats */
+.gallery-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* Clean Grid Layout dengan tinggi proporsional */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -7173,30 +7310,46 @@ body.dark-mode .service-card p,
     margin: 0 auto;
 }
 
-/* Item galeri dengan hover effect sederhana */
+/* Item galeri dengan hover effect premium */
 .gallery-item {
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     border: 1px solid #e2e8f0;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
-/* Efek hover - naik sedikit dengan shadow */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efek hover - naik dengan shadow dan glow */
 .gallery-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.15),
+                0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(37, 99, 235, 0.3);
 }
 
 /* Container gambar dengan ukuran proporsional */
 .gallery-image {
     position: relative;
     width: 100%;
-    height: 280px;
+    height: 320px;
     overflow: hidden;
     background: #f1f5f9;
+    border-radius: 12px;
 }
 
 /* Gambar dengan transisi zoom ringan */
@@ -7204,12 +7357,17 @@ body.dark-mode .service-card p,
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
 }
 
-/* Zoom ringan saat hover */
+/* Zoom smooth saat hover */
 .gallery-item:hover .gallery-image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+}
+
+.gallery-item:hover .gallery-image {
+    border-radius: 16px;
 }
 
 /* Overlay dengan nama destinasi yang muncul saat hover */
@@ -7332,19 +7490,55 @@ body.dark-mode .service-card p,
 /* Responsive: satu kolom di mobile */
 @media (max-width: 768px) {
     .gallery-grid {
-        grid-template-columns: 1fr; /* Satu kolom di mobile */
-        gap: 1.25rem; /* Gap sedikit lebih besar di mobile */
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
     
     .gallery-image {
-        height: 240px; /* Tinggi lebih kecil di mobile */
+        height: 280px;
+    }
+    
+    .gallery-filter-tabs {
+        gap: 8px;
+    }
+    
+    .filter-tab {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .gallery-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+    }
+    
+    .gallery-modal-prev {
+        left: 10px;
+    }
+    
+    .gallery-modal-next {
+        right: 10px;
     }
 }
 
 /* Responsive: dua kolom di tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr); /* Dua kolom di tablet */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-image {
+        height: 300px;
     }
 }
 
@@ -7383,23 +7577,62 @@ body.dark-mode .service-card p,
     transform: scale(1);
 }
 
-/* Modal dengan background putih bersih */
+/* Modal dengan gradient background */
 .gallery-modal {
-    background: #ffffff; /* Putih bersih */
-    border-radius: 16px; /* Sudut membulat yang konsisten */
-    max-width: 900px;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+    border-radius: 20px;
+    max-width: 950px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); /* Shadow dramatis */
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
     transform: scale(0.9);
     transition: transform 0.3s ease;
     position: relative;
+    border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
-/* Dark mode: background modal tetap terang */
+/* Dark mode: background modal dengan gradient gelap */
 [data-theme="dark"] .gallery-modal {
-    background: #f8fafc;
+    background: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .gallery-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+}
+
+[data-theme="dark"] .filter-tab {
+    background: #1e293b;
+    border-color: #334155;
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .filter-tab:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+[data-theme="dark"] .filter-tab.active {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .gallery-stats {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+[data-theme="dark"] .stat-label {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .gallery-item {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+[data-theme="dark"] .gallery-item:hover {
+    border-color: rgba(59, 130, 246, 0.5);
 }
 
 /* Tombol close di pojok kanan atas */
@@ -7407,14 +7640,14 @@ body.dark-mode .service-card p,
     position: absolute;
     top: 16px;
     right: 16px;
-    background: rgba(0, 0, 0, 0.7); /* Gelap semi-transparan */
+    background: rgba(0, 0, 0, 0.7);
     border: none;
     color: white;
     font-size: 1.4rem;
     cursor: pointer;
     width: 40px;
     height: 40px;
-    border-radius: 8px; /* Sudut membulat untuk konsistensi */
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7423,10 +7656,131 @@ body.dark-mode .service-card p,
     backdrop-filter: blur(10px);
 }
 
-/* Efek hover tombol close */
 .gallery-modal-close:hover {
     background: rgba(0, 0, 0, 0.9);
-    transform: scale(1.05); /* Sedikit membesar */
+    transform: scale(1.05);
+}
+
+/* Navigation arrows */
+.gallery-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10001;
+    backdrop-filter: blur(10px);
+}
+
+.gallery-modal-prev {
+    left: 20px;
+}
+
+.gallery-modal-next {
+    right: 20px;
+}
+
+.gallery-modal-nav:hover {
+    background: rgba(37, 99, 235, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Modal header with counter */
+.gallery-modal-header {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.modal-title-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-modal-counter {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Metadata section */
+.gallery-modal-metadata {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 12px;
+    border-left: 4px solid #2563eb;
+}
+
+.metadata-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.metadata-item i {
+    font-size: 1.3rem;
+    color: #2563eb;
+    margin-top: 2px;
+}
+
+.metadata-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.metadata-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metadata-value {
+    font-size: 0.95rem;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .gallery-modal-header {
+    border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .gallery-modal-metadata {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    border-left-color: #3b82f6;
+}
+
+[data-theme="dark"] .metadata-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .metadata-value {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .metadata-item i {
+    color: #60a5fa;
 }
 
 /* Container gambar dengan tinggi proporsional */
@@ -7448,24 +7802,46 @@ body.dark-mode .service-card p,
 
 /* Info di bawah gambar dengan padding yang nyaman */
 .gallery-modal-info {
-    padding: 32px; /* Padding yang lega */
+    padding: 36px;
 }
 
 /* Judul gambar dengan font yang jelas */
 .gallery-modal-info h3 {
-    margin: 0 0 16px 0;
-    color: #1e293b; /* Gelap untuk readability */
-    font-size: 1.6rem;
-    font-weight: 700;
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.75rem;
+    font-weight: 800;
     letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/* Deskripsi gambar dengan line-height yang nyaman */
-.gallery-modal-info p {
-    color: #475569; /* Abu sedang */
-    line-height: 1.75; /* Line-height yang nyaman untuk dibaca */
+/* Deskripsi gambar dengan styling yang lebih baik */
+.gallery-modal-description {
+    color: #475569;
+    line-height: 1.8;
     margin: 0;
     font-size: 1.05rem;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    border-left: 3px solid #3b82f6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .gallery-modal-info h3 {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] .gallery-modal-description {
+    background: #0f172a;
+    color: #cbd5e1;
+    border-left-color: #3b82f6;
 }
 
 /* Responsive modal di mobile */
@@ -7476,19 +7852,40 @@ body.dark-mode .service-card p,
     }
     
     .gallery-modal-image {
-        height: 300px; /* Tinggi lebih kecil di mobile */
+        height: 300px;
     }
     
     .gallery-modal-info {
-        padding: 24px; /* Padding lebih kecil di mobile */
+        padding: 24px;
     }
     
     .gallery-modal-info h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     
-    .gallery-modal-info p {
+    .gallery-modal-description {
         font-size: 0.95rem;
+        padding: 16px;
+    }
+    
+    .gallery-modal-metadata {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px;
+    }
+    
+    .metadata-item {
+        gap: 10px;
+    }
+    
+    .metadata-item i {
+        font-size: 1.1rem;
+    }
+    
+    .modal-title-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
 }
 
