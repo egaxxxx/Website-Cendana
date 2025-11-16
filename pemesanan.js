@@ -1,355 +1,362 @@
 /**
  * ============================================
- * PEMESANAN.JS - JAVASCRIPT UNTUK HALAMAN PEMESANAN
+ * PEMESANAN.JS - CLEAN VERSION
  * ============================================
- * File khusus untuk menangani logika halaman pemesanan
- * termasuk tampilan cards, modal, dan integrasi WhatsApp
+ * Rebuilt from scratch - 16 November 2025
+ * No duplications, no timing issues
  */
 
-/**
- * ============================================
- * FUNGSI: RENDER TRANSPORT CARDS
- * ============================================
- * Fungsi untuk menampilkan cards transportasi sesuai desain visual
- */
-function renderTransportCards(filterType = 'semua') {
-    const container = document.getElementById('transport-cards-grid');
-    if (!container) {
-        console.error('❌ Container transport-cards-grid tidak ditemukan');
-        return;
-    }
-
-    // Kosongkan container
-    container.innerHTML = '';
-
-    // Ambil data transportasi
-    const transportData = window.dataTransportasi || DATA_TRANSPORTASI_DEFAULT;
-
-    // Kumpulkan semua layanan berdasarkan filter
-    let allServices = [];
+const bookingApp = {
+    currentFilter: 'pesawat',
+    servicesData: {},
     
-    if (filterType === 'semua') {
-        // Gabungkan semua layanan
-        Object.keys(transportData).forEach(type => {
-            allServices = allServices.concat(transportData[type] || []);
-        });
-    } else {
-        // Ambil layanan berdasarkan jenis tertentu
-        allServices = transportData[filterType] || [];
-    }
-
-    // Jika tidak ada layanan, tampilkan pesan
-    if (allServices.length === 0) {
-        container.innerHTML = `
-            <div class="no-services-message">
-                <div class="no-services-icon">
-                    <i class="icon icon-info"></i>
-                </div>
-                <h3>Belum Ada Layanan</h3>
-                <p>Saat ini belum ada layanan ${filterType === 'semua' ? '' : filterType} yang tersedia.</p>
-            </div>
-        `;
-        return;
-    }
-
-    // Render setiap layanan sebagai card
-    allServices.forEach(service => {
-        const card = createServiceCard(service);
-        container.appendChild(card);
-    });
-
-    console.log(`✅ Berhasil render ${allServices.length} cards transportasi`);
-}
-
-/**
- * ============================================
- * FUNGSI: CREATE SERVICE CARD
- * ============================================
- * Membuat elemen card untuk satu layanan transportasi
- */
-function createServiceCard(service) {
-    // Buat container card
-    const card = document.createElement('div');
-    card.className = 'transport-card';
-    card.setAttribute('data-service-id', service.id);
-    card.setAttribute('data-transport-type', service.transportType);
-
-    // Path logo perusahaan
-    const logoPath = service.logo ? `uploads/${service.logo}` : getDefaultLogo(service.transportType);
-
-    // HTML content untuk card sesuai desain visual
-    card.innerHTML = `
-        <div class="transport-card-content">
-            <img src="${logoPath}" 
-                 alt="${service.name}" 
-                 class="company-logo"
-                 onerror="this.src='${getDefaultLogo(service.transportType)}'">
-            
-            <h3>${service.name}</h3>
-            
-            <div class="description">
-                ${service.route || 'Layanan transportasi terpercaya'}
-            </div>
-            
-            <div class="price-range">
-                ${service.price || 'Hubungi untuk harga'}
-            </div>
-            
-            <button class="btn-book-now" onclick="bukaPemesanan('${service.name}', '${service.transportType}')">
-                <i class="icon icon-whatsapp"></i>
-                Pesan Sekarang
-            </button>
-        </div>
-    `;
-
-    return card;
-}
-
-/**
- * ============================================
- * FUNGSI: GET DEFAULT LOGO
- * ============================================
- * Mengembalikan path logo default berdasarkan jenis transportasi
- */
-function getDefaultLogo(transportType) {
-    const defaultLogos = {
-        'pesawat': 'uploads/pesawat/default-plane.png',
-        'kapal': 'uploads/kapal/default-ship.png',
-        'bus': 'uploads/bus/default-bus.png'
-    };
-    
-    return defaultLogos[transportType] || 'uploads/default-transport.png';
-}
-
-/**
- * ============================================
- * FUNGSI: FILTER TRANSPORTASI
- * ============================================
- * Filter layanan berdasarkan jenis transportasi
- */
-function filterTransportasi(jenisTransportasi) {
-    // Update tab aktif
-    const tabs = document.querySelectorAll('.filter-tab');
-    tabs.forEach(tab => {
-        tab.classList.remove('active');
-        if (tab.dataset.filter === jenisTransportasi) {
-            tab.classList.add('active');
+    /**
+     * Initialize the booking app
+     */
+    init() {
+        console.log('🚀 Booking App Initializing...');
+        
+        // Load data from config.js
+        if (typeof DATA_TRANSPORTASI_DEFAULT !== 'undefined') {
+            this.servicesData = DATA_TRANSPORTASI_DEFAULT;
+            console.log('✅ Data loaded:', Object.keys(this.servicesData));
+        } else {
+            console.error('❌ DATA_TRANSPORTASI_DEFAULT not found');
+            this.servicesData = { pesawat: [], kapal: [], bus: [] };
         }
-    });
-
-    // Render cards dengan filter
-    renderTransportCards(jenisTransportasi);
+        
+        // Render initial cards
+        this.renderCards('pesawat');
+        
+        // Setup event listeners
+        this.setupEventListeners();
+        
+        console.log('✅ Booking App Ready');
+    },
     
-    console.log(`🔍 Filter transportasi: ${jenisTransportasi}`);
-}
-
-/**
- * ============================================
- * FUNGSI: BUKA MODAL PEMESANAN
- * ============================================
- * Membuka modal pemesanan dengan data layanan yang dipilih
- */
-function bukaPemesanan(namaLayanan, jenisTransportasi) {
-    const modal = document.getElementById('bookingModal');
-    if (!modal) {
-        console.error('❌ Modal pemesanan tidak ditemukan');
-        return;
-    }
-
-    // Set nilai field jenis layanan (readonly)
-    const serviceNameField = document.getElementById('booking-service-name');
-    const transportTypeField = document.getElementById('booking-transport-type');
-    const transportTypeDisplayField = document.getElementById('booking-transport-type-display');
-    
-    if (serviceNameField) serviceNameField.value = namaLayanan;
-    if (transportTypeField) transportTypeField.value = jenisTransportasi;
-    if (transportTypeDisplayField) transportTypeDisplayField.value = namaLayanan;
-
-    // Reset form
-    resetBookingForm();
-
-    // Tampilkan modal
-    modal.style.display = 'flex';
-    
-    // Animate modal appearance
-    requestAnimationFrame(() => {
-        modal.style.opacity = '1';
-        const modalContent = modal.querySelector('.booking-modal');
-        if (modalContent) {
-            modalContent.style.transform = 'scale(1)';
+    /**
+     * Setup event listeners
+     */
+    setupEventListeners() {
+        // Modal overlay click to close
+        const modalOverlay = document.getElementById('bookingModal');
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    this.closeModal();
+                }
+            });
         }
-    });
-
-    console.log(`📋 Modal pemesanan dibuka untuk: ${namaLayanan}`);
-}
-
-/**
- * ============================================
- * FUNGSI: TUTUP MODAL PEMESANAN
- * ============================================
- * Menutup modal pemesanan dengan animasi
- */
-function tutupModalPemesanan() {
-    const modal = document.getElementById('bookingModal');
-    if (!modal) return;
-
-    // Animate modal disappearance
-    modal.style.opacity = '0';
-    const modalContent = modal.querySelector('.booking-modal');
-    if (modalContent) {
-        modalContent.style.transform = 'scale(0.9)';
-    }
-
-    // Hide modal after animation
-    setTimeout(() => {
-        modal.style.display = 'none';
-        resetBookingForm();
-    }, 300);
-
-    console.log('✖️ Modal pemesanan ditutup');
-}
-
-/**
- * ============================================
- * FUNGSI: RESET BOOKING FORM
- * ============================================
- * Reset semua field di form pemesanan
- */
-function resetBookingForm() {
-    const form = document.getElementById('bookingForm');
-    if (!form) return;
-
-    // Reset field yang tidak readonly
-    const fields = ['customer-name', 'origin', 'destination', 'passengers', 'travel-date'];
-    fields.forEach(fieldId => {
-        const field = document.getElementById(fieldId);
-        if (field && !field.readOnly) {
-            field.value = fieldId === 'passengers' ? '1' : '';
-        }
-    });
-}
-
-/**
- * ============================================
- * FUNGSI: KIRIM PEMESANAN VIA WHATSAPP
- * ============================================
- * Mengumpulkan data form dan kirim via WhatsApp
- */
-function kirimPemesanan(event) {
-    event.preventDefault();
-
-    // Ambil data dari form
-    const formData = {
-        jenisLayanan: document.getElementById('booking-transport-type-display')?.value || '',
-        nama: document.getElementById('customer-name')?.value || '',
-        lokasiSekarang: document.getElementById('origin')?.value || '',
-        lokasiTujuan: document.getElementById('destination')?.value || '',
-        jumlahOrang: document.getElementById('passengers')?.value || '1',
-        tanggalBerangkat: document.getElementById('travel-date')?.value || '',
-        pesanTambahan: document.getElementById('additional-message')?.value || 'Tidak ada'
-    };
-
-    // Validasi data wajib
-    if (!formData.nama || !formData.lokasiSekarang || !formData.lokasiTujuan) {
-        alert('Mohon lengkapi semua field yang wajib diisi (ditandai dengan *)');
-        return;
-    }
-
-    // Buat template pesan WhatsApp
-    const pesanWhatsApp = generateWhatsAppMessage(formData);
-
-    // Ambil nomor WhatsApp perusahaan
-    const nomorWhatsApp = (window.KONFIGURASI_PERUSAHAAN?.whatsapp || '6285821841529').replace(/\D/g, '');
-
-    // URL WhatsApp
-    const whatsappURL = `https://wa.me/${nomorWhatsApp}?text=${encodeURIComponent(pesanWhatsApp)}`;
-
-    // Buka WhatsApp
-    window.open(whatsappURL, '_blank');
-
-    // Tutup modal
-    tutupModalPemesanan();
-
-    console.log('📱 Pemesanan dikirim via WhatsApp');
-}
-
-/**
- * ============================================
- * FUNGSI: GENERATE WHATSAPP MESSAGE
- * ============================================
- * Membuat template pesan WhatsApp sesuai format yang diminta
- */
-function generateWhatsAppMessage(data) {
-    let pesan = `Halo Admin, saya ingin melakukan pemesanan layanan:
-
-• Jenis Layanan: ${data.jenisLayanan}
-• Nama Pemesan: ${data.nama}
-• Lokasi Saat Ini: ${data.lokasiSekarang}
-• Lokasi Tujuan: ${data.lokasiTujuan}
-• Jumlah Orang: ${data.jumlahOrang}`;
-
-    // Tambahkan tanggal jika diisi
-    if (data.tanggalBerangkat) {
-        const tanggalFormatted = new Date(data.tanggalBerangkat).toLocaleDateString('id-ID', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-        pesan += `\n• Tanggal Berangkat: ${tanggalFormatted}`;
-    }
-
-    // Tambahkan pesan tambahan jika ada
-    if (data.pesanTambahan && data.pesanTambahan !== 'Tidak ada') {
-        pesan += `\n\nPesan Tambahan:\n${data.pesanTambahan}`;
-    }
-
-    pesan += '\n\nTerima kasih!';
-
-    return pesan;
-}
-
-/**
- * ============================================
- * EVENT LISTENERS DAN INITIALIZATION
- * ============================================
- */
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Pemesanan.js initialized');
-
-    // Render cards transportasi pertama kali
-    setTimeout(() => {
-        renderTransportCards('semua');
-    }, 500);
-
-    // Event listener untuk menutup modal dengan klik di overlay
-    const modalOverlay = document.getElementById('bookingModal');
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', function(e) {
-            if (e.target === modalOverlay) {
-                tutupModalPemesanan();
+        
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.style.display === 'flex') {
+                this.closeModal();
             }
         });
-    }
-
-    // Event listener untuk tombol ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            tutupModalPemesanan();
+    },
+    
+    /**
+     * Switch filter and render cards
+     */
+    switchFilter(type) {
+        console.log(`🔄 Switching to: ${type}`);
+        this.currentFilter = type;
+        
+        // Update active tab
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.classList.remove('active');
+            if (tab.dataset.type === type) {
+                tab.classList.add('active');
+            }
+        });
+        
+        // Update section title
+        this.updateSectionTitle(type);
+        
+        // Render cards
+        this.renderCards(type);
+    },
+    
+    /**
+     * Update section title based on transport type
+     */
+    updateSectionTitle(type) {
+        const titles = {
+            'pesawat': 'Pilihan Pesawat Terbaik',
+            'kapal': 'Pilihan Kapal Terpercaya',
+            'bus': 'Pilihan Bus Terbaik'
+        };
+        
+        const count = (this.servicesData[type] || []).length;
+        
+        const titleEl = document.getElementById('sectionTitle');
+        const subtitleEl = document.getElementById('sectionSubtitle');
+        
+        if (titleEl) {
+            titleEl.textContent = titles[type] || 'Pilihan Transportasi';
         }
-    });
-
-    // Set min date untuk field tanggal
-    const travelDateField = document.getElementById('travel-date');
-    if (travelDateField) {
-        const today = new Date().toISOString().split('T')[0];
-        travelDateField.min = today;
+        
+        if (subtitleEl) {
+            subtitleEl.textContent = `${count} pilihan layanan tersedia untuk Anda`;
+        }
+    },
+    
+    /**
+     * Render cards for specified type
+     */
+    renderCards(type) {
+        console.log(`🔍 renderCards called with type: ${type}`);
+        
+        const container = document.getElementById('cardsContainer');
+        console.log('🔍 Container element:', container);
+        
+        if (!container) {
+            console.error('❌ Container #cardsContainer not found in DOM!');
+            console.log('Available IDs:', Array.from(document.querySelectorAll('[id]')).map(el => el.id));
+            return;
+        }
+        
+        // Clear container
+        container.innerHTML = '';
+        console.log('✅ Container cleared');
+        
+        // Get services for this type
+        const services = this.servicesData[type] || [];
+        console.log(`📦 Rendering ${services.length} cards for ${type}`);
+        console.log('Services data:', services);
+        
+        if (services.length === 0) {
+            container.innerHTML = `
+                <div class="no-services-message">
+                    <div class="no-services-icon">
+                        <i class="icon icon-info"></i>
+                    </div>
+                    <h3>Belum Ada Layanan</h3>
+                    <p>Saat ini belum ada layanan ${type} yang tersedia.</p>
+                </div>
+            `;
+            console.log('⚠️ No services available, showing empty message');
+            return;
+        }
+        
+        // Render each service card
+        services.forEach((service, index) => {
+            console.log(`Creating card ${index + 1}/${services.length}:`, service.name);
+            const card = this.createCard(service);
+            container.appendChild(card);
+        });
+        
+        console.log(`✅ Successfully rendered ${services.length} cards to DOM`);
+    },
+    
+    /**
+     * Create a single service card
+     */
+    createCard(service) {
+        const card = document.createElement('div');
+        card.className = 'transport-card';
+        
+        const logoPath = service.logo ? `uploads/${service.logo}` : this.getDefaultLogo(service.transportType);
+        const iconClass = this.getIconClass(service.transportType);
+        
+        card.innerHTML = `
+            <div class="transport-card-content">
+                <div class="company-logo-wrapper">
+                    <img src="${logoPath}" 
+                         alt="${service.name}" 
+                         class="company-logo"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-placeholder" style="display:none;">
+                        <i class="icon ${iconClass}"></i>
+                    </div>
+                </div>
+                
+                <h3>${service.name}</h3>
+                
+                <div class="description">
+                    ${service.route || 'Layanan transportasi terpercaya'}
+                </div>
+                
+                <div class="price-range">
+                    ${service.price || 'Hubungi untuk harga'}
+                </div>
+                
+                <button class="btn-book-now" onclick="bookingApp.openModal('${this.escapeHtml(service.name)}', '${service.transportType}')">
+                    <i class="icon icon-whatsapp"></i>
+                    <span>Pesan Sekarang</span>
+                </button>
+            </div>
+        `;
+        
+        return card;
+    },
+    
+    /**
+     * Get default logo path
+     */
+    getDefaultLogo(type) {
+        const logos = {
+            'pesawat': 'uploads/pesawat/default-plane.png',
+            'kapal': 'uploads/kapal/default-ship.png',
+            'bus': 'uploads/bus/default-bus.png'
+        };
+        return logos[type] || 'uploads/default-transport.png';
+    },
+    
+    /**
+     * Get icon class for transport type
+     */
+    getIconClass(type) {
+        const icons = {
+            'pesawat': 'icon-plane',
+            'kapal': 'icon-ship',
+            'bus': 'icon-bus'
+        };
+        return icons[type] || 'icon-plane';
+    },
+    
+    /**
+     * Escape HTML to prevent XSS
+     */
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    },
+    
+    /**
+     * Open booking modal
+     */
+    openModal(serviceName, type) {
+        console.log(`📋 Opening modal for: ${serviceName}`);
+        
+        const modal = document.getElementById('bookingModal');
+        if (!modal) {
+            console.error('❌ Modal not found');
+            return;
+        }
+        
+        // Set form values
+        document.getElementById('selectedService').value = serviceName;
+        document.getElementById('selectedType').value = type;
+        document.getElementById('displayService').value = serviceName;
+        
+        // Reset other fields
+        document.getElementById('customerName').value = '';
+        document.getElementById('origin').value = '';
+        document.getElementById('destination').value = '';
+        document.getElementById('passengers').value = '1';
+        document.getElementById('travelDate').value = '';
+        document.getElementById('additionalMessage').value = '';
+        
+        // Show modal with animation
+        modal.style.display = 'flex';
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        console.log('✅ Modal opened');
+    },
+    
+    /**
+     * Close booking modal
+     */
+    closeModal() {
+        const modal = document.getElementById('bookingModal');
+        if (modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); // Wait for animation to finish
+            document.body.style.overflow = '';
+        }
+        console.log('✖️ Modal closed');
+    },
+    
+    /**
+     * Submit booking form
+     */
+    submitForm(event) {
+        event.preventDefault();
+        
+        const formData = {
+            service: document.getElementById('selectedService').value,
+            type: document.getElementById('selectedType').value,
+            name: document.getElementById('customerName').value,
+            origin: document.getElementById('origin').value,
+            destination: document.getElementById('destination').value,
+            passengers: document.getElementById('passengers').value || '1',
+            date: document.getElementById('travelDate').value || '',
+            message: document.getElementById('additionalMessage').value || ''
+        };
+        
+        // Validate required fields
+        if (!formData.name || !formData.origin || !formData.destination) {
+            alert('Mohon lengkapi semua field yang wajib diisi (*)');
+            return;
+        }
+        
+        // Generate WhatsApp message
+        const waMessage = this.generateWhatsAppMessage(formData);
+        
+        // Get company WhatsApp number
+        const waNumber = (window.COMPANY_WHATSAPP || '6285821841529').replace(/\D/g, '');
+        
+        // Open WhatsApp
+        const waURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+        window.open(waURL, '_blank');
+        
+        // Close modal
+        this.closeModal();
+        
+        console.log('📱 Booking sent via WhatsApp');
+    },
+    
+    /**
+     * Generate WhatsApp message
+     */
+    generateWhatsAppMessage(data) {
+        let message = `*PEMESANAN TIKET - CV. CENDANA TRAVEL*\n\n`;
+        message += `Halo Admin, saya ingin melakukan pemesanan:\n\n`;
+        message += `*Jenis Layanan:* ${data.service}\n`;
+        message += `*Nama:* ${data.name}\n`;
+        message += `*Asal:* ${data.origin}\n`;
+        message += `*Tujuan:* ${data.destination}\n`;
+        message += `*Jumlah Penumpang:* ${data.passengers} orang\n`;
+        
+        if (data.date) {
+            try {
+                const dateObj = new Date(data.date);
+                const dateStr = dateObj.toLocaleDateString('id-ID', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                message += `*Tanggal Berangkat:* ${dateStr}\n`;
+            } catch (e) {
+                message += `*Tanggal Berangkat:* ${data.date}\n`;
+            }
+        }
+        
+        if (data.message) {
+            message += `\n*Pesan Tambahan:*\n${data.message}\n`;
+        }
+        
+        message += '\n_Mohon informasi ketersediaan dan harga._\n\n';
+        message += 'Terima kasih! 🙏';
+        
+        return message;
     }
+};
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🌟 DOM Content Loaded - Starting Booking App');
+    console.log('Available DATA_TRANSPORTASI_DEFAULT:', typeof DATA_TRANSPORTASI_DEFAULT);
+    bookingApp.init();
 });
 
-// Ekspos fungsi ke global scope untuk kompatibilitas
-window.renderTransportCards = renderTransportCards;
-window.filterTransportasi = filterTransportasi;
-window.bukaPemesanan = bukaPemesanan;
-window.tutupModalPemesanan = tutupModalPemesanan;
-window.kirimPemesanan = kirimPemesanan;
+// Export for compatibility
+window.bookingApp = bookingApp;
+console.log('📜 pemesanan.js loaded, bookingApp exported to window');
