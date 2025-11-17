@@ -50,11 +50,7 @@ $companyInfoData = [
                     </svg>
                     <span>WhatsApp</span>
                 </a>
-                <!-- Tombol untuk mengubah mode gelap/terang -->
-                <button class="dark-mode-toggle" onclick="ubahModeGelap()" title="Ubah Mode Gelap/Terang">
-                    <i class="icon icon-moon"></i>
-                </button>
-                <!-- Menu untuk mobile (hamburger menu) -->
+                <!-- menu mobile -->
                 <div class="mobile-menu" title="Menu">
                     <i class="icon icon-menu"></i>
                 </div>
