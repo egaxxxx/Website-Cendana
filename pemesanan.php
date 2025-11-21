@@ -72,38 +72,62 @@ $companyInfoData = [
         </div>
     </section>
 
-    <!-- Trust Section -->
-    <section class="trust-section">
+    <!-- Trust/Features Section - Redesigned -->
+    <section class="page-pemesanan-features">
         <div class="container">
-            <div class="trust-content">
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="icon icon-whatsapp"></i>
+            <!-- Section Header -->
+            <div class="features-header">
+                <h2 class="features-title">Mengapa Pilih Kami?</h2>
+                <p class="features-subtitle">Kami menawarkan layanan terbaik dengan harga kompetitif dan dukungan pelanggan 24/7</p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="features-grid">
+                
+                <!-- Feature 1: WhatsApp Booking -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-background">
+                            <i class="icon icon-whatsapp"></i>
+                        </div>
                     </div>
-                    <h3>Booking via WhatsApp</h3>
-                    <p>Pesan tiket dengan mudah melalui WhatsApp, cepat dan responsif</p>
+                    <h3 class="feature-card-title">Booking via WhatsApp</h3>
+                    <p class="feature-card-description">Pesan tiket dengan mudah melalui WhatsApp, cepat dan responsif</p>
                 </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="icon icon-clock"></i>
+
+                <!-- Feature 2: Quick Response -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-background">
+                            <i class="icon icon-clock"></i>
+                        </div>
                     </div>
-                    <h3>Respon Cepat</h3>
-                    <p>Konfirmasi pesanan dalam hitungan menit</p>
+                    <h3 class="feature-card-title">Respon Cepat</h3>
+                    <p class="feature-card-description">Konfirmasi pesanan dalam hitungan menit</p>
                 </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="fa-solid fa-headset"></i>
+
+                <!-- Feature 3: 24/7 Service -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-background">
+                            <i class="icon icon-headset"></i>
+                        </div>
                     </div>
-                    <h3>Layanan 24/7</h3>
-                    <p>Customer service siap membantu kapan saja</p>
+                    <h3 class="feature-card-title">Layanan 24/7</h3>
+                    <p class="feature-card-description">Customer service siap membantu kapan saja</p>
                 </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="fa-solid fa-dollar-sign"></i>
+
+                <!-- Feature 4: Competitive Price -->
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-background">
+                            <i class="icon icon-price-tag"></i>
+                        </div>
                     </div>
-                    <h3>Harga Kompetitif</h3>
-                    <p>Dapatkan harga terbaik untuk semua rute perjalanan</p>
+                    <h3 class="feature-card-title">Harga Kompetitif</h3>
+                    <p class="feature-card-description">Dapatkan harga terbaik untuk semua rute perjalanan</p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -263,53 +287,77 @@ $companyInfoData = [
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
+    <!-- Footer Premium -->
+    <footer class="footer-premium">
         <div class="container">
-            <div class="footer-grid">
-                <!-- Section 1: About -->
-                <section class="footer-section">
-                    <h3><?php echo htmlspecialchars($companyInfoData['name']); ?></h3>
-                    <p><?php echo htmlspecialchars($companyInfoData['description']); ?></p>
-                </section>
+            <!-- Main Grid: 4 Kolom -->
+            <div class="footer-grid-premium">
                 
-                <!-- Section 2: Services -->
-                <section class="footer-section">
-                    <h3>Layanan Kami</h3>
-                    <ul class="footer-links">
-                        <li><a href="pemesanan.php">Tiket Pesawat</a></li>
-                        <li><a href="pemesanan.php">Tiket Kapal</a></li>
-                        <li><a href="pemesanan.php">Tiket Bus</a></li>
-                    </ul>
+                <!-- KOLOM 1: Tentang Kami -->
+                <section class="footer-section-premium">
+                    <h3 class="footer-heading-premium">Tentang Kami</h3>
+                    <div class="footer-separator-premium"></div>
+                    <p class="footer-text-premium">
+                        <?php echo htmlspecialchars($companyInfoData['description']); ?>
+                    </p>
+                    <div class="footer-hours-box">
+                        <p class="footer-label-premium">Jam Operasional:</p>
+                        <p class="footer-text-premium">
+                            <?php echo htmlspecialchars($companyInfoData['hours']); ?>
+                        </p>
+                    </div>
                 </section>
-                
-                <!-- Section 3: Quick Links -->
-                <section class="footer-section">
-                    <h3>Tautan Cepat</h3>
-                    <ul class="footer-links">
+
+                <!-- KOLOM 2: Menu Cepat -->
+                <section class="footer-section-premium">
+                    <h3 class="footer-heading-premium">Menu Cepat</h3>
+                    <div class="footer-separator-premium"></div>
+                    <ul class="footer-links-premium">
                         <li><a href="index.php">Beranda</a></li>
+                        <li><a href="pemesanan.php">Pemesanan</a></li>
                         <li><a href="galeri.php">Galeri</a></li>
                         <li><a href="kontak.php">Kontak</a></li>
                         <li><a href="faq.php">FAQ</a></li>
                     </ul>
                 </section>
-                
-                <!-- Section 4: Contact -->
-                <section class="footer-section">
-                    <h3>Hubungi Kami</h3>
-                    <p>
-                        <strong>WhatsApp:</strong><br>
-                        <a href="https://wa.me/<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>"><?php echo htmlspecialchars($companyInfoData['whatsapp']); ?></a>
-                    </p>
-                    <p style="margin-top: var(--spacing-md);">
-                        <strong>Email:</strong><br>
-                        <a href="mailto:<?php echo htmlspecialchars($companyInfoData['email']); ?>"><?php echo htmlspecialchars($companyInfoData['email']); ?></a>
-                    </p>
+
+                <!-- KOLOM 3: Layanan Kami -->
+                <section class="footer-section-premium">
+                    <h3 class="footer-heading-premium">Layanan Kami</h3>
+                    <div class="footer-separator-premium"></div>
+                    <ul class="footer-links-premium">
+                        <li><a href="#">Paket Liburan</a></li>
+                        <li><a href="#">Tiket Pesawat</a></li>
+                        <li><a href="#">Hotel & Akomodasi</a></li>
+                        <li><a href="#">Tour Guide</a></li>
+                    </ul>
+                </section>
+
+                <!-- KOLOM 4: Hubungi Kami -->
+                <section class="footer-section-premium">
+                    <h3 class="footer-heading-premium">Hubungi Kami</h3>
+                    <div class="footer-separator-premium"></div>
+                    <div class="footer-contact-item">
+                        <a href="https://wa.me/<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>" class="footer-link-contact">📱 WhatsApp</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <a href="https://wa.me/<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>" class="footer-link-contact"><?php echo htmlspecialchars($companyInfoData['whatsapp']); ?></a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <a href="mailto:<?php echo htmlspecialchars($companyInfoData['email']); ?>" class="footer-link-contact">📧 Email</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <p class="footer-label-premium">Alamat:</p>
+                        <p class="footer-text-premium"><?php echo htmlspecialchars($companyInfoData['address']); ?></p>
+                    </div>
                 </section>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 <?php echo htmlspecialchars($companyInfoData['name']); ?>. All rights reserved.</p>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom-premium">
+                <p class="footer-copyright-premium">
+                    &copy; 2024 <?php echo htmlspecialchars($companyInfoData['name']); ?>. All rights reserved.
+                </p>
                 <!-- Ikon kunci admin (tersembunyi) -->
                 <div class="admin-access" onclick="showAdminLogin()" title="Akses Admin">
                     <i class="icon icon-sign-in"></i>

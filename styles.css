@@ -7,20 +7,20 @@
     --color-primary: #D4956E;
     --color-primary-dark: #B8704D;
     --color-primary-light: #E8BBA8;
-    
+
     --color-secondary: #8B7355;
     --color-accent: #F4A460;
-    
+
     --color-dark: #1A1A1A;
     --color-dark-gray: #2D2D2D;
     --color-gray: #6B7280;
     --color-light-gray: #F3F4F6;
     --color-white: #FFFFFF;
-    
+
     --color-success: #10B981;
     --color-error: #EF4444;
     --color-warning: #F59E0B;
-    
+
     /* Typography */
     --font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-size-h1: 3.5rem;
@@ -29,7 +29,7 @@
     --font-size-h4: 1.35rem;
     --font-size-body: 1rem;
     --font-size-small: 0.875rem;
-    
+
     /* Spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -38,13 +38,13 @@
     --spacing-xl: 3rem;
     --spacing-2xl: 4rem;
     --spacing-3xl: 6rem;
-    
+
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    
+
     /* Border Radius */
     --radius-sm: 0.5rem;
     --radius-md: 1rem;
@@ -79,17 +79,33 @@ body {
    TYPOGRAPHY
    ============================================ */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: var(--spacing-md);
     color: var(--color-dark);
 }
 
-h1 { font-size: var(--font-size-h1); }
-h2 { font-size: var(--font-size-h2); }
-h3 { font-size: var(--font-size-h3); }
-h4 { font-size: var(--font-size-h4); }
+h1 {
+    font-size: var(--font-size-h1);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+}
+
+h4 {
+    font-size: var(--font-size-h4);
+}
 
 p {
     margin-bottom: var(--spacing-md);
@@ -878,6 +894,7 @@ section {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -888,6 +905,7 @@ section {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -898,6 +916,7 @@ section {
         opacity: 0;
         transform: translateX(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -909,6 +928,7 @@ section {
         opacity: 0;
         transform: translateX(30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -919,21 +939,53 @@ section {
    UTILITY CLASSES
    ============================================ */
 
-.text-center { text-align: center; }
-.text-primary { color: var(--color-primary); }
-.text-white { color: var(--color-white); }
-.text-gray { color: var(--color-gray); }
+.text-center {
+    text-align: center;
+}
 
-.mt-1 { margin-top: var(--spacing-md); }
-.mt-2 { margin-top: var(--spacing-lg); }
-.mt-3 { margin-top: var(--spacing-xl); }
+.text-primary {
+    color: var(--color-primary);
+}
 
-.mb-1 { margin-bottom: var(--spacing-md); }
-.mb-2 { margin-bottom: var(--spacing-lg); }
-.mb-3 { margin-bottom: var(--spacing-xl); }
+.text-white {
+    color: var(--color-white);
+}
 
-.pt-3 { padding-top: var(--spacing-xl); }
-.pb-3 { padding-bottom: var(--spacing-xl); }
+.text-gray {
+    color: var(--color-gray);
+}
+
+.mt-1 {
+    margin-top: var(--spacing-md);
+}
+
+.mt-2 {
+    margin-top: var(--spacing-lg);
+}
+
+.mt-3 {
+    margin-top: var(--spacing-xl);
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-2 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.mb-3 {
+    margin-bottom: var(--spacing-xl);
+}
+
+.pt-3 {
+    padding-top: var(--spacing-xl);
+}
+
+.pb-3 {
+    padding-bottom: var(--spacing-xl);
+}
 
 /* ============================================
    MODAL STYLES
@@ -2298,6 +2350,7 @@ section {
    RESPONSIVE ADJUSTMENTS FOR NEW SECTIONS
    ============================================ */
 @media (max-width: 768px) {
+
     .testimonials-grid,
     .steps-container,
     .gallery-new-grid,
@@ -2351,6 +2404,7 @@ section {
 }
 
 @media (max-width: 425px) {
+
     .testimonials-grid,
     .steps-container,
     .gallery-new-grid,
@@ -2427,181 +2481,953 @@ section {
 }
 
 /* ============================================
-   FOOTER STYLING - IMPROVED GLOBAL
+   FOOTER PREMIUM PASTEL - NEW DESIGN
    ============================================ */
 
-footer {
-    background: linear-gradient(135deg, #1f1f1f 0%, #0d0d0d 100%);
-    color: var(--color-white);
-    padding: var(--spacing-3xl) 0 var(--spacing-lg);
-    border-top: 2px solid var(--color-primary);
+/* Main Footer Container */
+.footer-premium {
+    background: linear-gradient(135deg, #2a1f1a 0%, #3d2f27 50%, #2a1f1a 100%);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(215, 165, 122, 0.2);
 }
 
-.footer-grid {
+/* Decorative background element */
+.footer-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 149, 110, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid Layout - 4 Columns */
+.footer-grid-premium {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-3xl);
-    margin-bottom: var(--spacing-3xl);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
 }
 
-.footer-section {
+/* Section Container */
+.footer-section-premium {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 1rem;
 }
 
-.footer-section h3 {
-    color: var(--color-primary);
+/* Section Heading */
+.footer-heading-premium {
     font-size: 1.15rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
-    margin: 0 0 var(--spacing-md) 0;
-    text-transform: uppercase;
-    border-bottom: 2px solid rgba(212, 149, 110, 0.3);
-    padding-bottom: var(--spacing-sm);
-}
-
-.footer-section p {
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.7;
-    margin: 0 0 var(--spacing-sm) 0;
-    font-size: 0.95rem;
-}
-
-.footer-section strong {
     color: rgba(255, 255, 255, 0.95);
-    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.5px;
 }
 
-.footer-links {
+/* Decorative Separator */
+.footer-separator-premium {
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #d7a57a 0%, rgba(215, 165, 122, 0.2) 100%);
+    border-radius: 2px;
+    margin: 0.5rem 0;
+}
+
+/* Body Text */
+.footer-text-premium {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.80);
+    margin: 0;
+}
+
+/* Label Text */
+.footer-label-premium {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.90);
+    margin: 0 0 0.5rem 0;
+}
+
+/* Address Text */
+.footer-address {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Links List */
+.footer-links-premium {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: 0.8rem;
 }
 
-.footer-links li {
-    margin: 0;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.75);
+/* Link Items */
+.footer-links-premium a {
+    color: rgba(255, 255, 255, 0.80);
     text-decoration: none;
     font-size: 0.95rem;
     transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-xs);
+    display: inline-block;
+    position: relative;
 }
 
-.footer-links a:hover {
-    color: var(--color-primary);
+/* Link Underline Animation */
+.footer-links-premium a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #d7a57a 0%, transparent 100%);
+    transition: width 0.3s ease;
+}
+
+.footer-links-premium a:hover {
+    color: rgba(215, 165, 122, 0.95);
+}
+
+.footer-links-premium a:hover::before {
+    width: 30px;
+}
+
+/* Contact Links */
+.footer-link-contact {
+    color: rgba(215, 165, 122, 0.90);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer-link-contact:hover {
+    color: #d7a57a;
     transform: translateX(4px);
 }
 
-.footer-section a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-weight: 500;
-}
-
-.footer-section a:hover {
-    color: var(--color-primary);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding-top: var(--spacing-lg);
-    text-align: center;
+/* Contact Item */
+.footer-contact-item {
+    margin-bottom: 1.5rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-lg);
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
-.footer-bottom p {
-    color: rgba(255, 255, 255, 0.6);
+/* Operating Hours Box */
+.footer-hours-box {
+    background: rgba(215, 165, 122, 0.08);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 3px solid rgba(215, 165, 122, 0.4);
+    margin-top: 0.5rem;
+}
+
+.footer-hours-box p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Footer Bottom */
+.footer-bottom-premium {
+    border-top: 1px solid rgba(215, 165, 122, 0.15);
+    padding-top: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-copyright-premium {
+    color: rgba(255, 255, 255, 0.65);
     font-size: 0.9rem;
     margin: 0;
 }
 
-.admin-access {
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.admin-access:hover {
-    color: rgba(212, 149, 110, 0.6);
-    transform: scale(1.2);
-}
-
 /* ============================================
-   FOOTER RESPONSIVE
+   FOOTER RESPONSIVE DESIGN
    ============================================ */
 
-@media (max-width: 768px) {
-    footer {
-        padding: var(--spacing-2xl) 0 var(--spacing-lg);
-    }
-
-    .footer-grid {
+/* Tablet - 2 Columns */
+@media (max-width: 1024px) {
+    .footer-grid-premium {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-2xl);
-        margin-bottom: var(--spacing-2xl);
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+/* Mobile Tablet - Stack */
+@media (max-width: 768px) {
+    .footer-premium {
+        padding: 3rem 0 1.5rem;
     }
 
-    .footer-section h3 {
+    .footer-grid-premium {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-heading-premium {
+        font-size: 1.05rem;
+    }
+
+    .footer-text-premium {
+        font-size: 0.9rem;
+    }
+
+    .footer-label-premium {
+        font-size: 0.85rem;
+    }
+
+    .footer-hours-box {
+        padding: 0.75rem;
+    }
+}
+
+/* Mobile Extra Small */
+@media (max-width: 425px) {
+    .footer-premium {
+        padding: 2rem 0 1rem;
+    }
+
+    .footer-grid-premium {
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-heading-premium {
         font-size: 1rem;
     }
 
-    .footer-section p {
-        font-size: 0.9rem;
+    .footer-text-premium {
+        font-size: 0.85rem;
     }
 
-    .footer-links a {
-        font-size: 0.9rem;
+    .footer-label-premium {
+        font-size: 0.8rem;
+    }
+
+    .footer-copyright-premium {
+        font-size: 0.8rem;
+    }
+
+    .footer-separator-premium {
+        width: 30px;
+    }
+}
+
+/* ============================================
+   PAGE PEMESANAN - AIRLINE LOGO STYLING (SCOPED)
+   ============================================ */
+
+/* Wrapper untuk logo maskapai di halaman pemesanan */
+.page-pemesanan .company-logo-wrapper {
+    /* Ukuran yang proporsional dengan card */
+    height: 140px;
+    
+    /* Background subtle dan profesional */
+    background: linear-gradient(135deg, #F5F5F5 0%, #EEEEEE 100%);
+    
+    /* Padding untuk spacing */
+    padding: var(--spacing-md);
+    
+    /* Container styling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+    /* Transisi untuk wrapper */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect pada wrapper - untuk trigger perubahan */
+.page-pemesanan .transport-card:hover .company-logo-wrapper {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+}
+
+/* GRAYSCALE DEFAULT - Logo image styling di halaman pemesanan */
+.page-pemesanan .company-logo {
+    /* Ukuran proporsional */
+    max-width: 90%;
+    max-height: 90%;
+    
+    /* GRAYSCALE DEFAULT */
+    filter: grayscale(100%);
+    
+    /* Opacity netral */
+    opacity: 0.85;
+    
+    /* Transisi smooth untuk effect grayscale ↔ color */
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* HOVER EFFECT - Kembali ke warna asli dengan smooth transition */
+.page-pemesanan .company-logo:hover,
+.page-pemesanan .transport-card:hover .company-logo {
+    /* Menghapus grayscale - tampil warna asli */
+    filter: grayscale(0%);
+    
+    /* Opacity meningkat saat hover */
+    opacity: 1;
+    
+    /* Slight scale untuk interaktivitas */
+    transform: scale(1.03);
+}
+
+/* Placeholder styling di halaman pemesanan */
+.page-pemesanan .logo-placeholder {
+    /* Grayscale untuk placeholder juga */
+    filter: grayscale(100%);
+    
+    /* Icon warna neutral */
+    color: rgba(107, 114, 128, 0.5);
+    
+    /* Transisi smooth */
+    transition: filter 0.3s ease, color 0.3s ease;
+    
+    /* Background */
+    background: linear-gradient(135deg, #F5F5F5 0%, #EEEEEE 100%) !important;
+}
+
+/* Hover effect untuk placeholder - kembali ke warna */
+.page-pemesanan .logo-placeholder:hover,
+.page-pemesanan .transport-card:hover .logo-placeholder {
+    /* Menghapus grayscale */
+    filter: grayscale(0%);
+    
+    /* Icon warna lebih terang saat hover */
+    color: rgba(107, 114, 128, 0.8);
+}
+
+/* Responsive adjustments untuk logo maskapai di pemesanan */
+@media (max-width: 768px) {
+    .page-pemesanan .company-logo-wrapper {
+        height: 120px;
+        padding: var(--spacing-sm);
     }
 }
 
 @media (max-width: 425px) {
-    footer {
-        padding: var(--spacing-xl) 0 var(--spacing-md);
+    .page-pemesanan .company-logo-wrapper {
+        height: 100px;
+        padding: var(--spacing-xs);
     }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
-        margin-bottom: var(--spacing-xl);
-    }
-
-    .footer-section h3 {
-        font-size: 0.95rem;
-        padding-bottom: var(--spacing-xs);
-        margin-bottom: var(--spacing-sm);
-    }
-
-    .footer-section p {
-        font-size: 0.85rem;
-        line-height: 1.6;
-    }
-
-    .footer-links a {
-        font-size: 0.85rem;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
-
-    .footer-bottom p {
-        font-size: 0.8rem;
+    
+    .page-pemesanan .company-logo {
+        max-width: 85%;
+        max-height: 85%;
     }
 }
 
+/* ============================================
+   PAGE PEMESANAN - FEATURES SECTION (REDESIGNED)
+   ============================================ */
+
+/* Features Section Container */
+.page-pemesanan .page-pemesanan-features {
+    background: var(--color-white);
+    padding: var(--spacing-3xl) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Optional: Subtle background decoration */
+.page-pemesanan .page-pemesanan-features::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(244, 164, 96, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Section Header */
+.page-pemesanan .features-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+    position: relative;
+    z-index: 1;
+}
+
+.page-pemesanan .features-title {
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.page-pemesanan .features-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Features Grid */
+.page-pemesanan .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+/* Feature Card */
+.page-pemesanan .feature-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-light-gray);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    min-height: 280px;
+    justify-content: center;
+    position: relative;
+}
+
+/* Hover Effect on Card */
+.page-pemesanan .feature-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 24px rgba(212, 149, 110, 0.12);
+    transform: translateY(-8px);
+}
+
+/* Icon Wrapper Container */
+.page-pemesanan .feature-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Icon Background Circle */
+.page-pemesanan .feature-icon-background {
+    /* Soft Pastel Background */
+    background: linear-gradient(135deg, #E8BBA8 0%, #F0D5C9 100%);
+    
+    /* Circle Shape */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    
+    /* Center Icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Icon Size & Color */
+    font-size: 2.2rem;
+    color: var(--color-primary);
+    
+    /* Transition for Hover */
+    transition: all 0.3s ease;
+    
+    /* Subtle Shadow */
+    box-shadow: 0 4px 12px rgba(212, 149, 110, 0.15);
+}
+
+/* Hover Effect on Icon */
+.page-pemesanan .feature-card:hover .feature-icon-background {
+    /* Darker background on hover */
+    background: linear-gradient(135deg, #D4956E 0%, #E8BBA8 100%);
+    
+    /* Scale & Elevate */
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(212, 149, 110, 0.25);
+}
+
+/* Feature Card Title */
+.page-pemesanan .feature-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: var(--spacing-sm) 0;
+    line-height: 1.3;
+}
+
+/* Feature Card Description */
+.page-pemesanan .feature-card-description {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 400;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - FEATURES SECTION
+   ============================================ */
+
+/* Tablet: 2 Columns */
+@media (max-width: 1024px) {
+    .page-pemesanan .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .page-pemesanan .feature-card {
+        min-height: 260px;
+    }
+}
+
+/* Small Tablet: 2 Columns */
+@media (max-width: 768px) {
+    .page-pemesanan .page-pemesanan-features {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .page-pemesanan .features-header {
+        margin-bottom: var(--spacing-2xl);
+    }
+    
+    .page-pemesanan .features-title {
+        font-size: 1.8rem;
+    }
+    
+    .page-pemesanan .features-subtitle {
+        font-size: 1rem;
+    }
+    
+    .page-pemesanan .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .page-pemesanan .feature-card {
+        padding: var(--spacing-xl) var(--spacing-md);
+        min-height: 240px;
+    }
+    
+    .page-pemesanan .feature-icon-background {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    
+    .page-pemesanan .feature-card-title {
+        font-size: 1rem;
+    }
+    
+    .page-pemesanan .feature-card-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile: 1 Column */
+@media (max-width: 425px) {
+    .page-pemesanan .page-pemesanan-features {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .page-pemesanan .features-header {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .page-pemesanan .features-title {
+        font-size: 1.5rem;
+    }
+    
+    .page-pemesanan .features-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .page-pemesanan .features-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .page-pemesanan .feature-card {
+        padding: var(--spacing-lg) var(--spacing-md);
+        min-height: 220px;
+        gap: var(--spacing-md);
+    }
+    
+    .page-pemesanan .feature-icon-wrapper {
+        margin-bottom: 0;
+    }
+    
+    .page-pemesanan .feature-icon-background {
+        width: 65px;
+        height: 65px;
+        font-size: 1.6rem;
+    }
+    
+    .page-pemesanan .feature-card-title {
+        font-size: 0.95rem;
+    }
+    
+    .page-pemesanan .feature-card-description {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================
+   PAYMENT METHODS SECTION (CARA PEMBAYARAN)
+   ============================================ */
+
+/* Payment Methods Section Container */
+.payment-methods-section {
+    background: var(--color-light-gray);
+    padding: var(--spacing-3xl) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Optional: Subtle background decoration */
+.payment-methods-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212, 149, 110, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Section Header */
+.payment-methods-section .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+    position: relative;
+    z-index: 1;
+}
+
+.payment-methods-section h2 {
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.payment-methods-section > .container > .section-header > p {
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Payment Steps Grid */
+.payment-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+/* Payment Step Card */
+.payment-step-card {
+    background: var(--color-white);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    min-height: 300px;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Hover Effect on Payment Card */
+.payment-step-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 28px rgba(212, 149, 110, 0.15);
+    transform: translateY(-8px);
+}
+
+/* Icon Wrapper Container */
+.payment-step-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Icon Background Circle */
+.payment-step-icon-background {
+    /* Gradient Background - Soft Pastel */
+    background: linear-gradient(135deg, #E8BBA8 0%, #F0D5C9 100%);
+    
+    /* Circle Shape */
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    
+    /* Center Icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Icon Size & Color */
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    
+    /* Transition for Hover */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Subtle Shadow */
+    box-shadow: 0 4px 12px rgba(212, 149, 110, 0.15);
+}
+
+/* Hover Effect on Icon */
+.payment-step-card:hover .payment-step-icon-background {
+    /* Darker Gradient on Hover */
+    background: linear-gradient(135deg, #D4956E 0%, #E8BBA8 100%);
+    
+    /* Scale & Elevate */
+    transform: scale(1.15);
+    
+    /* Enhanced Shadow */
+    box-shadow: 0 8px 24px rgba(212, 149, 110, 0.25);
+}
+
+/* Payment Step Title */
+.payment-step-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: var(--spacing-md) 0;
+    line-height: 1.3;
+}
+
+/* Payment Step Description */
+.payment-step-description {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 400;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - PAYMENT METHODS
+   ============================================ */
+
+/* Tablet: 2 Columns */
+@media (max-width: 1024px) {
+    .payment-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .payment-step-card {
+        min-height: 280px;
+    }
+}
+
+/* Small Tablet & Mobile: 1 Column */
+@media (max-width: 768px) {
+    .payment-methods-section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .payment-methods-section .section-header {
+        margin-bottom: var(--spacing-2xl);
+    }
+    
+    .payment-methods-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .payment-methods-section > .container > .section-header > p {
+        font-size: 1rem;
+    }
+    
+    .payment-steps-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .payment-step-card {
+        padding: var(--spacing-xl) var(--spacing-md);
+        min-height: 240px;
+    }
+    
+    .payment-step-icon-background {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .payment-step-title {
+        font-size: 1.1rem;
+    }
+    
+    .payment-step-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile: Extra Small */
+@media (max-width: 425px) {
+    .payment-methods-section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .payment-methods-section .section-header {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .payment-methods-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .payment-methods-section > .container > .section-header > p {
+        font-size: 0.95rem;
+    }
+    
+    .payment-steps-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .payment-step-card {
+        padding: var(--spacing-lg) var(--spacing-md);
+        min-height: 220px;
+        gap: var(--spacing-md);
+    }
+    
+    .payment-step-icon-background {
+        width: 75px;
+        height: 75px;
+        font-size: 1.8rem;
+    }
+    
+    .payment-step-title {
+        font-size: 1rem;
+    }
+    
+    .payment-step-description {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================
+   FOOTER COMPACT - For Non-Beranda Pages
+   ============================================ */
+
+/* Apply compact footer styling to: pemesanan, galeri, kontak, faq */
+.page-pemesanan .footer-premium,
+.page-galeri .footer-premium,
+.page-kontak .footer-premium,
+.page-faq .footer-premium {
+    padding: 3rem 0 1.5rem;
+}
+
+.page-pemesanan .footer-grid-premium,
+.page-galeri .footer-grid-premium,
+.page-kontak .footer-grid-premium,
+.page-faq .footer-grid-premium {
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.page-pemesanan .footer-heading-premium,
+.page-galeri .footer-heading-premium,
+.page-kontak .footer-heading-premium,
+.page-faq .footer-heading-premium {
+    font-size: 1rem;
+}
+
+.page-pemesanan .footer-text-premium,
+.page-galeri .footer-text-premium,
+.page-kontak .footer-text-premium,
+.page-faq .footer-text-premium {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.page-pemesanan .footer-label-premium,
+.page-galeri .footer-label-premium,
+.page-kontak .footer-label-premium,
+.page-faq .footer-label-premium {
+    font-size: 0.85rem;
+}
+
+.page-pemesanan .footer-separator-premium,
+.page-galeri .footer-separator-premium,
+.page-kontak .footer-separator-premium,
+.page-faq .footer-separator-premium {
+    width: 30px;
+}
+
+.page-pemesanan .footer-hours-box,
+.page-galeri .footer-hours-box,
+.page-kontak .footer-hours-box,
+.page-faq .footer-hours-box {
+    padding: 0.75rem;
+}
+
+.page-pemesanan .footer-copyright-premium,
+.page-galeri .footer-copyright-premium,
+.page-kontak .footer-copyright-premium,
+.page-faq .footer-copyright-premium {
+    font-size: 0.85rem;
+}
+
+.page-pemesanan .footer-links-premium,
+.page-galeri .footer-links-premium,
+.page-kontak .footer-links-premium,
+.page-faq .footer-links-premium {
+    gap: 0.6rem;
+}
+
+.page-pemesanan .footer-links-premium a,
+.page-galeri .footer-links-premium a,
+.page-kontak .footer-links-premium a,
+.page-faq .footer-links-premium a {
+    font-size: 0.9rem;
+}
+
+.page-pemesanan .footer-contact-item,
+.page-galeri .footer-contact-item,
+.page-kontak .footer-contact-item,
+.page-faq .footer-contact-item {
+    margin-bottom: 1rem;
+}

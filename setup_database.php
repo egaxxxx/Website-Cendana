@@ -16,7 +16,7 @@
 // Konfigurasi database
 $host = 'localhost';
 $username = 'root';
-$password = '';
+$password = 'Hananta123';
 $database = 'cendana_travel';
 
 echo "<h1>Setup Database CV. Cendana Travel</h1>";
