@@ -20,7 +20,7 @@ $companyInfoData = [
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="icons.css">
 </head>
-<body>
+<body class="page-pemesanan">
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -266,25 +266,48 @@ $companyInfoData = [
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+            <div class="footer-grid">
+                <!-- Section 1: About -->
+                <section class="footer-section">
                     <h3><?php echo htmlspecialchars($companyInfoData['name']); ?></h3>
                     <p><?php echo htmlspecialchars($companyInfoData['description']); ?></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Layanan</h3>
-                    <ul>
-                        <li><a href="pemesanan.php">Pemesanan Tiket</a></li>
+                </section>
+                
+                <!-- Section 2: Services -->
+                <section class="footer-section">
+                    <h3>Layanan Kami</h3>
+                    <ul class="footer-links">
+                        <li><a href="pemesanan.php">Tiket Pesawat</a></li>
+                        <li><a href="pemesanan.php">Tiket Kapal</a></li>
+                        <li><a href="pemesanan.php">Tiket Bus</a></li>
+                    </ul>
+                </section>
+                
+                <!-- Section 3: Quick Links -->
+                <section class="footer-section">
+                    <h3>Tautan Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.php">Beranda</a></li>
                         <li><a href="galeri.php">Galeri</a></li>
                         <li><a href="kontak.php">Kontak</a></li>
+                        <li><a href="faq.php">FAQ</a></li>
                     </ul>
-                </div>
-                <div class="footer-section">
+                </section>
+                
+                <!-- Section 4: Contact -->
+                <section class="footer-section">
                     <h3>Hubungi Kami</h3>
-                    <p><i class="icon icon-whatsapp"></i> <?php echo htmlspecialchars($companyInfoData['whatsapp']); ?></p>
-                    <p><i class="icon icon-email"></i> <?php echo htmlspecialchars($companyInfoData['email']); ?></p>
-                </div>
+                    <p>
+                        <strong>WhatsApp:</strong><br>
+                        <a href="https://wa.me/<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>"><?php echo htmlspecialchars($companyInfoData['whatsapp']); ?></a>
+                    </p>
+                    <p style="margin-top: var(--spacing-md);">
+                        <strong>Email:</strong><br>
+                        <a href="mailto:<?php echo htmlspecialchars($companyInfoData['email']); ?>"><?php echo htmlspecialchars($companyInfoData['email']); ?></a>
+                    </p>
+                </section>
             </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2024 <?php echo htmlspecialchars($companyInfoData['name']); ?>. All rights reserved.</p>
                 <!-- Ikon kunci admin (tersembunyi) -->
