@@ -19,6 +19,7 @@ $companyInfoData = [
     <title>Pemesanan - <?php echo htmlspecialchars($companyInfoData['name']); ?></title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="pemesanan-landscape.css">
 </head>
 <body class="page-pemesanan">
     <!-- Header -->
@@ -229,11 +230,12 @@ $companyInfoData = [
         </div>
     </section>
 
-    <!-- Booking Modal -->
+    <!-- Booking Modal - Redesigned Landscape Two Column Layout -->
     <div class="booking-modal-overlay" id="bookingModal" style="display: none;">
-        <div class="booking-modal">
+        <div class="booking-modal booking-modal-landscape">
             <div class="booking-modal-header">
-                <h3>Form Pemesanan</h3>
+                <h3>Form Pemesanan Tiket</h3>
+                <p class="booking-service-name" id="displayServiceName">Layanan</p>
                 <button type="button" class="close-modal-btn" onclick="bookingApp.closeModal()">&times;</button>
             </div>
             <div class="booking-modal-body">
@@ -241,44 +243,56 @@ $companyInfoData = [
                     <input type="hidden" id="selectedService" name="service">
                     <input type="hidden" id="selectedType" name="type">
                     
-                    <div class="form-group">
-                        <label>Layanan</label>
-                        <input type="text" id="displayService" readonly>
+                    <!-- Two Column Layout -->
+                    <div class="form-columns">
+                        <!-- Left Column -->
+                        <div class="form-column form-column-left">
+                            <div class="form-group">
+                                <label>Nama Lengkap <span class="required">*</span></label>
+                                <input type="text" id="customerName" name="nama" class="form-input" required placeholder="Masukkan nama lengkap">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Asal <span class="required">*</span></label>
+                                <input type="text" id="origin" name="asal" class="form-input" required placeholder="Kota asal">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tujuan <span class="required">*</span></label>
+                                <input type="text" id="destination" name="tujuan" class="form-input" required placeholder="Kota tujuan">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Kelas Perjalanan <span class="required">*</span></label>
+                                <select id="kelasPerjalanan" name="kelas_perjalanan" class="form-input form-select" required onchange="bookingApp.updateKelasOptions()">
+                                    <option value="">Pilih Kelas</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Jumlah Penumpang</label>
+                                <input type="number" id="passengers" name="penumpang" class="form-input" value="1" min="1" max="9">
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column -->
+                        <div class="form-column form-column-right">
+                            <div class="form-group">
+                                <label>Tanggal Berangkat <span class="required">*</span></label>
+                                <input type="date" id="travelDate" name="tanggal" class="form-input" required min="<?php echo date('Y-m-d'); ?>">
+                            </div>
+                            
+                            <div class="form-group form-group-fullwidth">
+                                <label>Pesan Tambahan</label>
+                                <textarea id="additionalMessage" name="pesan" class="form-input form-textarea" rows="6" placeholder="Pesan atau permintaan khusus (opsional)"></textarea>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Nama Lengkap <span class="required">*</span></label>
-                        <input type="text" id="customerName" required placeholder="Masukkan nama lengkap">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Asal <span class="required">*</span></label>
-                        <input type="text" id="origin" required placeholder="Kota asal">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Tujuan <span class="required">*</span></label>
-                        <input type="text" id="destination" required placeholder="Kota tujuan">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Jumlah Penumpang</label>
-                        <input type="number" id="passengers" value="1" min="1">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Tanggal Berangkat</label>
-                        <input type="date" id="travelDate" min="<?php echo date('Y-m-d'); ?>">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Pesan Tambahan</label>
-                        <textarea id="additionalMessage" rows="3" placeholder="Pesan atau permintaan khusus (opsional)"></textarea>
-                    </div>
-                    
-                    <div class="form-actions">
+                    <!-- Form Actions - Full Width Below -->
+                    <div class="form-actions-landscape">
                         <button type="button" class="btn-cancel" onclick="bookingApp.closeModal()">Batal</button>
-                        <button type="submit" class="btn-submit">
+                        <button type="submit" class="btn-submit btn-submit-whatsapp">
                             <i class="icon icon-whatsapp"></i> Kirim via WhatsApp
                         </button>
                     </div>
@@ -419,6 +433,18 @@ $companyInfoData = [
             // Toggle current item
             item.classList.toggle('active');
         }
+        
+        // Debug: Test modal visibility
+        window.testModal = function() {
+            const modal = document.getElementById('bookingModal');
+            console.log('Modal element:', modal);
+            if (modal) {
+                modal.style.display = 'flex';
+                console.log('Modal should now be visible');
+            } else {
+                console.error('Modal not found!');
+            }
+        };
     </script>
     <script src="config.js"></script>
     <script src="script.js"></script>

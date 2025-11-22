@@ -24,7 +24,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 20% 30%, rgba(212, 149, 110, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(244, 164, 96, 0.1) 0%, transparent 50%);
     z-index: 1;
@@ -37,14 +37,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
-            45deg,
+    background-image:
+        repeating-linear-gradient(45deg,
             transparent,
             transparent 35px,
             rgba(255, 255, 255, 0.02) 35px,
-            rgba(255, 255, 255, 0.02) 70px
-        );
+            rgba(255, 255, 255, 0.02) 70px);
     z-index: 2;
 }
 
@@ -68,6 +66,7 @@
         opacity: 0;
         transform: translateY(40px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -220,9 +219,12 @@
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
+
     50% {
         transform: translateY(-30px) rotate(5deg);
     }
@@ -720,24 +722,29 @@
 }
 
 /* ============================================
-   8. GALLERY MASONRY
+   8. GALLERY MASONRY - COMPACT & PREMIUM
    ============================================ */
 
 .gallery-masonry {
-    padding: 6rem 0;
+    padding: 3.5rem 0;
+    /* Reduced from 6rem for compact look */
     background: linear-gradient(180deg, #FFF5F0 0%, #FFFFFF 100%);
 }
 
 .masonry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 250px;
-    gap: 1.5rem;
-    margin-top: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 220px;
+    /* Reduced height for compactness */
+    gap: 1rem;
+    /* Tighter gap */
+    margin-top: 2.5rem;
+    /* Reduced margin */
 }
 
 .masonry-item {
-    border-radius: 20px;
+    border-radius: 16px;
+    /* Slightly smaller radius */
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -745,8 +752,8 @@
 }
 
 .masonry-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 20px 50px rgba(212, 149, 110, 0.3);
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(212, 149, 110, 0.25);
 }
 
 .masonry-item.tall {
@@ -765,7 +772,7 @@
 }
 
 .masonry-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .masonry-item .gallery-new-overlay {
@@ -773,7 +780,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 2rem;
+    padding: 1.5rem;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -785,8 +792,9 @@
 
 .masonry-item .gallery-new-overlay h4 {
     color: #ffffff;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 600;
+    margin: 0;
 }
 
 /* ============================================
@@ -849,12 +857,13 @@
 }
 
 /* ============================================
-   10. CTA DYNAMIC BANNER
+   10. CTA DYNAMIC BANNER - COMPACT
    ============================================ */
 
 .cta-dynamic {
     position: relative;
-    padding: 8rem 0;
+    padding: 4.5rem 0;
+    /* Reduced from 8rem */
     overflow: hidden;
 }
 
@@ -875,7 +884,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 70% 50%, rgba(244, 164, 96, 0.15) 0%, transparent 50%);
 }
@@ -887,35 +896,40 @@
 
 .cta-content-centered {
     text-align: center;
-    max-width: 800px;
+    max-width: 700px;
+    /* Reduced width for compactness */
     margin: 0 auto;
 }
 
 .cta-content-centered h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    /* Reduced from 3rem */
     font-weight: 800;
     color: #ffffff;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .cta-content-centered p {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
+    /* Reduced from 1.3rem */
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1.8;
-    margin-bottom: 3rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    /* Reduced from 3rem */
 }
 
 .cta-content-centered .cta-closing-buttons {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .cta-btn {
-    padding: 1.5rem 3.5rem;
-    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    /* Reduced padding */
+    font-size: 1.1rem;
     font-weight: 600;
     border-radius: 50px;
     text-decoration: none;
@@ -1229,6 +1243,42 @@
         padding: 1.2rem 2.5rem;
         font-size: 1rem;
     }
+}
+
+/* ============================================
+   13. FOOTER PREMIUM - COMPACT OVERRIDE
+   ============================================ */
+
+.footer-premium {
+    padding: 3rem 0 1.5rem !important;
+}
+
+.footer-grid-premium {
+    gap: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.footer-heading-premium {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.footer-text-premium,
+.footer-links-premium a {
+    font-size: 0.9rem !important;
+}
+
+.footer-contact-item {
+    margin-bottom: 1rem !important;
+}
+
+.footer-hours-box {
+    padding: 0.75rem !important;
+    margin-top: 0.5rem !important;
+}
+
+.footer-bottom-premium {
+    padding-top: 1.5rem !important;
 }
 
 /* ============================================

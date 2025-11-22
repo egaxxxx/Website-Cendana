@@ -35,8 +35,9 @@ if (empty($companyInfoData)) {
     <title>Kontak - <?php echo htmlspecialchars($companyInfoData['name']); ?></title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="kontak-dynamic.css">
 </head>
-<body>
+<body class="page-kontak">
     <!-- Header Navigation -->
     <header>
         <div class="container header-container">
@@ -66,182 +67,102 @@ if (empty($companyInfoData)) {
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home" style="min-height: 500px; margin-top: 70px;">
-        <div class="hero-overlay">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title" style="font-size: 3rem;">
-                        Hubungi Kami
-                    </h1>
-                    <p class="hero-description">
-                        Kami siap membantu Anda dengan segala kebutuhan perjalanan. Hubungi kami melalui berbagai saluran komunikasi yang tersedia.
-                    </p>
+    <!-- New Hero Banner + Overlapping Two Column Layout (Matches Screenshot 3) -->
+    <section class="contact-hero-banner">
+        <div class="container">
+            <h1>Hubungi Kami</h1>
+            <p>Kami siap membantu kebutuhan perjalanan Anda</p>
+        </div>
+    </section>
+    <section class="contact-section-wrapper">
+        <div class="container">
+            <!-- Glass / White Wrapper that contains both columns -->
+            <div class="contact-container-glass">
+                <div class="contact-content-grid">
+                    <!-- Left: Consolidated Contact Info Panel -->
+                    <aside class="contact-panel animate-on-scroll">
+                        <h2 class="panel-title">Informasi Kontak</h2>
+                        <div class="contact-panel-item">
+                            <div class="contact-panel-icon"><i class="icon icon-whatsapp"></i></div>
+                            <div class="contact-panel-text">
+                                <h3>WhatsApp</h3>
+                                <p><a href="https://wa.me/<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>" target="_blank">+<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?></a></p>
+                            </div>
+                        </div>
+                        <div class="contact-panel-item">
+                            <div class="contact-panel-icon"><i class="icon icon-email"></i></div>
+                            <div class="contact-panel-text">
+                                <h3>Email</h3>
+                                <p><a href="mailto:<?php echo htmlspecialchars($companyInfoData['email']); ?>"><?php echo htmlspecialchars($companyInfoData['email']); ?></a></p>
+                            </div>
+                        </div>
+                        <div class="contact-panel-item">
+                            <div class="contact-panel-icon"><i class="icon icon-location"></i></div>
+                            <div class="contact-panel-text">
+                                <h3>Alamat Kantor</h3>
+                                <p><?php echo $companyInfoData['address']; ?></p>
+                            </div>
+                        </div>
+                        <div class="contact-panel-item">
+                            <div class="contact-panel-icon"><i class="icon icon-instagram"></i></div>
+                            <div class="contact-panel-text">
+                                <h3>Instagram</h3>
+                                <p><a href="https://instagram.com/<?php echo str_replace('@', '', htmlspecialchars($companyInfoData['instagram'])); ?>" target="_blank">@cendanatravel_official</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-panel-item">
+                            <div class="contact-panel-icon"><i class="icon icon-tiktok"></i></div>
+                            <div class="contact-panel-text">
+                                <h3>TikTok</h3>
+                                <p><a href="https://tiktok.com/@cendanatravel" target="_blank">@cendanatravel</a></p>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Right: Modern Form Card -->
+                    <article class="contact-form-card animate-on-scroll">
+                        <h2 class="form-card-title">Kirim Pesan</h2>
+                        <form id="contactForm" onsubmit="handleContactForm(event)">
+                            <div class="form-group-modern">
+                                <label for="name">Nama Lengkap <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required placeholder="Masukkan nama lengkap Anda">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group-modern">
+                                    <label for="email">Email <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" required placeholder="email@contoh.com">
+                                </div>
+                                <div class="form-group-modern">
+                                    <label for="phone">Nomor HP <span class="required">*</span></label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="08xx xxxx xxxx">
+                                </div>
+                            </div>
+                            <div class="form-group-modern">
+                                <label for="message">Pesan / Pertanyaan <span class="required">*</span></label>
+                                <textarea id="message" name="message" required placeholder="Tulis pesan atau pertanyaan Anda di sini..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit-modern">
+                                <i class="icon icon-send"></i>
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </article>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
+    <!-- Map Section - Full Width Below -->
+    <section class="map-section-full">
         <div class="container">
-            <div class="contact-grid">
-                <!-- Contact Information -->
-                <article class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-item-icon">
-                            <i class="icon icon-whatsapp"></i>
-                        </div>
-                        <div class="contact-item-content">
-                            <h3>WhatsApp</h3>
-                            <p>
-                                <a href="https://wa.me/<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>" target="_blank">
-                                    <?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>
-                                </a>
-                            </p>
-                            <p class="text-small">Respon cepat & layanan 24/7</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-item-icon">
-                            <i class="icon icon-email"></i>
-                        </div>
-                        <div class="contact-item-content">
-                            <h3>Email</h3>
-                            <p>
-                                <a href="mailto:<?php echo htmlspecialchars($companyInfoData['email']); ?>">
-                                    <?php echo htmlspecialchars($companyInfoData['email']); ?>
-                                </a>
-                            </p>
-                            <p class="text-small">Hubungi kami melalui email</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-item-icon">
-                            <i class="icon icon-location"></i>
-                        </div>
-                        <div class="contact-item-content">
-                            <h3>Alamat</h3>
-                            <p><?php echo $companyInfoData['address']; ?></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-item-icon">
-                            <i class="icon icon-clock"></i>
-                        </div>
-                        <div class="contact-item-content">
-                            <h3>Jam Operasional</h3>
-                            <p><?php echo htmlspecialchars($companyInfoData['hours']); ?></p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Contact Form -->
-                <article class="contact-form">
-                    <h2>Kirim Pesan</h2>
-                    <form id="contactForm" onsubmit="handleContactForm(event)">
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="Email Anda">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subjek <span class="required">*</span></label>
-                            <input type="text" id="subject" name="subject" required placeholder="Subjek pesan">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Pesan <span class="required">*</span></label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Tulis pesan Anda di sini..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn-submit-form">
-                            <i class="icon icon-send"></i> Kirim Pesan
-                        </button>
-                    </form>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section style="background: var(--color-light-gray); padding: var(--spacing-3xl) 0;">
-        <div class="container">
-            <div class="section-header">
+            <div class="map-section-header animate-on-scroll">
                 <h2>Lokasi Kantor Kami</h2>
                 <p>Kunjungi kantor kami untuk konsultasi langsung</p>
             </div>
 
-            <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg);">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.8158906435345!2d117.1451!3d-0.5144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df68d1e0a0a0a0b%3A0x0!2sCendana%20Travel!5e0!3m2!1sid!2sid!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="contact-faq-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Pertanyaan Umum</h2>
-                <p>Jawaban untuk pertanyaan yang sering ditanyakan</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-lg);">
-                <div class="faq-item">
-                    <button class="faq-item-header" onclick="toggleFaq(this)">
-                        <span>Berapa jam layanan customer service?</span>
-                        <i class="icon icon-chevron-down faq-item-icon"></i>
-                    </button>
-                    <div class="faq-item-content">
-                        <p>Layanan customer service kami tersedia 24 jam, 7 hari seminggu. Anda dapat menghubungi kami kapan saja melalui WhatsApp atau email.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-item-header" onclick="toggleFaq(this)">
-                        <span>Apakah ada biaya tambahan untuk konsultasi?</span>
-                        <i class="icon icon-chevron-down faq-item-icon"></i>
-                    </button>
-                    <div class="faq-item-content">
-                        <p>Konsultasi awal sepenuhnya gratis. Kami siap membantu menjawab semua pertanyaan Anda tanpa biaya tambahan apapun.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-item-header" onclick="toggleFaq(this)">
-                        <span>Bagaimana cara memulai pemesanan?</span>
-                        <i class="icon icon-chevron-down faq-item-icon"></i>
-                    </button>
-                    <div class="faq-item-content">
-                        <p>Kunjungi halaman Pemesanan dan pilih jenis transportasi. Setelah itu klik "Pesan Sekarang" dan isi formulir. Kami akan segera merespons pesanan Anda.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section style="background: var(--color-primary); color: white; padding: var(--spacing-3xl) 0;">
-        <div class="container" style="text-align: center;">
-            <h2 style="color: white; margin-bottom: var(--spacing-lg);">Siap Memulai Perjalanan Anda?</h2>
-            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--spacing-2xl); font-size: 1.1rem;">
-                Hubungi kami sekarang dan dapatkan penawaran terbaik untuk perjalanan Anda
-            </p>
-            <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
-                <a href="https://wa.me/<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>" class="btn-hero btn-hero-primary" target="_blank">
-                    <i class="icon icon-whatsapp"></i> Chat via WhatsApp
-                </a>
-                <a href="pemesanan.php" class="btn-hero" style="background: rgba(255, 255, 255, 0.2); border: 2px solid white; color: white;">
-                    Lihat Paket Kami
-                </a>
+            <!-- Full Width Map -->
+            <div class="map-container-large animate-on-scroll">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.8158906435345!2d117.1451!3d-0.5144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df68d1e0a0a0a0b%3A0x0!2sCendana%20Travel!5e0!3m2!1sid!2sid!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
@@ -333,20 +254,20 @@ if (empty($companyInfoData)) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
+            const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
 
             const fullMessage = `*FORM KONTAK - CV. CENDANA TRAVEL*
 
 Nama: ${name}
 Email: ${email}
-Subjek: ${subject}
+Nomor HP: ${phone}
 
 Pesan:
 ${message}
 
 ---
-Dikirim dari website
+Dikirim dari halaman Kontak
 `;
 
             const waNumber = '<?php echo htmlspecialchars($companyInfoData['whatsapp']); ?>';
@@ -355,22 +276,10 @@ Dikirim dari website
             window.open(waURL, '_blank');
             document.getElementById('contactForm').reset();
         }
-
-        function toggleFaq(button) {
-            const item = button.parentElement;
-            const allItems = document.querySelectorAll('.faq-item');
-            
-            allItems.forEach(el => {
-                if (el !== item && el.classList.contains('active')) {
-                    el.classList.remove('active');
-                }
-            });
-            
-            item.classList.toggle('active');
-        }
     </script>
     <script src="config.js"></script>
     <script src="script.js"></script>
+    <script src="kontak-animations.js"></script>
 </body>
 </html>
 

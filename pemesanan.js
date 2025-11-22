@@ -4,6 +4,22 @@ const bookingApp = {
     currentFilter: 'pesawat',
     servicesData: {},
     
+    // Data untuk Kelas Perjalanan sesuai tipe transportasi
+    kelasPerjalananData: {
+        'pesawat': [
+            { value: 'Ekonomi', label: 'Ekonomi (Economy)' },
+            { value: 'Bisnis', label: 'Bisnis (Business)' },
+            { value: 'Premium', label: 'Premium (First Class)' }
+        ],
+        'kapal': [
+            { value: 'Reguler', label: 'Reguler' },
+            { value: 'VIP', label: 'VIP' }
+        ],
+        'bus': [
+            { value: 'Ekonomi', label: 'Ekonomi' },
+            { value: 'Executive', label: 'Executive' }
+        ]
+    },
     // inisialisasi aplikasi
     init() {
         console.log('🚀 Booking App Initializing...');
@@ -203,33 +219,77 @@ const bookingApp = {
     
     // buka modal booking
     openModal(serviceName, type) {
-        console.log(`📋 Opening modal for: ${serviceName}`);
+        console.log(`📋 Opening modal for: ${serviceName}, type: ${type}`);
         
         const modal = document.getElementById('bookingModal');
         if (!modal) {
-            console.error('❌ Modal not found');
+            console.error('❌ Modal #bookingModal not found in DOM!');
+            console.log('Available modals:', document.querySelectorAll('[id*="modal"]'));
             return;
         }
         
+        console.log('✅ Modal found:', modal);
+        
         // Set form values
-        document.getElementById('selectedService').value = serviceName;
-        document.getElementById('selectedType').value = type;
-        document.getElementById('displayService').value = serviceName;
+        const selectedService = document.getElementById('selectedService');
+        const selectedType = document.getElementById('selectedType');
+        const displayServiceName = document.getElementById('displayServiceName');
+        
+        if (selectedService) selectedService.value = serviceName;
+        if (selectedType) selectedType.value = type;
+        if (displayServiceName) displayServiceName.textContent = serviceName;
         
         // Reset other fields
-        document.getElementById('customerName').value = '';
-        document.getElementById('origin').value = '';
-        document.getElementById('destination').value = '';
-        document.getElementById('passengers').value = '1';
-        document.getElementById('travelDate').value = '';
-        document.getElementById('additionalMessage').value = '';
+        const customerName = document.getElementById('customerName');
+        const origin = document.getElementById('origin');
+        const destination = document.getElementById('destination');
+        const passengers = document.getElementById('passengers');
+        const travelDate = document.getElementById('travelDate');
+        const additionalMessage = document.getElementById('additionalMessage');
+        const kelasPerjalanan = document.getElementById('kelasPerjalanan');
+        
+        if (customerName) customerName.value = '';
+        if (origin) origin.value = '';
+        if (destination) destination.value = '';
+        if (passengers) passengers.value = '1';
+        if (travelDate) travelDate.value = '';
+        if (additionalMessage) additionalMessage.value = '';
+        if (kelasPerjalanan) kelasPerjalanan.value = '';
+        
+        // Update Kelas Perjalanan options berdasarkan tipe
+        this.updateKelasOptions(type);
         
         // Show modal with animation
         modal.style.display = 'flex';
         modal.classList.add('show');
         document.body.style.overflow = 'hidden';
         
-        console.log('✅ Modal opened');
+        console.log('✅ Modal opened and visible');
+    },
+    
+    // Update Kelas Perjalanan dropdown sesuai tipe transportasi
+    updateKelasOptions(type = null) {
+        const selectElement = document.getElementById('kelasPerjalanan');
+        if (!selectElement) return;
+        
+        // Gunakan type dari parameter atau ambil dari hidden field
+        const selectedType = type || document.getElementById('selectedType').value;
+        
+        // Get kelas options untuk type yang dipilih
+        const kelasOptions = this.kelasPerjalananData[selectedType] || [];
+        
+        // Clear existing options except default
+        selectElement.innerHTML = '<option value="">Pilih Kelas</option>';
+        
+        // Add kelas options
+        kelasOptions.forEach(kelas => {
+            const option = document.createElement('option');
+            option.value = kelas.value;
+            option.textContent = kelas.label;
+            selectElement.appendChild(option);
+        });
+        
+        console.log(`✅ Kelas options updated for: ${selectedType}`, kelasOptions);
     },
     
     // tutup modal
@@ -257,11 +317,12 @@ const bookingApp = {
             destination: document.getElementById('destination').value,
             passengers: document.getElementById('passengers').value || '1',
             date: document.getElementById('travelDate').value || '',
+            kelas: document.getElementById('kelasPerjalanan').value || '',
             message: document.getElementById('additionalMessage').value || ''
         };
         
         // Validate required fields
-        if (!formData.name || !formData.origin || !formData.destination) {
+        if (!formData.name || !formData.origin || !formData.destination || !formData.kelas) {
             alert('Mohon lengkapi semua field yang wajib diisi (*)');
             return;
         }
@@ -286,15 +347,16 @@ const bookingApp = {
     generateWhatsAppMessage(formData) {
         let message = `*PEMESANAN TIKET - CV. CENDANA TRAVEL*\n\n`;
         message += `Halo Admin, saya ingin melakukan pemesanan:\n\n`;
-        message += `*Jenis Layanan:* ${data.service}\n`;
-        message += `*Nama:* ${data.name}\n`;
-        message += `*Asal:* ${data.origin}\n`;
-        message += `*Tujuan:* ${data.destination}\n`;
-        message += `*Jumlah Penumpang:* ${data.passengers} orang\n`;
+        message += `*Jenis Layanan:* ${formData.service}\n`;
+        message += `*Nama:* ${formData.name}\n`;
+        message += `*Asal:* ${formData.origin}\n`;
+        message += `*Tujuan:* ${formData.destination}\n`;
+        message += `*Kelas Perjalanan:* ${formData.kelas}\n`;
+        message += `*Jumlah Penumpang:* ${formData.passengers} orang\n`;
         
-        if (data.date) {
+        if (formData.date) {
             try {
-                const dateObj = new Date(data.date);
+                const dateObj = new Date(formData.date);
                 const dateStr = dateObj.toLocaleDateString('id-ID', {
                     weekday: 'long',
                     year: 'numeric',
@@ -303,12 +365,12 @@ const bookingApp = {
                 });
                 message += `*Tanggal Berangkat:* ${dateStr}\n`;
             } catch (e) {
-                message += `*Tanggal Berangkat:* ${data.date}\n`;
+                message += `*Tanggal Berangkat:* ${formData.date}\n`;
             }
         }
         
-        if (data.message) {
-            message += `\n*Pesan Tambahan:*\n${data.message}\n`;
+        if (formData.message) {
+            message += `\n*Pesan Tambahan:*\n${formData.message}\n`;
         }
         
         message += '\n_Mohon informasi ketersediaan dan harga._\n\n';
@@ -322,9 +384,23 @@ const bookingApp = {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🌟 DOM Content Loaded - Starting Booking App');
     console.log('Available DATA_TRANSPORTASI_DEFAULT:', typeof DATA_TRANSPORTASI_DEFAULT);
+    
+    // Check if modal exists
+    const modal = document.getElementById('bookingModal');
+    if (modal) {
+        console.log('✅ Modal #bookingModal exists in DOM');
+    } else {
+        console.error('❌ Modal #bookingModal NOT found in DOM');
+        console.log('All IDs in page:', Array.from(document.querySelectorAll('[id]')).map(el => el.id));
+    }
+    
     bookingApp.init();
 });
 
 // Export for compatibility
 window.bookingApp = bookingApp;
 console.log('📜 pemesanan.js loaded, bookingApp exported to window');
+console.log('bookingApp.openModal function available:', typeof window.bookingApp.openModal);
+
+// Quick test: log when script loads
+console.log('✅ pemesanan.js fully loaded and ready');
