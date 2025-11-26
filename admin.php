@@ -266,42 +266,47 @@ $faqs = getAllFAQ();
          * CSS VARIABLES - KONSISTEN DENGAN WEBSITE UTAMA
          * ============================================ */
         :root {
-            /* Warna utama yang konsisten dengan website */
-            --admin-primary: #2563eb;
-            --admin-secondary: #3b82f6;
-            --admin-accent: #60a5fa;
-            --admin-dark: #1e293b;
-            --admin-darker: #0f172a;
+            /* Warna utama - Dark Glassmorphism Premium Theme */
+            --admin-primary: #4A84FF;
+            --admin-secondary: #6DA8FF;
+            --admin-accent: #8BB4FF;
+            --admin-dark: rgba(15, 15, 20, 0.75);
+            --admin-darker: rgba(10, 10, 15, 0.85);
             
-            /* Background colors */
-            --admin-bg-main: #ffffff;
-            --admin-bg-secondary: #f8fafc;
-            --admin-bg-tertiary: #f1f5f9;
-            --admin-bg-card: #ffffff;
+            /* Background colors - Dark Glass */
+            --admin-bg-main: rgba(20, 20, 30, 0.6);
+            --admin-bg-secondary: rgba(15, 15, 20, 0.5);
+            --admin-bg-tertiary: rgba(25, 25, 35, 0.55);
+            --admin-bg-card: rgba(30, 30, 45, 0.65);
             
-            /* Text colors */
-            --admin-text-primary: #1e293b;
-            --admin-text-secondary: #475569;
-            --admin-text-muted: #64748b;
+            /* Text colors - Light for dark backgrounds */
+            --admin-text-primary: #f0f0f5;
+            --admin-text-secondary: #d0d0d8;
+            --admin-text-muted: #a0a0a8;
             
-            /* Border and shadows */
-            --admin-border: #e2e8f0;
-            --admin-border-light: #f1f5f9;
-            --admin-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-            --admin-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --admin-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
-            --admin-shadow-primary: 0 4px 20px rgba(37, 99, 235, 0.15);
+            /* Border and shadows - Dark theme */
+            --admin-border: rgba(255, 255, 255, 0.1);
+            --admin-border-light: rgba(255, 255, 255, 0.05);
+            --admin-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --admin-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --admin-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+            --admin-shadow-primary: 0 4px 20px rgba(74, 132, 255, 0.25);
             
-            /* Gradients */
-            --admin-gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            --admin-gradient-header: linear-gradient(135deg, #1e293b 0%, #2563eb 50%, #3b82f6 100%);
-            --admin-gradient-sidebar: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            /* Gradients - Dark Glass with Blue Accent */
+            --admin-gradient-primary: linear-gradient(135deg, #4A84FF 0%, #6DA8FF 100%);
+            --admin-gradient-header: linear-gradient(135deg, rgba(15, 15, 20, 0.9) 0%, rgba(74, 132, 255, 0.2) 50%, rgba(109, 168, 255, 0.15) 100%);
+            --admin-gradient-sidebar: linear-gradient(180deg, rgba(30, 30, 45, 0.7) 0%, rgba(15, 15, 20, 0.8) 100%);
             
-            /* Success, warning, danger colors */
-            --admin-success: #10b981;
-            --admin-warning: #f59e0b;
-            --admin-danger: #ef4444;
+            /* Success, warning, danger colors - Premium Status */
+            --admin-success: #4CD964;
+            --admin-warning: #FFBB33;
+            --admin-danger: #FF5C5C;
             --admin-info: #06b6d4;
+            
+            /* Pastel accents for premium feel */
+            --admin-pastel-warm: #E8C4A0;
+            --admin-pastel-light: #F1DAC7;
+            --admin-pastel-accent: #D9A679;
         }
 
         /* Dark mode variables *//* Reset dan Base Styles */
@@ -313,33 +318,33 @@ $faqs = getAllFAQ();
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--admin-bg-secondary);
-            color: var(--admin-text-primary);
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.6) 0%, rgba(25, 25, 35, 0.5) 100%);
+            color: #f0f0f5;
             line-height: 1.6;
             overflow-x: hidden;
             transition: all 0.3s ease;
         }
 
-        /* Header Styles - Lebih Modern dan Konsisten */
+        /* Header Styles - Dark Glassmorphism Premium */
         .admin-header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 70px;
-            background: var(--admin-gradient-header);
-            backdrop-filter: blur(12px);
-            box-shadow: var(--admin-shadow-lg);
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.9) 0%, rgba(74, 132, 255, 0.15) 100%);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .admin-logo {
-            color: white;
+            color: #f0f0f5;
             font-weight: 700;
             font-size: 1.3rem;
             display: flex;
@@ -350,12 +355,12 @@ $faqs = getAllFAQ();
 
         .admin-logo i {
             font-size: 1.6rem;
-            color: #60a5fa;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            color: #4A84FF;
+            filter: drop-shadow(0 2px 8px rgba(74, 132, 255, 0.4));
         }
 
         .admin-user {
-            color: white;
+            color: #f0f0f5;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -365,16 +370,16 @@ $faqs = getAllFAQ();
             font-size: 0.95rem;
             font-weight: 500;
             padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 25px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .logout-btn {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(74, 132, 255, 0.12);
+            color: #4A84FF;
+            border: 2px solid rgba(74, 132, 255, 0.3);
             padding: 10px 18px;
             border-radius: 12px;
             text-decoration: none;
@@ -387,25 +392,27 @@ $faqs = getAllFAQ();
         }
 
         .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            color: white;
+            background: rgba(74, 132, 255, 0.2);
+            color: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(74, 132, 255, 0.3);
+            border-color: rgba(74, 132, 255, 0.5);
         }
 
-        /* Sidebar Styles - Lebih Bersih dan Modern */
+        /* Sidebar Styles - Dark Elegant Theme */
         .sidebar {
             position: fixed;
             top: 70px;
             left: 0;
             width: 280px;
             height: calc(100vh - 70px);
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, rgba(30, 30, 45, 0.8) 0%, rgba(15, 15, 20, 0.9) 100%);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
             padding: 24px 0;
             overflow-y: auto;
             z-index: 999;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+            box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.05), 4px 0 16px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
         }
 
         .sidebar-nav {
@@ -417,7 +424,7 @@ $faqs = getAllFAQ();
             align-items: center;
             padding: 16px 20px;
             margin: 6px 16px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(240, 240, 245, 0.7);
             text-decoration: none;
             border-radius: 12px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -431,33 +438,35 @@ $faqs = getAllFAQ();
             width: 20px;
             margin-right: 16px;
             text-align: center;
-            opacity: 0.9;
+            opacity: 0.8;
             font-size: 1.1rem;
             transition: all 0.3s ease;
         }
 
         .nav-link:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
+            background: rgba(74, 132, 255, 0.15);
+            color: #f0f0f5;
             transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 0 20px rgba(74, 132, 255, 0.1);
+            border-color: rgba(74, 132, 255, 0.2);
         }
 
         .nav-link:hover i {
             transform: scale(1.1);
             opacity: 1;
+            color: #4A84FF;
         }
 
         .nav-link.active i {
             opacity: 1;
+            color: #4A84FF;
         }
 
         .nav-link.active {
-            background: rgba(255, 255, 255, 0.25);
-            color: white;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(74, 132, 255, 0.25);
+            color: #f0f0f5;
+            box-shadow: 0 4px 16px rgba(74, 132, 255, 0.25), inset 0 0 20px rgba(74, 132, 255, 0.08);
+            border-color: rgba(74, 132, 255, 0.3);
             font-weight: 600;
             transform: translateX(4px);
         }
@@ -470,17 +479,18 @@ $faqs = getAllFAQ();
             transform: translateY(-50%);
             width: 4px;
             height: 24px;
-            background: #60a5fa;
+            background: #4A84FF;
             border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 12px rgba(74, 132, 255, 0.5);
         }
 
-        /* Main Content - Layout yang Lebih Baik */
+        /* Main Content - Dark Glass Layout */
         .admin-content {
             margin-left: 280px;
             margin-top: 70px;
             padding: 40px 36px;
             min-height: calc(100vh - 70px);
-            background: var(--admin-bg-secondary);
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.6) 0%, rgba(25, 25, 35, 0.5) 100%);
             position: relative;
             overflow: auto;
         }
@@ -521,41 +531,36 @@ $faqs = getAllFAQ();
             }
         }
 
-        /* Page Headers - Typography yang Lebih Profesional */
+        /* Page Headers - Typography yang Profesional untuk Dark Theme */
         .content-section h1 {
             font-size: 2.2rem;
             font-weight: 800;
-            color: var(--admin-text-primary);
+            color: #f0f0f5;
             margin-bottom: 12px;
             letter-spacing: -0.03em;
             line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .content-section > p {
-            color: var(--admin-text-secondary);
+            color: rgba(240, 240, 245, 0.8);
             margin-bottom: 32px;
             font-size: 1.1rem;
             line-height: 1.6;
             max-width: 600px;
         }
 
-        /* Stats Grid - Desain yang Lebih Menarik */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
+        /* Stats Grid - Dark Glass Cards */
         .stat-card {
-            background: var(--admin-bg-card);
+            background: rgba(30, 30, 45, 0.7);
             padding: 32px 28px;
             border-radius: 20px;
-            box-shadow: var(--admin-shadow-md);
-            border: 2px solid var(--admin-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .stat-card::before {
@@ -564,8 +569,9 @@ $faqs = getAllFAQ();
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 2px;
             background: var(--admin-gradient-primary);
+            opacity: 0.6;
         }
 
         .stat-card::after {
@@ -575,15 +581,16 @@ $faqs = getAllFAQ();
             right: -50%;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(74, 132, 255, 0.15) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
 
         .stat-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--admin-shadow-lg);
-            border-color: var(--admin-primary);
+            box-shadow: 0 12px 48px rgba(74, 132, 255, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(74, 132, 255, 0.3);
+            background: rgba(30, 30, 45, 0.8);
         }
 
         .stat-card:hover::after {
@@ -591,7 +598,7 @@ $faqs = getAllFAQ();
         }
 
         .stat-card h3 {
-            color: var(--admin-text-muted);
+            color: rgba(240, 240, 245, 0.6);
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 12px;
@@ -600,7 +607,10 @@ $faqs = getAllFAQ();
         }
 
         .stat-card .number {
-            color: var(--admin-primary);
+            background: var(--admin-gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-size: 2.4rem;
             font-weight: 800;
             margin-bottom: 8px;
@@ -608,31 +618,33 @@ $faqs = getAllFAQ();
         }
 
         .stat-card small {
-            color: var(--admin-text-secondary);
+            color: rgba(240, 240, 245, 0.7);
             font-size: 0.9rem;
             font-weight: 500;
         }
 
-        /* Section Cards - Desain yang Lebih Modern */
+        /* Section Cards - Dark Glass Modern */
         .section-card {
-            background: var(--admin-bg-card);
+            background: rgba(30, 30, 45, 0.7);
             border-radius: 20px;
-            box-shadow: var(--admin-shadow-md);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
             margin-bottom: 32px;
             overflow: hidden;
-            border: 2px solid var(--admin-border);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .section-card:hover {
-            box-shadow: var(--admin-shadow-lg);
-            border-color: var(--admin-primary);
+            box-shadow: 0 12px 48px rgba(74, 132, 255, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(74, 132, 255, 0.3);
+            background: rgba(30, 30, 45, 0.8);
         }
 
         .section-header {
             padding: 24px 32px;
-            border-bottom: 2px solid var(--admin-border-light);
-            background: linear-gradient(135deg, var(--admin-bg-secondary) 0%, var(--admin-bg-tertiary) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.5) 0%, rgba(40, 40, 55, 0.3) 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -645,8 +657,9 @@ $faqs = getAllFAQ();
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 1px;
             background: var(--admin-gradient-primary);
+            opacity: 0.5;
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -658,15 +671,16 @@ $faqs = getAllFAQ();
         .section-header h2 {
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--admin-text-primary);
+            color: #f0f0f5;
             letter-spacing: -0.01em;
         }
 
         .section-content {
             padding: 32px 36px;
+            color: #f0f0f5;
         }
 
-        /* Form Styles - Lebih Konsisten dan Modern */
+        /* Form Styles - Dark Glass Premium */
         .form-group {
             margin-bottom: 24px;
             position: relative;
@@ -674,14 +688,16 @@ $faqs = getAllFAQ();
 
         .form-group input[type="file"] {
             padding: 10px;
-            border: 2px dashed var(--admin-border);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             background: transparent;
-        }.form-group label {
+        }
+
+        .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--admin-text-primary);
+            color: #f0f0f5;
             font-size: 0.95rem;
             letter-spacing: -0.01em;
         }
@@ -691,22 +707,30 @@ $faqs = getAllFAQ();
         .form-group select {
             width: 100%;
             padding: 16px 18px;
-            border: 2px solid var(--admin-border);
+            border: 2px solid rgba(255, 255, 255, 0.12);
             border-radius: 12px;
             font-size: 0.95rem;
-            background: var(--admin-bg-main);
-            color: var(--admin-text-primary);
+            background: rgba(20, 20, 30, 0.6);
+            color: #f0f0f5;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
+            backdrop-filter: blur(8px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder,
+        .form-group select::placeholder {
+            color: rgba(240, 240, 245, 0.4);
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--admin-primary);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            border-color: #4A84FF;
+            box-shadow: 0 0 0 4px rgba(74, 132, 255, 0.25), inset 0 0 12px rgba(74, 132, 255, 0.1);
             transform: translateY(-2px);
+            background: rgba(20, 20, 30, 0.8);
         }
 
         .form-group textarea {
@@ -717,26 +741,29 @@ $faqs = getAllFAQ();
 
         .form-group input[type="file"] {
             padding: 12px 16px;
-            background: var(--admin-bg-secondary);
+            background: rgba(20, 20, 30, 0.5);
             border-style: dashed;
+            color: rgba(240, 240, 245, 0.6);
         }
 
         .form-group input[type="checkbox"] {
             width: auto;
             margin-right: 12px;
             transform: scale(1.2);
-            accent-color: var(--admin-primary);
+            accent-color: #4A84FF;
+            background: rgba(74, 132, 255, 0.2);
+            border-color: #4A84FF;
         }
 
         .form-group small {
-            color: var(--admin-text-muted);
+            color: rgba(240, 240, 245, 0.6);
             font-size: 0.85rem;
             display: block;
             margin-top: 6px;
             line-height: 1.4;
         }
 
-        /* Button Styles - Lebih Menarik dan Konsisten */
+        /* Button Styles - Premium Gradients */
         .btn {
             padding: 14px 28px;
             border: none;
@@ -777,70 +804,73 @@ $faqs = getAllFAQ();
         .btn-primary {
             background: var(--admin-gradient-primary);
             color: white;
-            box-shadow: var(--admin-shadow-primary);
+            box-shadow: 0 4px 20px rgba(74, 132, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 8px 30px rgba(74, 132, 255, 0.5);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, var(--admin-text-muted) 0%, var(--admin-text-secondary) 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+            background: linear-gradient(135deg, rgba(240, 240, 245, 0.15) 0%, rgba(240, 240, 245, 0.1) 100%);
+            color: #f0f0f5;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(240, 240, 245, 0.15);
         }
 
         .btn-secondary:hover {
-            background: linear-gradient(135deg, var(--admin-text-secondary) 0%, var(--admin-text-primary) 100%);
+            background: linear-gradient(135deg, rgba(240, 240, 245, 0.2) 0%, rgba(240, 240, 245, 0.15) 100%);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 132, 255, 0.2);
         }
 
         .btn-success {
-            background: linear-gradient(135deg, var(--admin-success) 0%, #34d399 100%);
+            background: linear-gradient(135deg, #4CD964 0%, #5fe368 100%);
             color: white;
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 20px rgba(76, 217, 100, 0.3);
         }
 
         .btn-success:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 30px rgba(76, 217, 100, 0.4);
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, var(--admin-danger) 0%, #f87171 100%);
+            background: linear-gradient(135deg, #FF5C5C 0%, #ff7575 100%);
             color: white;
-            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 92, 92, 0.3);
         }
 
         .btn-danger:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 8px 30px rgba(255, 92, 92, 0.4);
         }
 
-        /* Table Styles - Lebih Modern */
+        /* Table Styles - Dark Glass Tables */
         .table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background: var(--admin-bg-card);
+            background: rgba(30, 30, 45, 0.5);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--admin-shadow-md);
-            border: 2px solid var(--admin-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
         }
 
         .table th,
         .table td {
             padding: 16px 20px;
             text-align: left;
-            border-bottom: 1px solid var(--admin-border-light);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .table th {
             font-weight: 700;
-            color: var(--admin-text-primary);
-            background: linear-gradient(135deg, var(--admin-bg-secondary) 0%, var(--admin-bg-tertiary) 100%);
+            color: #f0f0f5;
+            background: linear-gradient(135deg, rgba(74, 132, 255, 0.15) 0%, rgba(74, 132, 255, 0.05) 100%);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -853,7 +883,7 @@ $faqs = getAllFAQ();
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 1px;
             background: var(--admin-gradient-primary);
             opacity: 0.6;
         }
@@ -863,19 +893,19 @@ $faqs = getAllFAQ();
         }
 
         .table tbody tr:hover {
-            background: var(--admin-bg-secondary);
+            background: rgba(74, 132, 255, 0.1);
             transform: scale(1.01);
         }
 
         .table tbody tr:nth-child(even) {
-            background: var(--admin-bg-main);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .table td {
-            color: var(--admin-text-primary);
+            color: rgba(240, 240, 245, 0.9);
         }
 
-        /* Badge Styles - Lebih Menarik */
+        /* Badge Styles - Premium Status Colors */
         .badge {
             padding: 6px 14px;
             border-radius: 20px;
@@ -886,7 +916,7 @@ $faqs = getAllFAQ();
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             border: 2px solid transparent;
             transition: all 0.3s ease;
         }
@@ -896,30 +926,34 @@ $faqs = getAllFAQ();
         }
 
         .badge-success { 
-            background: linear-gradient(135deg, #10b981, #34d399);
+            background: linear-gradient(135deg, #4CD964, #5fe368);
             color: white;
-            border-color: rgba(16, 185, 129, 0.2);
+            border-color: rgba(76, 217, 100, 0.3);
+            box-shadow: 0 4px 12px rgba(76, 217, 100, 0.3);
         }
         
         .badge-warning { 
-            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            background: linear-gradient(135deg, #FFBB33, #ffc84d);
             color: white;
-            border-color: rgba(245, 158, 11, 0.2);
+            border-color: rgba(255, 187, 51, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 187, 51, 0.3);
         }
         
         .badge-danger { 
-            background: linear-gradient(135deg, #ef4444, #f87171);
+            background: linear-gradient(135deg, #FF5C5C, #ff7575);
             color: white;
-            border-color: rgba(239, 68, 68, 0.2);
+            border-color: rgba(255, 92, 92, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 92, 92, 0.3);
         }
         
         .badge-info { 
-            background: linear-gradient(135deg, #06b6d4, #22d3ee);
+            background: linear-gradient(135deg, #4A84FF, #6DA8FF);
             color: white;
-            border-color: rgba(6, 182, 212, 0.2);
+            border-color: rgba(74, 132, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(74, 132, 255, 0.3);
         }
 
-        /* Gallery Grid - Lebih Modern */
+        /* Gallery Grid - Dark Glass Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -928,13 +962,14 @@ $faqs = getAllFAQ();
         }
 
         .gallery-item {
-            background: var(--admin-bg-card);
+            background: rgba(30, 30, 45, 0.7);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--admin-shadow-md);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid var(--admin-border);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .gallery-item::before {
@@ -943,16 +978,18 @@ $faqs = getAllFAQ();
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 2px;
             background: var(--admin-gradient-primary);
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: 1;
         }
 
         .gallery-item:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--admin-shadow-lg);
-            border-color: var(--admin-primary);
+            box-shadow: 0 12px 48px rgba(74, 132, 255, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(74, 132, 255, 0.3);
+            background: rgba(30, 30, 45, 0.8);
         }
 
         .gallery-item:hover::before {
@@ -977,14 +1014,14 @@ $faqs = getAllFAQ();
         .gallery-info h4 {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--admin-text-primary);
+            color: #f0f0f5;
             margin-bottom: 12px;
             letter-spacing: -0.01em;
         }
 
         .gallery-info p {
             font-size: 0.9rem;
-            color: var(--admin-text-secondary);
+            color: rgba(240, 240, 245, 0.7);
             margin-bottom: 16px;
             line-height: 1.5;
         }
@@ -994,30 +1031,32 @@ $faqs = getAllFAQ();
             justify-content: space-between;
             align-items: center;
             padding-top: 12px;
-            border-top: 1px solid var(--admin-border-light);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* FAQ Styles - Lebih Modern */
+        /* FAQ Styles - Dark Glass Cards */
         .faq-item {
-            background: var(--admin-bg-card);
+            background: rgba(30, 30, 45, 0.7);
             border-radius: 16px;
             margin-bottom: 20px;
-            box-shadow: var(--admin-shadow-md);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
             overflow: hidden;
-            border: 2px solid var(--admin-border);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .faq-item:hover {
-            box-shadow: var(--admin-shadow-lg);
-            border-color: var(--admin-primary);
+            box-shadow: 0 12px 48px rgba(74, 132, 255, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(74, 132, 255, 0.3);
             transform: translateY(-2px);
+            background: rgba(30, 30, 45, 0.8);
         }
 
         .faq-header {
             padding: 20px 24px;
-            border-bottom: 2px solid var(--admin-border-light);
-            background: linear-gradient(135deg, var(--admin-bg-secondary) 0%, var(--admin-bg-tertiary) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(135deg, rgba(74, 132, 255, 0.1) 0%, rgba(74, 132, 255, 0.05) 100%);
             position: relative;
         }
 
@@ -1027,8 +1066,9 @@ $faqs = getAllFAQ();
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 1px;
             background: var(--admin-gradient-primary);
+            opacity: 0.5;
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -1039,7 +1079,7 @@ $faqs = getAllFAQ();
 
         .faq-question {
             font-weight: 700;
-            color: var(--admin-primary);
+            color: #4A84FF;
             margin-bottom: 12px;
             font-size: 1.05rem;
             letter-spacing: -0.01em;
@@ -1047,6 +1087,7 @@ $faqs = getAllFAQ();
 
         .faq-content {
             padding: 20px 24px;
+            color: rgba(240, 240, 245, 0.85);
         }
 
         .faq-actions {
@@ -1055,7 +1096,7 @@ $faqs = getAllFAQ();
             float: right;
         }
 
-        /* Mobile Menu Toggle */
+        /* Mobile Menu Toggle - Dark Glass */
         .mobile-menu-toggle {
             display: none;
             position: fixed;
@@ -1070,14 +1111,14 @@ $faqs = getAllFAQ();
             border-radius: 15px;
             cursor: pointer;
             font-size: 18px;
-            box-shadow: var(--admin-shadow-lg);
+            box-shadow: 0 8px 30px rgba(74, 132, 255, 0.3);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
         }
 
         .mobile-menu-toggle:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 12px 40px rgba(74, 132, 255, 0.4);
         }
 
         .mobile-menu-toggle:active {
@@ -1112,7 +1153,7 @@ $faqs = getAllFAQ();
 
             .sidebar.active {
                 transform: translateX(0);
-                box-shadow: var(--admin-shadow-lg);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             }
 
             .admin-content {
@@ -1235,21 +1276,21 @@ $faqs = getAllFAQ();
             }
         }
 
-        /* Dark Mode Toggle - Lebih Modern */
+        /* Dark Mode Toggle - Dark Glass */
         .dark-mode-toggle-container {
             margin-right: 20px;
         }
 
         .dark-mode-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            color: #f0f0f5;
             padding: 10px 14px;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 16px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1258,9 +1299,10 @@ $faqs = getAllFAQ();
         }
 
         .dark-mode-toggle:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(74, 132, 255, 0.15);
+            border-color: rgba(74, 132, 255, 0.3);
             transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(74, 132, 255, 0.2);
         }@media (max-width: 768px) {
             .dark-mode-toggle-container {
                 margin-right: 10px;
