@@ -254,62 +254,72 @@ $faqs = getAllFAQ();
     <title>Admin Dashboard - CV. Cendana Travel</title>
     
     <!-- External Dependencies -->
+    <!-- // UPDATED: Modern Typography dengan Plus Jakarta Sans untuk dark pastel theme -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
     <link rel="stylesheet" href="admin-enhancements.css">
     <script src="config.js"></script>
     
     <style>
         /* ============================================
-         * CSS VARIABLES - KONSISTEN DENGAN WEBSITE UTAMA
+         * CSS VARIABLES - DARK PASTEL PEACH + BROWN THEME (PERMANENT)
+         * updated to match customer theme - No toggle mode
          * ============================================ */
         :root {
-            /* Warna utama - Dark Glassmorphism Premium Theme */
-            --admin-primary: #4A84FF;
-            --admin-secondary: #6DA8FF;
-            --admin-accent: #8BB4FF;
-            --admin-dark: rgba(15, 15, 20, 0.75);
-            --admin-darker: rgba(10, 10, 15, 0.85);
+            /* Background colors - Dark Brown Charcoal (match customer brand) */
+            --admin-bg-main: #1F1A17;
+            --admin-bg-secondary: #2E221C;
+            --admin-bg-dark: #241A16;
+            --admin-bg-darker: #1A1210;
             
-            /* Background colors - Dark Glass */
-            --admin-bg-main: rgba(20, 20, 30, 0.6);
-            --admin-bg-secondary: rgba(15, 15, 20, 0.5);
-            --admin-bg-tertiary: rgba(25, 25, 35, 0.55);
-            --admin-bg-card: rgba(30, 30, 45, 0.65);
+            /* Card colors - Dark Pastel Brown/Peach */
+            --admin-card-primary: #2A1F1A;
+            --admin-card-secondary: #3A2A24;
+            --admin-card-accent: #332621;
+            --admin-card-light: #3D2F28;
+            --admin-card-warm: #362318;
             
-            /* Text colors - Light for dark backgrounds */
-            --admin-text-primary: #f0f0f5;
-            --admin-text-secondary: #d0d0d8;
-            --admin-text-muted: #a0a0a8;
+            /* Accent colors - Pastel Peach & Brown (customer palette) */
+            --admin-accent-peach: #E8B89A;
+            --admin-accent-cream: #FBEFE6;
+            --admin-accent-brown: #D6A889;
+            --admin-accent-warm: #C79A7A;
+            --admin-accent-orange: #E8A87A;
+            --admin-accent-whatsapp: #25D366;
             
-            /* Border and shadows - Dark theme */
-            --admin-border: rgba(255, 255, 255, 0.1);
-            --admin-border-light: rgba(255, 255, 255, 0.05);
-            --admin-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --admin-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-            --admin-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
-            --admin-shadow-primary: 0 4px 20px rgba(74, 132, 255, 0.25);
+            /* Text colors - Clean & Professional */
+            --admin-text-primary: #FFFFFF;
+            --admin-text-secondary: #E8D8C8;
+            --admin-text-muted: #B8A898;
+            --admin-text-cream: #FBEFE6;
             
-            /* Gradients - Dark Glass with Blue Accent */
-            --admin-gradient-primary: linear-gradient(135deg, #4A84FF 0%, #6DA8FF 100%);
-            --admin-gradient-header: linear-gradient(135deg, rgba(15, 15, 20, 0.9) 0%, rgba(74, 132, 255, 0.2) 50%, rgba(109, 168, 255, 0.15) 100%);
-            --admin-gradient-sidebar: linear-gradient(180deg, rgba(30, 30, 45, 0.7) 0%, rgba(15, 15, 20, 0.8) 100%);
+            /* Primary colors (peach-based) */
+            --admin-primary: #E8B89A;
+            --admin-secondary: #D6A889;
+            --admin-success: #25D366;
+            --admin-warning: #E8A87A;
+            --admin-danger: #E89A8A;
+            --admin-info: #A8C8E8;
             
-            /* Success, warning, danger colors - Premium Status */
-            --admin-success: #4CD964;
-            --admin-warning: #FFBB33;
-            --admin-danger: #FF5C5C;
-            --admin-info: #06b6d4;
+            /* Border and shadows - Soft Peach Glow */
+            --admin-border: rgba(232, 184, 154, 0.12);
+            --admin-border-light: rgba(232, 184, 154, 0.06);
+            --admin-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+            --admin-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
+            --admin-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.7);
+            --admin-shadow-glow: 0 0 20px rgba(232, 184, 154, 0.15);
+            --admin-shadow-peach: 0 4px 20px rgba(232, 184, 154, 0.2);
             
-            /* Pastel accents for premium feel */
-            --admin-pastel-warm: #E8C4A0;
-            --admin-pastel-light: #F1DAC7;
-            --admin-pastel-accent: #D9A679;
+            /* Gradients - Peach & Brown */
+            --admin-gradient-primary: linear-gradient(135deg, #E8B89A 0%, #D6A889 100%);
+            --admin-gradient-warm: linear-gradient(135deg, #E8A87A 0%, #C79A7A 100%);
+            --admin-gradient-peach: linear-gradient(135deg, #E8B89A 0%, #E8A87A 100%);
         }
 
-        /* Dark mode variables *//* Reset dan Base Styles */
+        /* updated to match customer theme - Permanent dark pastel */
         * {
             margin: 0;
             padding: 0;
@@ -317,34 +327,34 @@ $faqs = getAllFAQ();
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, rgba(15, 15, 20, 0.6) 0%, rgba(25, 25, 35, 0.5) 100%);
-            color: #f0f0f5;
+            font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--admin-bg-main);
+            color: var(--admin-text-primary);
             line-height: 1.6;
             overflow-x: hidden;
-            transition: all 0.3s ease;
         }
 
-        /* Header Styles - Dark Glassmorphism Premium */
+        /* // UPDATED: Header dengan dark pastel modern styling */
         .admin-header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 70px;
-            background: linear-gradient(135deg, rgba(15, 15, 20, 0.9) 0%, rgba(74, 132, 255, 0.15) 100%);
-            backdrop-filter: blur(18px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+            background: var(--admin-bg-secondary);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--admin-shadow-md);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid var(--admin-border);
         }
 
+        /* updated to match customer theme - Peach accent */
         .admin-logo {
-            color: #f0f0f5;
+            color: var(--admin-text-primary);
             font-weight: 700;
             font-size: 1.3rem;
             display: flex;
@@ -355,36 +365,53 @@ $faqs = getAllFAQ();
 
         .admin-logo i {
             font-size: 1.6rem;
-            color: #4A84FF;
-            filter: drop-shadow(0 2px 8px rgba(74, 132, 255, 0.4));
+            color: var(--admin-accent-peach);
+            filter: drop-shadow(0 2px 8px rgba(232, 184, 154, 0.4));
         }
 
+        /* // UPDATED: User section dengan avatar dan modern styling */
         .admin-user {
-            color: #f0f0f5;
+            color: var(--admin-text-primary);
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
+        }
+        
+        /* // NEW: Avatar user untuk topbar modern */
+        .admin-user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--admin-gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            box-shadow: var(--admin-shadow-sm);
         }
 
         .admin-user span {
             font-size: 0.95rem;
             font-weight: 500;
             padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 25px;
+            background: var(--admin-card-blue);
+            border-radius: 16px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid var(--admin-border);
         }
 
+        /* updated to match customer theme - Peach accent */
         .logout-btn {
-            background: rgba(74, 132, 255, 0.12);
-            color: #4A84FF;
-            border: 2px solid rgba(74, 132, 255, 0.3);
+            background: var(--admin-card-primary);
+            color: var(--admin-accent-peach);
+            border: 1px solid var(--admin-border);
             padding: 10px 18px;
-            border-radius: 12px;
+            border-radius: 16px;
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
@@ -392,41 +419,41 @@ $faqs = getAllFAQ();
         }
 
         .logout-btn:hover {
-            background: rgba(74, 132, 255, 0.2);
-            color: #ffffff;
+            background: var(--admin-accent-peach);
+            color: var(--admin-bg-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(74, 132, 255, 0.3);
-            border-color: rgba(74, 132, 255, 0.5);
+            box-shadow: var(--admin-shadow-peach);
+            border-color: var(--admin-accent-peach);
         }
 
-        /* Sidebar Styles - Dark Elegant Theme */
+        /* // UPDATED: Sidebar dengan dark pastel modern design */
         .sidebar {
             position: fixed;
             top: 70px;
             left: 0;
             width: 280px;
             height: calc(100vh - 70px);
-            background: linear-gradient(180deg, rgba(30, 30, 45, 0.8) 0%, rgba(15, 15, 20, 0.9) 100%);
-            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--admin-bg-secondary);
+            border-right: 1px solid var(--admin-border);
             padding: 24px 0;
             overflow-y: auto;
             z-index: 999;
-            box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.05), 4px 0 16px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--admin-shadow-md);
         }
 
         .sidebar-nav {
             padding: 0 20px;
         }
 
+        /* // UPDATED: Nav-link dengan pastel glow effect dan modern styling */
         .nav-link {
             display: flex;
             align-items: center;
-            padding: 16px 20px;
-            margin: 6px 16px;
-            color: rgba(240, 240, 245, 0.7);
+            padding: 14px 18px;
+            margin: 6px 12px;
+            color: var(--admin-text-secondary);
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 16px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-weight: 500;
             font-size: 0.95rem;
@@ -435,62 +462,66 @@ $faqs = getAllFAQ();
         }
 
         .nav-link i {
-            width: 20px;
-            margin-right: 16px;
+            width: 22px;
+            margin-right: 14px;
             text-align: center;
-            opacity: 0.8;
-            font-size: 1.1rem;
+            opacity: 0.7;
+            font-size: 1.15rem;
             transition: all 0.3s ease;
         }
 
+        /* updated to match customer theme - Peach hover */
         .nav-link:hover {
-            background: rgba(74, 132, 255, 0.15);
-            color: #f0f0f5;
-            transform: translateX(4px);
-            box-shadow: inset 0 0 20px rgba(74, 132, 255, 0.1);
-            border-color: rgba(74, 132, 255, 0.2);
+            background: var(--admin-card-primary);
+            color: var(--admin-text-primary);
+            transform: translateX(6px);
+            box-shadow: 0 0 20px rgba(232, 184, 154, 0.15);
+            border-color: var(--admin-border);
         }
 
         .nav-link:hover i {
-            transform: scale(1.1);
+            transform: scale(1.15);
             opacity: 1;
-            color: #4A84FF;
+            color: var(--admin-accent-peach);
         }
 
+        /* updated to match customer theme - Peach glow */
+        .nav-link.active {
+            background: var(--admin-card-secondary);
+            color: var(--admin-accent-peach);
+            box-shadow: 0 0 24px rgba(232, 184, 154, 0.25), inset 0 0 20px rgba(232, 184, 154, 0.1);
+            border-color: rgba(232, 184, 154, 0.3);
+            font-weight: 600;
+            transform: translateX(6px);
+        }
+        
         .nav-link.active i {
             opacity: 1;
-            color: #4A84FF;
+            color: var(--admin-accent-peach);
+            filter: drop-shadow(0 0 8px rgba(232, 184, 154, 0.5));
         }
 
-        .nav-link.active {
-            background: rgba(74, 132, 255, 0.25);
-            color: #f0f0f5;
-            box-shadow: 0 4px 16px rgba(74, 132, 255, 0.25), inset 0 0 20px rgba(74, 132, 255, 0.08);
-            border-color: rgba(74, 132, 255, 0.3);
-            font-weight: 600;
-            transform: translateX(4px);
-        }
-
+        /* updated to match customer theme - Peach indicator */
         .nav-link.active::before {
             content: '';
             position: absolute;
-            left: -20px;
+            left: -12px;
             top: 50%;
             transform: translateY(-50%);
             width: 4px;
-            height: 24px;
-            background: #4A84FF;
-            border-radius: 0 4px 4px 0;
-            box-shadow: 0 0 12px rgba(74, 132, 255, 0.5);
+            height: 28px;
+            background: var(--admin-accent-peach);
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 0 16px rgba(232, 184, 154, 0.6);
         }
 
-        /* Main Content - Dark Glass Layout */
+        /* // UPDATED: Main Content dengan dark pastel background */
         .admin-content {
             margin-left: 280px;
             margin-top: 70px;
             padding: 40px 36px;
             min-height: calc(100vh - 70px);
-            background: linear-gradient(135deg, rgba(15, 15, 20, 0.6) 0%, rgba(25, 25, 35, 0.5) 100%);
+            background: var(--admin-bg-main);
             position: relative;
             overflow: auto;
         }
@@ -531,36 +562,59 @@ $faqs = getAllFAQ();
             }
         }
 
-        /* Page Headers - Typography yang Profesional untuk Dark Theme */
+        /* // UPDATED: Page Headers dengan modern typography */
         .content-section h1 {
             font-size: 2.2rem;
             font-weight: 800;
-            color: #f0f0f5;
+            color: var(--admin-text-primary);
             margin-bottom: 12px;
             letter-spacing: -0.03em;
             line-height: 1.2;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .content-section > p {
-            color: rgba(240, 240, 245, 0.8);
+            color: var(--admin-text-secondary);
             margin-bottom: 32px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.6;
-            max-width: 600px;
+            max-width: 650px;
         }
 
-        /* Stats Grid - Dark Glass Cards */
+        /* // UPDATED: Stats Grid dengan pastel dark cards */
+        /* // NEW: Stats grid layout untuk dashboard cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
         .stat-card {
-            background: rgba(30, 30, 45, 0.7);
-            padding: 32px 28px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--admin-card-purple);
+            padding: 28px 24px;
+            border-radius: 24px;
+            box-shadow: var(--admin-shadow-md);
+            border: 1px solid var(--admin-border);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+        }
+        
+        /* updated to match customer theme - Brown/Peach cards */
+        .stat-card:nth-child(1) {
+            background: var(--admin-card-primary);
+        }
+        
+        .stat-card:nth-child(2) {
+            background: var(--admin-card-secondary);
+        }
+        
+        .stat-card:nth-child(3) {
+            background: var(--admin-card-accent);
+        }
+        
+        .stat-card:nth-child(4) {
+            background: var(--admin-card-warm);
         }
 
         .stat-card::before {
@@ -569,82 +623,100 @@ $faqs = getAllFAQ();
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 3px;
             background: var(--admin-gradient-primary);
-            opacity: 0.6;
-        }
-
-        .stat-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(74, 132, 255, 0.15) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            opacity: 0.7;
         }
 
         .stat-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 48px rgba(74, 132, 255, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
-            border-color: rgba(74, 132, 255, 0.3);
-            background: rgba(30, 30, 45, 0.8);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(232, 184, 154, 0.25);
+            border-color: var(--admin-accent-peach);
         }
 
-        .stat-card:hover::after {
-            opacity: 1;
-        }
-
+        /* updated to match customer theme - Peach accents */
         .stat-card h3 {
-            color: rgba(240, 240, 245, 0.6);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+            color: var(--admin-text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .stat-card h3 i {
+            font-size: 1.1rem;
+            color: var(--admin-accent-peach);
+            opacity: 0.8;
         }
 
         .stat-card .number {
-            background: var(--admin-gradient-primary);
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+            color: var(--admin-text-primary);
+        }
+        
+        /* updated to match customer theme - Peach gradients */
+        .stat-card:nth-child(1) .number {
+            background: linear-gradient(135deg, var(--admin-accent-peach), var(--admin-accent-brown));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
+        }
+        
+        .stat-card:nth-child(2) .number {
+            background: linear-gradient(135deg, var(--admin-accent-orange), var(--admin-accent-warm));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-card:nth-child(3) .number {
+            background: linear-gradient(135deg, var(--admin-accent-brown), var(--admin-accent-peach));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-card:nth-child(4) .number {
+            background: linear-gradient(135deg, var(--admin-accent-warm), var(--admin-accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stat-card small {
-            color: rgba(240, 240, 245, 0.7);
-            font-size: 0.9rem;
+            color: var(--admin-text-secondary);
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
-        /* Section Cards - Dark Glass Modern */
+        /* // UPDATED: Section Cards dengan pastel dark theme */
         .section-card {
-            background: rgba(30, 30, 45, 0.7);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
+            background: var(--admin-bg-secondary);
+            border-radius: 24px;
+            box-shadow: var(--admin-shadow-md);
             margin-bottom: 32px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--admin-border);
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
         }
 
         .section-card:hover {
-            box-shadow: 0 12px 48px rgba(74, 132, 255, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
-            border-color: rgba(74, 132, 255, 0.3);
-            background: rgba(30, 30, 45, 0.8);
+            box-shadow: 0 12px 40px rgba(232, 184, 154, 0.18);
+            border-color: var(--admin-border);
         }
 
+        /* // UPDATED: Section header dengan pastel accent */
         .section-header {
             padding: 24px 32px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            background: linear-gradient(135deg, rgba(20, 20, 30, 0.5) 0%, rgba(40, 40, 55, 0.3) 100%);
+            border-bottom: 1px solid var(--admin-border);
+            background: var(--admin-bg-dark);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -657,9 +729,9 @@ $faqs = getAllFAQ();
             bottom: 0;
             left: 0;
             right: 0;
-            height: 1px;
+            height: 2px;
             background: var(--admin-gradient-primary);
-            opacity: 0.5;
+            opacity: 0.6;
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -669,36 +741,29 @@ $faqs = getAllFAQ();
         }
 
         .section-header h2 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: #f0f0f5;
-            letter-spacing: -0.01em;
+            color: var(--admin-text-primary);
+            letter-spacing: -0.02em;
         }
 
         .section-content {
             padding: 32px 36px;
-            color: #f0f0f5;
+            color: var(--admin-text-primary);
         }
 
-        /* Form Styles - Dark Glass Premium */
+        /* // UPDATED: Form Styles dengan dark pastel theme */
         .form-group {
             margin-bottom: 24px;
             position: relative;
         }
 
-        .form-group input[type="file"] {
-            padding: 10px;
-            border: 2px dashed rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            background: transparent;
-        }
-
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 600;
-            color: #f0f0f5;
-            font-size: 0.95rem;
+            color: var(--admin-text-primary);
+            font-size: 0.9rem;
             letter-spacing: -0.01em;
         }
 
@@ -706,31 +771,37 @@ $faqs = getAllFAQ();
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 16px 18px;
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
+            padding: 14px 18px;
+            border: 1px solid var(--admin-border);
+            border-radius: 16px;
             font-size: 0.95rem;
-            background: rgba(20, 20, 30, 0.6);
-            color: #f0f0f5;
+            background: var(--admin-bg-dark);
+            color: var(--admin-text-primary);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
-            backdrop-filter: blur(8px);
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder,
         .form-group select::placeholder {
-            color: rgba(240, 240, 245, 0.4);
+            color: var(--admin-text-muted);
         }
 
+        /* updated to match customer theme */
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #4A84FF;
-            box-shadow: 0 0 0 4px rgba(74, 132, 255, 0.25), inset 0 0 12px rgba(74, 132, 255, 0.1);
-            transform: translateY(-2px);
-            background: rgba(20, 20, 30, 0.8);
+            border-color: var(--admin-accent-peach);
+            box-shadow: 0 0 0 3px rgba(232, 184, 154, 0.15);
+            background: var(--admin-bg-darker);
+        }
+        
+        .form-group input[type="file"] {
+            padding: 12px 16px;
+            border: 2px dashed var(--admin-border);
+            background: var(--admin-bg-dark);
+            color: var(--admin-text-secondary);
         }
 
         .form-group textarea {
@@ -739,35 +810,26 @@ $faqs = getAllFAQ();
             line-height: 1.6;
         }
 
-        .form-group input[type="file"] {
-            padding: 12px 16px;
-            background: rgba(20, 20, 30, 0.5);
-            border-style: dashed;
-            color: rgba(240, 240, 245, 0.6);
-        }
-
         .form-group input[type="checkbox"] {
             width: auto;
             margin-right: 12px;
             transform: scale(1.2);
-            accent-color: #4A84FF;
-            background: rgba(74, 132, 255, 0.2);
-            border-color: #4A84FF;
+            accent-color: var(--admin-accent-peach);
         }
 
         .form-group small {
-            color: rgba(240, 240, 245, 0.6);
+            color: var(--admin-text-muted);
             font-size: 0.85rem;
             display: block;
             margin-top: 6px;
             line-height: 1.4;
         }
 
-        /* Button Styles - Premium Gradients */
+        /* // UPDATED: Button Styles dengan pastel gradients */
         .btn {
-            padding: 14px 28px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 12px;
+            border-radius: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -790,7 +852,7 @@ $faqs = getAllFAQ();
             left: 50%;
             width: 0;
             height: 0;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.3s, height 0.3s;
@@ -801,77 +863,80 @@ $faqs = getAllFAQ();
             height: 300px;
         }
 
+        /* updated to match customer theme */
         .btn-primary {
             background: var(--admin-gradient-primary);
-            color: white;
-            box-shadow: 0 4px 20px rgba(74, 132, 255, 0.3);
+            color: var(--admin-bg-dark);
+            box-shadow: var(--admin-shadow-sm);
+            font-weight: 700;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(74, 132, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: var(--admin-shadow-peach);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, rgba(240, 240, 245, 0.15) 0%, rgba(240, 240, 245, 0.1) 100%);
-            color: #f0f0f5;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(240, 240, 245, 0.15);
+            background: var(--admin-card-primary);
+            color: var(--admin-text-primary);
+            box-shadow: var(--admin-shadow-sm);
+            border: 1px solid var(--admin-border);
         }
 
         .btn-secondary:hover {
-            background: linear-gradient(135deg, rgba(240, 240, 245, 0.2) 0%, rgba(240, 240, 245, 0.15) 100%);
+            background: var(--admin-card-secondary);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 132, 255, 0.2);
+            box-shadow: 0 6px 20px rgba(232, 184, 154, 0.2);
         }
 
+        /* updated to match customer theme - WhatsApp green */
         .btn-success {
-            background: linear-gradient(135deg, #4CD964 0%, #5fe368 100%);
+            background: linear-gradient(135deg, var(--admin-accent-whatsapp) 0%, #20B858 100%);
             color: white;
-            box-shadow: 0 4px 20px rgba(76, 217, 100, 0.3);
+            box-shadow: var(--admin-shadow-sm);
         }
 
         .btn-success:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(76, 217, 100, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, #FF5C5C 0%, #ff7575 100%);
+            background: linear-gradient(135deg, var(--admin-danger) 0%, #D88A7A 100%);
             color: white;
-            box-shadow: 0 4px 20px rgba(255, 92, 92, 0.3);
+            box-shadow: var(--admin-shadow-sm);
         }
 
         .btn-danger:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255, 92, 92, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 154, 138, 0.3);
         }
 
-        /* Table Styles - Dark Glass Tables */
+        /* // UPDATED: Table Styles dengan dark pastel theme */
         .table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background: rgba(30, 30, 45, 0.5);
-            border-radius: 16px;
+            background: var(--admin-bg-dark);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--admin-shadow-md);
+            border: 1px solid var(--admin-border);
         }
 
         .table th,
         .table td {
             padding: 16px 20px;
             text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid var(--admin-border);
         }
 
+        /* updated to match customer theme */
         .table th {
             font-weight: 700;
-            color: #f0f0f5;
-            background: linear-gradient(135deg, rgba(74, 132, 255, 0.15) 0%, rgba(74, 132, 255, 0.05) 100%);
-            font-size: 0.9rem;
+            color: var(--admin-text-primary);
+            background: var(--admin-card-primary);
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.8px;
             position: relative;
@@ -883,7 +948,7 @@ $faqs = getAllFAQ();
             bottom: 0;
             left: 0;
             right: 0;
-            height: 1px;
+            height: 2px;
             background: var(--admin-gradient-primary);
             opacity: 0.6;
         }
@@ -893,8 +958,7 @@ $faqs = getAllFAQ();
         }
 
         .table tbody tr:hover {
-            background: rgba(74, 132, 255, 0.1);
-            transform: scale(1.01);
+            background: var(--admin-card-primary);
         }
 
         .table tbody tr:nth-child(even) {
@@ -902,22 +966,22 @@ $faqs = getAllFAQ();
         }
 
         .table td {
-            color: rgba(240, 240, 245, 0.9);
+            color: var(--admin-text-secondary);
         }
 
-        /* Badge Styles - Premium Status Colors */
+        /* // UPDATED: Badge Styles dengan pastel colors */
         .badge {
             padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.6px;
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            border: 2px solid transparent;
+            box-shadow: var(--admin-shadow-sm);
+            border: 1px solid transparent;
             transition: all 0.3s ease;
         }
 
@@ -925,35 +989,32 @@ $faqs = getAllFAQ();
             transform: scale(1.05);
         }
 
+        /* updated to match customer theme */
         .badge-success { 
-            background: linear-gradient(135deg, #4CD964, #5fe368);
-            color: white;
-            border-color: rgba(76, 217, 100, 0.3);
-            box-shadow: 0 4px 12px rgba(76, 217, 100, 0.3);
+            background: rgba(37, 211, 102, 0.15);
+            color: var(--admin-accent-whatsapp);
+            border-color: var(--admin-accent-whatsapp);
         }
         
         .badge-warning { 
-            background: linear-gradient(135deg, #FFBB33, #ffc84d);
-            color: white;
-            border-color: rgba(255, 187, 51, 0.3);
-            box-shadow: 0 4px 12px rgba(255, 187, 51, 0.3);
+            background: var(--admin-card-warm);
+            color: var(--admin-accent-orange);
+            border-color: var(--admin-accent-orange);
         }
         
         .badge-danger { 
-            background: linear-gradient(135deg, #FF5C5C, #ff7575);
-            color: white;
-            border-color: rgba(255, 92, 92, 0.3);
-            box-shadow: 0 4px 12px rgba(255, 92, 92, 0.3);
+            background: var(--admin-card-accent);
+            color: var(--admin-danger);
+            border-color: var(--admin-danger);
         }
         
         .badge-info { 
-            background: linear-gradient(135deg, #4A84FF, #6DA8FF);
-            color: white;
-            border-color: rgba(74, 132, 255, 0.3);
-            box-shadow: 0 4px 12px rgba(74, 132, 255, 0.3);
+            background: var(--admin-card-secondary);
+            color: var(--admin-accent-peach);
+            border-color: var(--admin-accent-peach);
         }
 
-        /* Gallery Grid - Dark Glass Grid */
+        /* // UPDATED: Gallery Grid dengan pastel dark cards */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -962,14 +1023,13 @@ $faqs = getAllFAQ();
         }
 
         .gallery-item {
-            background: rgba(30, 30, 45, 0.7);
-            border-radius: 20px;
+            background: var(--admin-bg-secondary);
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
+            box-shadow: var(--admin-shadow-md);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--admin-border);
             position: relative;
-            backdrop-filter: blur(10px);
         }
 
         .gallery-item::before {
@@ -978,7 +1038,7 @@ $faqs = getAllFAQ();
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 3px;
             background: var(--admin-gradient-primary);
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -986,10 +1046,9 @@ $faqs = getAllFAQ();
         }
 
         .gallery-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 48px rgba(74, 132, 255, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
-            border-color: rgba(74, 132, 255, 0.3);
-            background: rgba(30, 30, 45, 0.8);
+            transform: translateY(-6px);
+            box-shadow: var(--admin-shadow-peach);
+            border-color: var(--admin-accent-peach);
         }
 
         .gallery-item:hover::before {
@@ -1012,16 +1071,16 @@ $faqs = getAllFAQ();
         }
 
         .gallery-info h4 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            color: #f0f0f5;
+            color: var(--admin-text-primary);
             margin-bottom: 12px;
             letter-spacing: -0.01em;
         }
 
         .gallery-info p {
             font-size: 0.9rem;
-            color: rgba(240, 240, 245, 0.7);
+            color: var(--admin-text-secondary);
             margin-bottom: 16px;
             line-height: 1.5;
         }
@@ -1031,32 +1090,31 @@ $faqs = getAllFAQ();
             justify-content: space-between;
             align-items: center;
             padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid var(--admin-border);
         }
 
-        /* FAQ Styles - Dark Glass Cards */
+        /* // UPDATED: FAQ Styles dengan pastel dark theme */
         .faq-item {
-            background: rgba(30, 30, 45, 0.7);
-            border-radius: 16px;
+            background: var(--admin-bg-secondary);
+            border-radius: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
+            box-shadow: var(--admin-shadow-md);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--admin-border);
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
         }
 
         .faq-item:hover {
-            box-shadow: 0 12px 48px rgba(74, 132, 255, 0.25), inset 1px 1px 0 rgba(255, 255, 255, 0.1);
-            border-color: rgba(74, 132, 255, 0.3);
+            box-shadow: var(--admin-shadow-peach);
+            border-color: var(--admin-accent-peach);
             transform: translateY(-2px);
-            background: rgba(30, 30, 45, 0.8);
         }
 
+        /* updated to match customer theme */
         .faq-header {
             padding: 20px 24px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            background: linear-gradient(135deg, rgba(74, 132, 255, 0.1) 0%, rgba(74, 132, 255, 0.05) 100%);
+            border-bottom: 1px solid var(--admin-border);
+            background: var(--admin-card-secondary);
             position: relative;
         }
 
@@ -1066,9 +1124,9 @@ $faqs = getAllFAQ();
             bottom: 0;
             left: 0;
             right: 0;
-            height: 1px;
+            height: 2px;
             background: var(--admin-gradient-primary);
-            opacity: 0.5;
+            opacity: 0.6;
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -1079,7 +1137,7 @@ $faqs = getAllFAQ();
 
         .faq-question {
             font-weight: 700;
-            color: #4A84FF;
+            color: var(--admin-accent-peach);
             margin-bottom: 12px;
             font-size: 1.05rem;
             letter-spacing: -0.01em;
@@ -1087,7 +1145,7 @@ $faqs = getAllFAQ();
 
         .faq-content {
             padding: 20px 24px;
-            color: rgba(240, 240, 245, 0.85);
+            color: var(--admin-text-secondary);
         }
 
         .faq-actions {
@@ -1229,11 +1287,7 @@ $faqs = getAllFAQ();
                 display: none;
             }
 
-            .dark-mode-toggle {
-                width: 38px;
-                height: 38px;
-                font-size: 14px;
-            }
+            /* removed: dark-mode-toggle mobile styles */
 
             .logout-btn {
                 padding: 8px 12px;
@@ -1276,62 +1330,27 @@ $faqs = getAllFAQ();
             }
         }
 
-        /* Dark Mode Toggle - Dark Glass */
-        .dark-mode-toggle-container {
-            margin-right: 20px;
-        }
-
-        .dark-mode-toggle {
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            color: #f0f0f5;
-            padding: 10px 14px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 16px;
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-        }
-
-        .dark-mode-toggle:hover {
-            background: rgba(74, 132, 255, 0.15);
-            border-color: rgba(74, 132, 255, 0.3);
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 8px 20px rgba(74, 132, 255, 0.2);
-        }@media (max-width: 768px) {
-            .dark-mode-toggle-container {
-                margin-right: 10px;
-            }
-            
-            .dark-mode-toggle {
-                padding: 6px 10px;
-                font-size: 12px;
-            }
-        }
+        /* removed: dark mode toggle - permanent dark theme */
 
         /* ============================================
-         * TRANSPORT MANAGEMENT STYLING
+         * TRANSPORT MANAGEMENT STYLING - PASTEL THEME
          * ============================================ */
+        /* // UPDATED: Transport tabs dengan pastel styling */
         .transport-tabs {
             display: flex;
             gap: 12px;
             margin-bottom: 24px;
-            border-bottom: 2px solid var(--admin-border-light);
+            border-bottom: 2px solid var(--admin-border);
             padding-bottom: 16px;
         }
 
         .tab-btn {
             padding: 12px 24px;
-            background: var(--admin-bg-card);
-            border: 2px solid var(--admin-border);
-            border-radius: 12px;
-            color: var(--admin-text-primary);
-            font-weight: 500;
+            background: var(--admin-bg-secondary);
+            border: 1px solid var(--admin-border);
+            border-radius: 16px;
+            color: var(--admin-text-secondary);
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -1342,27 +1361,29 @@ $faqs = getAllFAQ();
 
         .tab-btn i {
             font-size: 1.1rem;
-            opacity: 0.8;
+            opacity: 0.7;
             transition: all 0.3s ease;
         }
 
         .tab-btn:hover i,
         .tab-btn.active i {
             opacity: 1;
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
+        /* updated to match customer theme */
         .tab-btn:hover {
-            background: var(--admin-bg-secondary);
-            border-color: var(--admin-primary);
+            background: var(--admin-card-primary);
+            border-color: var(--admin-accent-peach);
+            color: var(--admin-text-primary);
             transform: translateY(-2px);
         }
 
         .tab-btn.active {
-            background: var(--admin-gradient-primary);
-            color: white;
-            border-color: var(--admin-primary);
-            box-shadow: var(--admin-shadow-md);
+            background: var(--admin-card-secondary);
+            color: var(--admin-accent-peach);
+            border-color: var(--admin-accent-peach);
+            box-shadow: var(--admin-shadow-peach);
         }
 
         .transport-tab-content {
@@ -1380,19 +1401,20 @@ $faqs = getAllFAQ();
             margin-top: 20px;
         }
 
+        /* // UPDATED: Transport card dengan pastel theme */
         .transport-card {
-            background: var(--admin-bg-card);
-            border: 2px solid var(--admin-border);
-            border-radius: 16px;
+            background: var(--admin-bg-secondary);
+            border: 1px solid var(--admin-border);
+            border-radius: 20px;
             padding: 20px;
             transition: all 0.3s ease;
             position: relative;
         }
 
         .transport-card:hover {
-            border-color: var(--admin-primary);
+            border-color: var(--admin-accent-peach);
             transform: translateY(-4px);
-            box-shadow: var(--admin-shadow-lg);
+            box-shadow: var(--admin-shadow-peach);
         }
 
         .transport-card-header {
@@ -1402,20 +1424,21 @@ $faqs = getAllFAQ();
             margin-bottom: 16px;
         }
 
+        /* updated to match customer theme */
         .transport-logo {
             width: 60px;
             height: 60px;
-            border-radius: 12px;
+            border-radius: 16px;
             object-fit: contain;
-            background: var(--admin-bg-secondary);
+            background: var(--admin-card-primary);
             padding: 8px;
         }
 
         .transport-info h3 {
             margin: 0 0 4px 0;
             color: var(--admin-text-primary);
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            font-weight: 700;
         }
 
         .transport-info p {
@@ -1426,9 +1449,9 @@ $faqs = getAllFAQ();
         }
 
         .transport-price {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--admin-primary);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--admin-accent-peach);
             margin: 12px 0 16px 0;
         }
 
@@ -1443,69 +1466,71 @@ $faqs = getAllFAQ();
             font-size: 0.85rem;
         }
 
-        /* Modal Styling */
+        /* // UPDATED: Modal Styling dengan pastel theme */
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.75);
             z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(8px);
         }
 
         .modal-content {
-            background: var(--admin-bg-card);
-            border-radius: 16px;
+            background: var(--admin-bg-secondary);
+            border-radius: 24px;
             width: 90%;
             max-width: 600px;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: var(--admin-shadow-lg);
-            border: 2px solid var(--admin-border);
+            border: 1px solid var(--admin-border);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 24px;
-            border-bottom: 2px solid var(--admin-border-light);
-            background: var(--admin-bg-secondary);
-            border-radius: 14px 14px 0 0;
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--admin-border);
+            background: var(--admin-bg-dark);
+            border-radius: 24px 24px 0 0;
         }
 
         .modal-header h3 {
             margin: 0;
             color: var(--admin-text-primary);
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 700;
         }
 
+        /* updated to match customer theme */
         .modal-close {
             font-size: 24px;
             cursor: pointer;
-            color: var(--admin-text-secondary);
-            width: 32px;
-            height: 32px;
+            color: var(--admin-text-muted);
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: all 0.3s ease;
+            background: var(--admin-card-primary);
         }
 
         .modal-close:hover {
-            background: var(--admin-bg-main);
-            color: var(--admin-danger);
+            background: var(--admin-card-accent);
+            color: var(--admin-accent-peach);
         }
 
         .modal-body {
-            padding: 24px;
+            padding: 28px;
         }
 
         .form-actions {
@@ -1514,7 +1539,7 @@ $faqs = getAllFAQ();
             justify-content: flex-end;
             margin-top: 24px;
             padding-top: 20px;
-            border-top: 1px solid var(--admin-border-light);
+            border-top: 1px solid var(--admin-border);
         }
 
         /* Dark mode for transport components *//* Professional Tab Icon Styling *//* Mobile responsive icon adjustments */
@@ -1655,16 +1680,17 @@ $faqs = getAllFAQ();
     <?php endif; ?>
 
     <!-- Header -->
+    <!-- // UPDATED: Header dengan avatar user dan modern styling -->
     <div class="admin-header">
         <div class="admin-logo">
             <i class="fas fa-plane-departure"></i>
             Cendana Travel Admin
         </div>
         <div class="admin-user">
-            <div class="dark-mode-toggle-container">
-                <button class="dark-mode-toggle" onclick="ubahModeGelap()" title="Toggle Dark Mode">
-                    <i class="fas fa-moon"></i>
-                </button>
+            <!-- removed: dark mode toggle button -->
+            <!-- // Avatar user untuk topbar modern -->
+            <div class="admin-user-avatar" title="Admin">
+                <i class="fas fa-user"></i>
             </div>
             <span>Selamat datang, Admin</span>
             <a href="auth.php?action=logout" class="logout-btn">
@@ -1721,24 +1747,25 @@ $faqs = getAllFAQ();
             <h1>Dashboard Administrasi</h1>
             <p>Sistem manajemen terpadu CV. Cendana Travel untuk operasional dan monitoring kinerja bisnis secara real-time</p>
             
+            <!-- // UPDATED: Stats grid dengan icons modern -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <h3>Total Layanan</h3>
+                    <h3><i class="ri-service-line"></i> Total Layanan</h3>
                     <div class="number"><?= $stats['total_services'] ?? 0 ?></div>
                     <small>Layanan transportasi aktif</small>
                 </div>
                 <div class="stat-card">
-                    <h3>Galeri Aktif</h3>
+                    <h3><i class="ri-gallery-line"></i> Galeri Aktif</h3>
                     <div class="number"><?= $stats['total_gallery'] ?? 0 ?></div>
                     <small>Foto dalam galeri</small>
                 </div>
                 <div class="stat-card">
-                    <h3>FAQ Aktif</h3>
+                    <h3><i class="ri-question-line"></i> FAQ Aktif</h3>
                     <div class="number"><?= $stats['total_faq'] ?? 0 ?></div>
                     <small>Pertanyaan tersedia</small>
                 </div>
                 <div class="stat-card">
-                    <h3>Jenis Transportasi</h3>
+                    <h3><i class="ri-car-line"></i> Jenis Transportasi</h3>
                     <div class="number">3</div>
                     <small>Pesawat, Kapal, Bus</small>
                 </div>
@@ -1750,39 +1777,40 @@ $faqs = getAllFAQ();
                 </div>
                 <div class="section-content">
                     <p>Sistem administrasi terintegrasi dengan fitur manajemen konten lengkap untuk operasional yang efisien:</p>
+                    <!-- updated to match customer theme - Peach/Brown accent colors -->
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 24px;">
-                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-primary);">
-                            <strong style="color: var(--admin-primary); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-accent-peach);">
+                            <strong style="color: var(--admin-accent-peach); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                 <i class="fas fa-cog"></i> General
                             </strong>
                             <span style="color: var(--admin-text-secondary); font-size: 0.9rem;">Kelola informasi umum perusahaan</span>
                         </div>
-                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-success);">
-                            <strong style="color: var(--admin-success); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-accent-whatsapp);">
+                            <strong style="color: var(--admin-accent-whatsapp); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                 <i class="fas fa-image"></i> Kelola Beranda
                             </strong>
                             <span style="color: var(--admin-text-secondary); font-size: 0.9rem;">Manajemen banner dan konten utama</span>
                         </div>
-                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-warning);">
-                            <strong style="color: var(--admin-warning); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-accent-orange);">
+                            <strong style="color: var(--admin-accent-orange); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                 <i class="fas fa-ticket-alt"></i> Pemesanan
                             </strong>
                             <span style="color: var(--admin-text-secondary); font-size: 0.9rem;">Monitoring dan pengelolaan reservasi</span>
                         </div>
-                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-info);">
-                            <strong style="color: var(--admin-info); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-accent-brown);">
+                            <strong style="color: var(--admin-accent-brown); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                 <i class="fas fa-images"></i> Galeri
                             </strong>
                             <span style="color: var(--admin-text-secondary); font-size: 0.9rem;">Kurasi dan publikasi media visual</span>
                         </div>
-                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-danger);">
-                            <strong style="color: var(--admin-danger); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-accent-warm);">
+                            <strong style="color: var(--admin-accent-warm); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                 <i class="fas fa-phone"></i> Kontak
                             </strong>
                             <span style="color: var(--admin-text-secondary); font-size: 0.9rem;">Pemeliharaan informasi komunikasi</span>
                         </div>
-                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid #9333ea;">
-                            <strong style="color: #9333ea; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <div style="padding: 20px; background: var(--admin-bg-secondary); border-radius: 12px; border-left: 4px solid var(--admin-accent-peach);">
+                            <strong style="color: var(--admin-accent-peach); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                 <i class="fas fa-question-circle"></i> FAQ
                             </strong>
                             <span style="color: var(--admin-text-secondary); font-size: 0.9rem;">Administrasi bantuan pelanggan</span>
@@ -1934,8 +1962,37 @@ $faqs = getAllFAQ();
                             <?php foreach ($banners as $banner): ?>
                             <tr>
                                 <td>
-                                    <?php if ($banner['image'] && file_exists($banner['image'])): ?>
-                                    <img src="<?= $banner['image'] ?>" alt="Banner" style="width: 60px; height: 40px; object-fit: cover; border-radius: 4px;">
+                                    <?php 
+                                    // Fix banner image path logic
+                                    $bannerImagePath = '';
+                                    if ($banner['image']) {
+                                        // Check if file exists at stored path
+                                        if (file_exists($banner['image'])) {
+                                            $bannerImagePath = $banner['image'];
+                                        }
+                                        // Try alternative path in gallery folder
+                                        elseif (file_exists('uploads/gallery/' . basename($banner['image']))) {
+                                            $bannerImagePath = 'uploads/gallery/' . basename($banner['image']);
+                                        }
+                                        // Try with different extensions
+                                        else {
+                                            $baseName = pathinfo($banner['image'], PATHINFO_FILENAME);
+                                            $extensions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+                                            foreach ($extensions as $ext) {
+                                                if (file_exists("uploads/{$baseName}.{$ext}")) {
+                                                    $bannerImagePath = "uploads/{$baseName}.{$ext}";
+                                                    break;
+                                                }
+                                                if (file_exists("uploads/gallery/{$baseName}.{$ext}")) {
+                                                    $bannerImagePath = "uploads/gallery/{$baseName}.{$ext}";
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    if ($bannerImagePath): ?>
+                                    <img src="<?= $bannerImagePath ?>" alt="Banner" style="width: 60px; height: 40px; object-fit: cover; border-radius: 4px;">
                                     <?php else: ?>
                                     <div style="width: 60px; height: 40px; background: #f3f4f6; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
                                         <i class="fas fa-image text-gray-400"></i>
@@ -2663,80 +2720,7 @@ $faqs = getAllFAQ();
             });
         }, 4000);
 
-        // Enhanced Dark Mode Functions
-        function ubahModeGelap() {
-            const body = document.body;
-            const html = document.documentElement;
-            const toggleBtn = document.querySelector('.dark-mode-toggle');
-            const isCurrentlyDark = body.classList.contains('dark-mode');
-            
-            // Add loading animation
-            toggleBtn.style.transform = 'scale(0.8)';
-            toggleBtn.style.opacity = '0.7';
-            
-            // Smooth transition
-            body.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-            
-            setTimeout(() => {
-                if (isCurrentlyDark) {
-                    // Switch to light mode
-                    body.classList.remove('dark-mode');
-                    html.classList.remove('dark-mode');
-                    localStorage.setItem('darkMode', 'false');
-                    
-                    const toggleIcon = document.querySelector('.dark-mode-toggle i');
-                    if (toggleIcon) {
-                        toggleIcon.className = 'fas fa-moon';
-                    }
-                } else {
-                    // Switch to dark mode
-                    body.classList.add('dark-mode');
-                    html.classList.add('dark-mode');
-                    localStorage.setItem('darkMode', 'true');
-                    
-                    const toggleIcon = document.querySelector('.dark-mode-toggle i');
-                    if (toggleIcon) {
-                        toggleIcon.className = 'fas fa-sun';
-                    }
-                }
-                
-                // Reset button animation
-                setTimeout(() => {
-                    toggleBtn.style.transform = 'scale(1)';
-                    toggleBtn.style.opacity = '1';
-                    body.style.transition = '';
-                }, 100);
-            }, 150);
-        }
-
-        // Enhanced Dark Mode Initialization
-        function aturModeGelapSaatDimuat() {
-            const savedDarkMode = localStorage.getItem('darkMode');
-            const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const body = document.body;
-            const html = document.documentElement;
-            
-            // Use saved preference or system preference
-            const shouldBeDark = savedDarkMode === 'true' || (savedDarkMode === null && systemDarkMode);
-            
-            if (shouldBeDark) {
-                body.classList.add('dark-mode');
-                html.classList.add('dark-mode');
-                
-                const toggleIcon = document.querySelector('.dark-mode-toggle i');
-                if (toggleIcon) {
-                    toggleIcon.className = 'fas fa-sun';
-                }
-            } else {
-                body.classList.remove('dark-mode');
-                html.classList.remove('dark-mode');
-                
-                const toggleIcon = document.querySelector('.dark-mode-toggle i');
-                if (toggleIcon) {
-                    toggleIcon.className = 'fas fa-moon';
-                }
-            }
-        }
+        /* removed: dark mode toggle functions - permanent dark theme */
 
         // Enhanced Section Navigation with Smooth Transitions
         function showSection(sectionName) {
@@ -2804,8 +2788,7 @@ $faqs = getAllFAQ();
 
         // Enhanced Initialization
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize dark mode
-            aturModeGelapSaatDimuat();
+            /* removed: dark mode initialization */
             
             // Ensure dashboard is active by default
             const dashboardSection = document.getElementById('dashboard-section');
@@ -2820,7 +2803,7 @@ $faqs = getAllFAQ();
             }
             
             // Add ripple effects
-            document.querySelectorAll('.btn, .nav-link, .dark-mode-toggle').forEach(addRippleEffect);
+            document.querySelectorAll('.btn, .nav-link').forEach(addRippleEffect);
             
             // Smooth page load
             setTimeout(() => {
@@ -2862,8 +2845,7 @@ $faqs = getAllFAQ();
         `;
         document.head.appendChild(enhancedStyles);
 
-        // Initialize immediately
-        aturModeGelapSaatDimuat();
+        /* removed: dark mode initialization - permanent dark theme */
 
         /* ============================================
          * TRANSPORT MANAGEMENT FUNCTIONS
@@ -2965,10 +2947,13 @@ $faqs = getAllFAQ();
                 return;
             }
             
-            grid.innerHTML = data.map(item => `
+            grid.innerHTML = data.map(item => {
+                // Fix image path: add 'uploads/' prefix if not present
+                const logoPath = item.logo.startsWith('uploads/') ? item.logo : 'uploads/' + item.logo;
+                return `
                 <div class="transport-card">
                     <div class="transport-card-header">
-                        <img src="${item.logo}" alt="${item.name}" class="transport-logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiNjY2MiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJjNS41MjIgMCAxMCA0LjQ3NyAxMCAxMHMtNC40NzggMTAtMTAgMTAtMTAtNC40NzctMTAtMTAgNC40NzgtMTAgMTAtMTB6bTAgMThhOCA4IDAgMSAwIDAtMTYgOCA4IDAgMCAwIDAgMTZ6bS0xLTEzaDJ2NmgtMnptMCA4aDJ2MmgtMnoiLz4KPHN2Zz4='">
+                        <img src="${logoPath}" alt="${item.name}" class="transport-logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiNjY2MiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJjNS41MjIgMCAxMCA0LjQ3NyAxMCAxMHMtNC40NzggMTAtMTAgMTAtMTAtNC40NzctMTAtMTAgNC40NzgtMTAgMTAtMTB6bTAgMThhOCA4IDAgMSAwIDAtMTYgOCA4IDAgMCAwIDAgMTZ6bS0xLTEzaDJ2NmgtMnptMCA4aDJ2MmgtMnoiLz4KPHN2Zz4='">
                         <div class="transport-info">
                             <h3>${item.name}</h3>
                             <p>${item.route}</p>
@@ -2984,7 +2969,8 @@ $faqs = getAllFAQ();
                         </button>
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         // Show add/edit form

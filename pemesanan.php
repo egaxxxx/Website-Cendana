@@ -73,65 +73,7 @@ $companyInfoData = [
         </div>
     </section>
 
-    <!-- Trust/Features Section - Redesigned -->
-    <section class="page-pemesanan-features">
-        <div class="container">
-            <!-- Section Header -->
-            <div class="features-header">
-                <h2 class="features-title">Mengapa Pilih Kami?</h2>
-                <p class="features-subtitle">Kami menawarkan layanan terbaik dengan harga kompetitif dan dukungan pelanggan 24/7</p>
-            </div>
-
-            <!-- Features Grid -->
-            <div class="features-grid">
-                
-                <!-- Feature 1: WhatsApp Booking -->
-                <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon-background">
-                            <i class="icon icon-whatsapp"></i>
-                        </div>
-                    </div>
-                    <h3 class="feature-card-title">Booking via WhatsApp</h3>
-                    <p class="feature-card-description">Pesan tiket dengan mudah melalui WhatsApp, cepat dan responsif</p>
-                </div>
-
-                <!-- Feature 2: Quick Response -->
-                <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon-background">
-                            <i class="icon icon-clock"></i>
-                        </div>
-                    </div>
-                    <h3 class="feature-card-title">Respon Cepat</h3>
-                    <p class="feature-card-description">Konfirmasi pesanan dalam hitungan menit</p>
-                </div>
-
-                <!-- Feature 3: 24/7 Service -->
-                <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon-background">
-                            <i class="icon icon-headset"></i>
-                        </div>
-                    </div>
-                    <h3 class="feature-card-title">Layanan 24/7</h3>
-                    <p class="feature-card-description">Customer service siap membantu kapan saja</p>
-                </div>
-
-                <!-- Feature 4: Competitive Price -->
-                <div class="feature-card">
-                    <div class="feature-icon-wrapper">
-                        <div class="feature-icon-background">
-                            <i class="icon icon-price-tag"></i>
-                        </div>
-                    </div>
-                    <h3 class="feature-card-title">Harga Kompetitif</h3>
-                    <p class="feature-card-description">Dapatkan harga terbaik untuk semua rute perjalanan</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
+    <!-- removed: Mengapa Pilih Kami (Pemesanan) -->
 
     <!-- Filter Section with Modern Design -->
     <section class="booking-filter-section">
